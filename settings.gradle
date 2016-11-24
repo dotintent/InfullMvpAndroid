@@ -1,0 +1,1 @@
+include ':sample', 'sample-kotlin', ':infullmvp', ':infullmvp-kotlin'

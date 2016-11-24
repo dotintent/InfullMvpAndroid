@@ -1,0 +1,34 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.kotlin_version = '1.0.5-2'
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext {
+    support_version = '24.2.1'
+    androidAppcompat = "com.android.support:appcompat-v7:$support_version"
+    androidDesign = "com.android.support:design:$support_version"
+    dagger = 'com.google.dagger:dagger:2.2'
+    daggerCompiler = 'com.google.dagger:dagger-compiler:2.2'
+    kotlin = "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    picasso = 'com.squareup.picasso:picasso:2.5.2'
+    rxJava = "io.reactivex:rxjava:1.2.0"
+}
