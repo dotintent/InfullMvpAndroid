@@ -6,12 +6,12 @@ import android.support.v4.view.ViewPager;
 import android.widget.TextView;
 
 import com.infullmobile.android.infullmvp.PresentedActivityView;
-import com.infullmobile.infullmvp.sample.R;
+import com.infullmobile.android.infullmvp.sample.R;
 
 public class SampleActivityView extends PresentedActivityView <SampleActivityPresenter> {
 
-    private TextView textField;
-    private ViewPager pager;
+    protected TextView textField;
+    protected ViewPager pager;
 
     private final FragmentStatePagerAdapter pagerAdapter;
 

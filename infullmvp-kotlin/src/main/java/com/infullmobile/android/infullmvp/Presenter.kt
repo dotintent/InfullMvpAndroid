@@ -5,7 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import rx.subscriptions.CompositeSubscription
 
-abstract class Presenter<out T : PresentedView<*, *>>(val presentedView: T) {
+abstract class Presenter<out PresentedViewType : PresentedView<*, *>>(val presentedView: PresentedViewType) {
 
     private val allSubscriptions = CompositeSubscription()
     protected val context: Context
@@ -25,18 +25,18 @@ abstract class Presenter<out T : PresentedView<*, *>>(val presentedView: T) {
     }
 
     open fun onResume() {
-        // NO OP
+        /* NO OP */
     }
 
     open fun onPause() {
-        // NO OP
+        /* NO OP */
     }
 
     open fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        //NO OP
+        /* NO OP */
     }
 
     open fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
-        //NO OP
+        /* NO OP */
     }
 }

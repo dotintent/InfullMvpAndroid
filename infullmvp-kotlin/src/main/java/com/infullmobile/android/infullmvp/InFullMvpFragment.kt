@@ -6,7 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-abstract class InFullMvpFragment<K : Presenter<T>, out T : PresentedFragmentView<K>> : Fragment() {
+abstract class InFullMvpFragment<
+        PresenterType : Presenter<PresentedViewType>,
+        out PresentedViewType : PresentedFragmentView<PresenterType>
+        > : Fragment() {
+
+    abstract val presenter: PresenterType
+    abstract val presentedView: PresentedViewType
+
+    abstract fun injectIntoGraph()
 
     override final fun onCreateView(inflater: LayoutInflater,
                                     container: ViewGroup?,
@@ -32,8 +40,4 @@ abstract class InFullMvpFragment<K : Presenter<T>, out T : PresentedFragmentView
         super.onPause()
         presenter.onPause()
     }
-
-    abstract val presenter: K
-    abstract val presentedView: T
-    abstract fun injectIntoGraph()
 }

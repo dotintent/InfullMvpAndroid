@@ -27,8 +27,8 @@ public abstract class PresentedFragmentView <PresenterType extends Presenter>
 
     @SuppressWarnings("unchecked")
     @Override
-    protected <T extends View> T findView(@IdRes final int resourceId) {
-        return (T) fragmentRootView.findViewById(resourceId);
+    protected <ViewType extends View> ViewType findView(@IdRes final int resourceId) {
+        return (ViewType) fragmentRootView.findViewById(resourceId);
     }
 
     private void throwIfUnbound() {

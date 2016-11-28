@@ -12,7 +12,7 @@ public class SampleActivity extends InFullMvpActivity<SampleActivityPresenter, S
     @Inject SampleActivityPresenter sampleActivityPresenter;
     @Inject SampleActivityView sampleActivityView;
 
-    private SampleActivityGraph sampleActivityGraph;
+    protected SampleActivityGraph sampleActivityGraph;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

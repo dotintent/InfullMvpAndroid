@@ -7,49 +7,48 @@ import android.widget.ImageView
 import com.squareup.picasso.Picasso
 import kotlin.properties.ReadOnlyProperty
 
-abstract class PresentedView<presenterType : Any, in viewType: Any> {
+abstract class PresentedView<PresenterType : Any, in PresentedViewType: Any> {
 
-    protected lateinit var boundPresenter: presenterType
-
-    val presenter: presenterType
-        get() = boundPresenter
+    protected lateinit var boundPresenter: PresenterType
 
     abstract val context: Context
     abstract val layoutResId: Int
+    abstract val viewFinder: PresentedView<PresenterType, *>.(Int) -> View?
+    abstract val dimensionFinder: PresentedView<PresenterType, *>.(Int) -> Int?
+    abstract val stringFinder: PresentedView<PresenterType, *>.(Int) -> String?
+    abstract val colorFinder: PresentedView<PresenterType, *>.(Int) -> Int?
+    abstract val drawableFinder: PresentedView<PresenterType, *>.(Int) -> Drawable?
 
-    abstract fun bindUiElements(boundingView: viewType, presenter: presenterType)
+    abstract fun bindUiElements(boundingView: PresentedViewType, presenter: PresenterType)
     abstract fun onViewsBound()
 
-    protected fun <V : View> PresentedView<presenterType, *>.bindView(id: Int)
-            : ReadOnlyProperty<PresentedView<presenterType, *>, V> {
+    val presenter: PresenterType
+        get() = boundPresenter
+
+    protected fun <V : View> PresentedView<PresenterType, *>.bindView(id: Int)
+            : ReadOnlyProperty<PresentedView<PresenterType, *>, V> {
         return required(id, viewFinder)
     }
 
-    protected fun PresentedView<presenterType, *>.bindDimen(id: Int)
-            : ReadOnlyProperty<PresentedView<presenterType, *>, Int> {
+    protected fun PresentedView<PresenterType, *>.bindDimen(id: Int)
+            : ReadOnlyProperty<PresentedView<PresenterType, *>, Int> {
         return requiredDimen(id, dimensionFinder)
     }
 
-    protected fun PresentedView<presenterType, *>.bindString(id: Int)
-            : Lazy<PresentedView<presenterType, *>, String> {
+    protected fun PresentedView<PresenterType, *>.bindString(id: Int)
+            : Lazy<PresentedView<PresenterType, *>, String> {
         return requiredString(id, stringFinder)
     }
 
-    protected fun PresentedView<presenterType, *>.bindColor(id: Int)
-            : Lazy<PresentedView<presenterType, *>, Int> {
+    protected fun PresentedView<PresenterType, *>.bindColor(id: Int)
+            : Lazy<PresentedView<PresenterType, *>, Int> {
         return requiredColor(id, colorFinder)
     }
 
-    protected fun PresentedView<presenterType, *>.bindDrawable(id: Int)
-            : Lazy<PresentedView<presenterType, *>, Drawable> {
+    protected fun PresentedView<PresenterType, *>.bindDrawable(id: Int)
+            : Lazy<PresentedView<PresenterType, *>, Drawable> {
         return requiredDrawable(id, drawableFinder)
     }
-
-    abstract val viewFinder: PresentedView<presenterType, *>.(Int) -> View?
-    abstract val dimensionFinder: PresentedView<presenterType, *>.(Int) -> Int?
-    abstract val stringFinder: PresentedView<presenterType, *>.(Int) -> String?
-    abstract val colorFinder: PresentedView<presenterType, *>.(Int) -> Int?
-    abstract val drawableFinder: PresentedView<presenterType, *>.(Int) -> Drawable?
 
     protected open fun loadImageIntoView(imagePath: String, targetImageView: ImageView) {
         if (!imagePath.isNullOrBlank()) {

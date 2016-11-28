@@ -6,7 +6,15 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 
-abstract class InFullMvpActivity<K : Presenter<T>, out T : PresentedActivityView<K>> : AppCompatActivity() {
+abstract class InFullMvpActivity<
+        PresenterType : Presenter<PresentedViewType>,
+        out PresentedViewType : PresentedActivityView<PresenterType>
+        > : AppCompatActivity() {
+
+    abstract val presenter: PresenterType
+    abstract val presentedView: PresentedViewType
+
+    abstract fun injectIntoGraph()
 
     override final fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
@@ -49,8 +57,4 @@ abstract class InFullMvpActivity<K : Presenter<T>, out T : PresentedActivityView
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         presenter.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
-
-    abstract val presenter: K
-    abstract val presentedView: T
-    abstract fun injectIntoGraph()
 }

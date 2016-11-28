@@ -17,10 +17,21 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        lintConfig rootProject.file('gradle/lint.xml')
+    }
 }
 
 dependencies {
     compile project(path: ':infullmvp')
     compile dagger
     apt daggerCompiler
+
+    testCompile project(path: ':infullmvp-basetest')
+    testCompile junit
+    testCompile mockito
+    testCompile robolectric
+    testCompile(assertJ) {
+        exclude module: 'support-annotations'
+    }
 }

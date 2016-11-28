@@ -5,7 +5,15 @@ import android.os.Bundle
 import android.support.design.widget.BottomSheetDialogFragment
 import android.view.View
 
-abstract class InFullMvpBottomSheetFragment<K : Presenter<T>, out T : PresentedDialogView<K>> : BottomSheetDialogFragment() {
+abstract class InFullMvpDialogFragment<
+        PresenterType : Presenter<PresentedViewType>,
+        out PresentedViewType : PresentedDialogView<PresenterType>
+        > : BottomSheetDialogFragment() {
+
+    abstract val presenter: PresenterType
+    abstract val presentedView: PresentedViewType
+
+    abstract fun injectIntoGraph()
 
     override fun setupDialog(dialog: Dialog, style: Int) {
         super.setupDialog(dialog, style)
@@ -15,8 +23,4 @@ abstract class InFullMvpBottomSheetFragment<K : Presenter<T>, out T : PresentedD
         presentedView.bindUiElements(dialog, presenter)
         presenter.bind(arguments?: Bundle())
     }
-
-    abstract val presenter: K
-    abstract val presentedView: T
-    abstract fun injectIntoGraph()
 }

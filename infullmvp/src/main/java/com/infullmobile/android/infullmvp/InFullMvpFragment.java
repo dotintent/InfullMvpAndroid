@@ -13,6 +13,10 @@ public abstract class InFullMvpFragment <
         PresentedViewType extends PresentedFragmentView<PresenterType>
         > extends Fragment {
 
+    protected abstract PresenterType getPresenter();
+    protected abstract PresentedViewType getPresentedView();
+    protected abstract void injectIntoGraph();
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -25,8 +29,4 @@ public abstract class InFullMvpFragment <
         getPresenter().bind(bundle != null ? bundle : new Bundle());
         return rootView;
     }
-
-    protected abstract PresenterType getPresenter();
-    protected abstract PresentedViewType getPresentedView();
-    protected abstract void injectIntoGraph();
 }

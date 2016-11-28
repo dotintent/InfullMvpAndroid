@@ -43,8 +43,8 @@ public abstract class PresentedActivityView<PresenterType extends Presenter>
     }
 
     @SuppressWarnings("unchecked")
-    protected <T extends View> T findView(@IdRes int resourceId) {
-        return (T) presentedActivity.findViewById(resourceId);
+    protected <ViewType extends View> ViewType findView(@IdRes int resourceId) {
+        return (ViewType) presentedActivity.findViewById(resourceId);
     }
 
     private void throwIfUnbound() {

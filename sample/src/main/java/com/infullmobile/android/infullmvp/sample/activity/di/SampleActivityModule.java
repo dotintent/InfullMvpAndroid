@@ -36,7 +36,7 @@ public class SampleActivityModule {
 
     @Provides
     @SampleActivityScope
-    FragmentStatePagerAdapter providesPagerAdapter(FragmentManager fragmentManager) {
+    protected FragmentStatePagerAdapter providesPagerAdapter(FragmentManager fragmentManager) {
         return new TwoPagesAdapter(fragmentManager);
     }
 

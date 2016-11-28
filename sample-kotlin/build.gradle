@@ -1,5 +1,13 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'kotlin-android'
 
 android {
@@ -18,11 +26,22 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        lintConfig rootProject.file('gradle/lint.xml')
+    }
 }
 
 dependencies {
     compile project(path: ':infullmvp-kotlin')
     compile dagger
     compile kotlin
-    apt daggerCompiler
+    kapt daggerCompiler
+
+    testCompile project(path: ':infullmvp-kotlin-basetest')
+    testCompile junit
+    testCompile mockito
+    testCompile robolectric
+    testCompile(assertJ) {
+        exclude module: 'support-annotations'
+    }
 }

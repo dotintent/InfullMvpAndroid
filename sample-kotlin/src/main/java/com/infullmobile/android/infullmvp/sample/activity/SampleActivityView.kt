@@ -7,11 +7,11 @@ import android.widget.TextView
 import com.infullmobile.android.infullmvp.PresentedActivityView
 import com.infullmobile.android.infullmvp.sample.R
 
-class SampleActivityView(private val pagerAdapter: FragmentStatePagerAdapter)
+open class SampleActivityView(private val pagerAdapter: FragmentStatePagerAdapter)
     : PresentedActivityView<SampleActivityPresenter>() {
 
-    private val textField: TextView by bindView(R.id.textContainer)
-    private val pager: ViewPager by bindView(R.id.pagesContainer)
+    val textField: TextView by bindView(R.id.textContainer)
+    val pager: ViewPager by bindView(R.id.pagesContainer)
 
     override val layoutResId = R.layout.activity_sample
 
@@ -19,7 +19,7 @@ class SampleActivityView(private val pagerAdapter: FragmentStatePagerAdapter)
         pager.adapter = pagerAdapter
     }
 
-    var message: String
+    open var message: String
         get() = textField.text.toString()
         set(value) {
             textField.text = value

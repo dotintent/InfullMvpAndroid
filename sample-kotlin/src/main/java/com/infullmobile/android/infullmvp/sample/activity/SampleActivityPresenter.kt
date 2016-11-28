@@ -10,5 +10,4 @@ class SampleActivityPresenter(presentedView: SampleActivityView,
     override fun bind(intentBundle: Bundle) {
         presentedView.message = sampleActivityModel.message
     }
-
 }

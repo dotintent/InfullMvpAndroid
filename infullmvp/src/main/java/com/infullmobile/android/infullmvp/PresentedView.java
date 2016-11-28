@@ -6,16 +6,16 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-public abstract class PresentedView<PresenterType extends Presenter, ViewType> {
+public abstract class PresentedView<PresenterType extends Presenter, PresentedViewType> {
 
     protected PresenterType boundPresenter;
 
     @LayoutRes
     protected abstract int getLayoutResId();
-    protected abstract void bindUiElements(@NonNull ViewType boundingView, @NonNull PresenterType presenter);
+    protected abstract void bindUiElements(@NonNull PresentedViewType boundingView, @NonNull PresenterType presenter);
     protected abstract void bindViews();
     protected abstract void onViewsBound();
-    protected abstract <T extends View> T findView(@IdRes int resourceId);
+    protected abstract <ViewType extends View> ViewType findView(@IdRes int resourceId);
 
     @NonNull
     public abstract Context getContext();

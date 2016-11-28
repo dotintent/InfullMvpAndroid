@@ -4,7 +4,7 @@ import android.support.annotation.LayoutRes;
 import android.widget.TextView;
 
 import com.infullmobile.android.infullmvp.PresentedFragmentView;
-import com.infullmobile.infullmvp.sample.R;
+import com.infullmobile.android.infullmvp.sample.R;
 
 public class SampleFragmentView extends PresentedFragmentView<SampleFragmentPresenter> {
 

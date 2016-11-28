@@ -13,6 +13,10 @@ public abstract class InFullMvpActivity<
         PresentedViewType extends PresentedActivityView<PresenterType>
         > extends AppCompatActivity {
 
+    protected abstract PresenterType getPresenter();
+    protected abstract PresentedViewType getPresentedView();
+    protected abstract void injectIntoGraph();
+
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
@@ -67,8 +71,4 @@ public abstract class InFullMvpActivity<
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         getPresenter().onRequestPermissionResult(requestCode, permissions, grantResults);
     }
-
-    protected abstract PresenterType getPresenter();
-    protected abstract PresentedViewType getPresentedView();
-    protected abstract void injectIntoGraph();
 }

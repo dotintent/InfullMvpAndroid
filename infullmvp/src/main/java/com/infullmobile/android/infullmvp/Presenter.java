@@ -31,22 +31,22 @@ public abstract class Presenter <PresentedViewType extends PresentedView> {
     }
 
     protected void unbind() {
-        // NO OP
+        /* NO OP */
     }
 
     protected void onResume() {
-        // NO OP
+        /* NO OP */
     }
 
     protected void onPause() {
-        // NO OP
+        /* NO OP */
     }
 
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        // NO OP
+        /* NO OP */
     }
 
     protected void onRequestPermissionResult(int resultCode, String[] permissions, int[] grantResult) {
-        // NO OP
+        /* NO OP */
     }
 }

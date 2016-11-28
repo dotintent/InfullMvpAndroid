@@ -10,6 +10,10 @@ public abstract class InFullMvpDialogFragment <
         PresentedViewType extends PresentedDialogView<PresenterType>
         > extends BottomSheetDialogFragment {
 
+    protected abstract PresenterType getPresenter();
+    protected abstract PresentedViewType getPresentedView();
+    protected abstract void injectIntoGraph();
+
     @Override
     public void setupDialog(Dialog dialog, int style) {
         super.setupDialog(dialog, style);
@@ -19,8 +23,4 @@ public abstract class InFullMvpDialogFragment <
         getPresentedView().bindUiElements(dialog, getPresenter());
         getPresenter().bind(getArguments() != null ? getArguments() : new Bundle());
     }
-
-    protected abstract PresenterType getPresenter();
-    protected abstract PresentedViewType getPresentedView();
-    protected abstract void injectIntoGraph();
 }
