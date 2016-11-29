@@ -1,5 +1,17 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url 'https://maven.infullmobile.com/public'}
+    }
+    dependencies {
+        classpath 'com.infullmobile.gradle:mavenplugin:1.0.2'
+    }
+}
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.infullmobile.toolkit'
+apply plugin: 'com.infullmobile.gradle.mavenplugin'
 
 android {
     compileSdkVersion 24
@@ -32,6 +44,15 @@ dependencies {
     compile picasso
     compile rxJava
 }
+
 repositories {
     mavenCentral()
+}
+
+ifmmaven {
+    artifactID "infullmvp-kotlin"
+    group "com.infullmobile.android"
+
+    description "Model View Presenter library for kotlin android"
+    buildType "release"
 }
