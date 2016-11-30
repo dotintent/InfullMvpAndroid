@@ -48,7 +48,9 @@ public abstract class PresentedActivityView<PresenterType extends Presenter>
     }
 
     private void throwIfUnbound() {
-        if (presentedActivity == null) throw new IllegalStateException ("This view must be bound to activity first");
+        if (presentedActivity == null) {
+            throw new IllegalStateException("This view must be bound to activity first");
+        }
     }
 
     protected void inflateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {

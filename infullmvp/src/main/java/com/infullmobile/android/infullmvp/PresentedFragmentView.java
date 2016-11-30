@@ -5,7 +5,7 @@ import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-public abstract class PresentedFragmentView <PresenterType extends Presenter>
+public abstract class PresentedFragmentView<PresenterType extends Presenter>
         extends PresentedView<PresenterType, View> {
 
     private View fragmentRootView;
@@ -32,6 +32,8 @@ public abstract class PresentedFragmentView <PresenterType extends Presenter>
     }
 
     private void throwIfUnbound() {
-        if (fragmentRootView == null) throw new IllegalStateException("This view must be bound to fragment first.");
+        if (fragmentRootView == null) {
+            throw new IllegalStateException("This view must be bound to fragment first.");
+        }
     }
 }

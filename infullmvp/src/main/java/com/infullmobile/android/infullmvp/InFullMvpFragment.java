@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public abstract class InFullMvpFragment <
+public abstract class InFullMvpFragment<
         PresenterType extends Presenter<PresentedViewType>,
         PresentedViewType extends PresentedFragmentView<PresenterType>
         > extends Fragment {

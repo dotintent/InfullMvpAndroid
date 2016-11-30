@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-public abstract class Presenter <PresentedViewType extends PresentedView> {
+public abstract class Presenter<PresentedViewType extends PresentedView> {
 
     private final PresentedViewType presentedView;
 
