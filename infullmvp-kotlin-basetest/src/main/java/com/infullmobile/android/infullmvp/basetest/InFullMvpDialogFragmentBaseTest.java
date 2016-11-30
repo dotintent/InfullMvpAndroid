@@ -23,8 +23,8 @@ public abstract class InFullMvpDialogFragmentBaseTest<T extends InFullMvpDialogF
 
 
     @NonNull
-    protected String getString(int cancellation_reasons_title) {
-        return RuntimeEnvironment.application.getResources().getString(cancellation_reasons_title);
+    protected String getString(int stringResourceId) {
+        return RuntimeEnvironment.application.getResources().getString(stringResourceId);
     }
 
     @NonNull
