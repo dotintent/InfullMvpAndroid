@@ -32,6 +32,7 @@ ext {
     androidDesign = "com.android.support:design:$support_version"
     dagger = 'com.google.dagger:dagger:2.2'
     daggerCompiler = 'com.google.dagger:dagger-compiler:2.2'
+    finbugsAnnotations = 'net.sourceforge.findbugs:annotations:1.3.2'
     kotlin = "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     picasso = 'com.squareup.picasso:picasso:2.5.2'
     rxJava = "io.reactivex:rxjava:1.2.0"

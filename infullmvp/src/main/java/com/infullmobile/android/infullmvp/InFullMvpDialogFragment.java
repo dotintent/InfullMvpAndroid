@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.support.design.widget.BottomSheetDialogFragment;
 import android.view.View;
 
-public abstract class InFullMvpDialogFragment <
-        PresenterType extends Presenter <PresentedViewType>,
+public abstract class InFullMvpDialogFragment<
+        PresenterType extends Presenter<PresentedViewType>,
         PresentedViewType extends PresentedDialogView<PresenterType>
         > extends BottomSheetDialogFragment {
 
