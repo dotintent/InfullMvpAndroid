@@ -32,8 +32,9 @@ public abstract class PresentedDialogView<PresenterType extends Presenter>
         return boundDialog;
     }
 
-    @SuppressWarnings("unchecked")
     @Override
+    @SuppressWarnings("unchecked")
+    @edu.umd.cs.findbugs.annotations.SuppressWarnings("UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
     protected <ViewType extends View> ViewType findView(@IdRes final int resourceId) {
         return (ViewType) boundDialog.findViewById(resourceId);
     }

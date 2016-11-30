@@ -32,19 +32,19 @@ public abstract class PresentedActivityView<PresenterType extends Presenter>
     }
 
     @Nullable
-    @SuppressWarnings("UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
+    @edu.umd.cs.findbugs.annotations.SuppressWarnings("UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
     public final ActionBar getActionBar() {
         throwIfUnbound();
         return presentedActivity.getSupportActionBar();
     }
 
-    @SuppressWarnings("UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
+    @edu.umd.cs.findbugs.annotations.SuppressWarnings("UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
     protected final void setActionBar(@NonNull Toolbar toolbar) {
         throwIfUnbound();
         presentedActivity.setSupportActionBar(toolbar);
     }
 
-    @SuppressWarnings({"unchecked", "UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR"})
+    @edu.umd.cs.findbugs.annotations.SuppressWarnings({"unchecked", "UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR"})
     protected <ViewType extends View> ViewType findView(@IdRes int resourceId) {
         return (ViewType) presentedActivity.findViewById(resourceId);
     }

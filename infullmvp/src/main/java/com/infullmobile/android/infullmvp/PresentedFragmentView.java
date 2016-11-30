@@ -20,13 +20,15 @@ public abstract class PresentedFragmentView<PresenterType extends Presenter>
 
     @NonNull
     @Override
+    @edu.umd.cs.findbugs.annotations.SuppressWarnings("UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
     public Context getContext() {
         throwIfUnbound();
         return fragmentRootView.getContext();
     }
 
-    @SuppressWarnings("unchecked")
     @Override
+    @SuppressWarnings("unchecked")
+    @edu.umd.cs.findbugs.annotations.SuppressWarnings("UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
     protected <ViewType extends View> ViewType findView(@IdRes final int resourceId) {
         return (ViewType) fragmentRootView.findViewById(resourceId);
     }
