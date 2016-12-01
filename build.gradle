@@ -26,7 +26,25 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+        maven {
+            url 'https://maven.infullmobile.com/private'
+            credentials {
+                username "IFMMVP"
+                password "kfweej90r12hirjdkqwhhkj"
+            }
+        }
+    }
+}
+
 ext {
+    mvpVersion = "1.0.0-SNAPSHOT"
+    mvp = "com.infullmobile.android:infullmvp:$mvpVersion"
+    mvpKotlin = "com.infullmobile.android:infullmvp-kotlin:$mvpVersion"
+
     support_version = '24.2.1'
     androidAppcompat = "com.android.support:appcompat-v7:$support_version"
     androidDesign = "com.android.support:design:$support_version"

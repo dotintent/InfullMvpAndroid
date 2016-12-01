@@ -19,11 +19,14 @@ android {
 }
 
 dependencies {
-    compile project(path: ':infullmvp-kotlin')
     compile junit
     compile mockito
     compile robolectric
     compile robolectricShadows
+
+    provided mvpKotlin
+    provided androidAppcompat
+    provided androidDesign
 }
 
 ifmmaven {
