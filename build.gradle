@@ -41,7 +41,7 @@ allprojects {
 }
 
 ext {
-    mvpVersion = "1.0.0-SNAPSHOT"
+    mvpVersion = "1.0.0"
     mvp = "com.infullmobile.android:infullmvp:$mvpVersion"
     mvpKotlin = "com.infullmobile.android:infullmvp-kotlin:$mvpVersion"
 
