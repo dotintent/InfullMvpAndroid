@@ -26,7 +26,25 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+        maven {
+            url 'https://maven.infullmobile.com/private'
+            credentials {
+                username "IFMMVP"
+                password "kfweej90r12hirjdkqwhhkj"
+            }
+        }
+    }
+}
+
 ext {
+    mvpVersion = "1.0.0-SNAPSHOT"
+    mvp = "com.infullmobile.android:infullmvp:$mvpVersion"
+    mvpKotlin = "com.infullmobile.android:infullmvp-kotlin:$mvpVersion"
+
     support_version = '24.2.1'
     androidAppcompat = "com.android.support:appcompat-v7:$support_version"
     androidDesign = "com.android.support:design:$support_version"
@@ -34,8 +52,6 @@ ext {
     daggerCompiler = 'com.google.dagger:dagger-compiler:2.2'
     finbugsAnnotations = 'net.sourceforge.findbugs:annotations:1.3.2'
     kotlin = "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    picasso = 'com.squareup.picasso:picasso:2.5.2'
-    rxJava = "io.reactivex:rxjava:1.2.0"
 
     assertJ = 'com.squareup.assertj:assertj-android:1.1.1'
     junit = 'junit:junit:4.12'
