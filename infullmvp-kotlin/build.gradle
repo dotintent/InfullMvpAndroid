@@ -23,8 +23,6 @@ dependencies {
     compile androidAppcompat
     compile androidDesign
     compile kotlin
-    compile picasso
-    compile rxJava
 }
 
 repositories {

@@ -3,8 +3,6 @@ package com.infullmobile.android.infullmvp
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.View
-import android.widget.ImageView
-import com.squareup.picasso.Picasso
 import kotlin.properties.ReadOnlyProperty
 
 abstract class PresentedView<PresenterType : Any, in PresentedViewType: Any> {
@@ -48,16 +46,5 @@ abstract class PresentedView<PresenterType : Any, in PresentedViewType: Any> {
     protected fun PresentedView<PresenterType, *>.bindDrawable(id: Int)
             : Lazy<PresentedView<PresenterType, *>, Drawable> {
         return requiredDrawable(id, drawableFinder)
-    }
-
-    protected open fun loadImageIntoView(imagePath: String, targetImageView: ImageView) {
-        if (!imagePath.isNullOrBlank()) {
-            Picasso
-                    .with(context)
-                    .load(imagePath)
-                    .fit()
-                    .centerInside()
-                    .into(targetImageView)
-        }
     }
 }
