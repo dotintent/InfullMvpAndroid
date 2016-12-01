@@ -4,7 +4,7 @@ buildscript {
         maven { url 'https://maven.infullmobile.com/public'}
     }
     dependencies {
-        classpath 'com.infullmobile.gradle:mavenplugin:1.0.2'
+        classpath 'com.infullmobile.gradle:mavenplugin:1.0.3'
     }
 }
 
