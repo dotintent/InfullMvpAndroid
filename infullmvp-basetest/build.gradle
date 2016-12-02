@@ -24,7 +24,6 @@ dependencies {
     compile robolectric
     compile robolectricShadows
 
-    provided mvp
     provided androidAppcompat
     provided androidDesign
 }

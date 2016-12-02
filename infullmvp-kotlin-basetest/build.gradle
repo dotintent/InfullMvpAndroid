@@ -9,7 +9,6 @@ buildscript {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 apply plugin: 'com.infullmobile.toolkit'
 apply plugin: 'com.infullmobile.gradle.mavenplugin'
 
@@ -25,7 +24,6 @@ dependencies {
     compile robolectric
     compile robolectricShadows
 
-    provided mvpKotlin
     provided androidAppcompat
     provided androidDesign
 }

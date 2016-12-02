@@ -1,15 +1,14 @@
 package com.infullmobile.android.infullmvp.basetest;
 
 import android.content.Intent;
-
-import com.infullmobile.android.infullmvp.InFullMvpActivity;
+import android.support.v7.app.AppCompatActivity;
 
 import org.junit.Before;
 import org.robolectric.Robolectric;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.util.ActivityController;
 
-public abstract class InFullMvpActivityBaseTest<T extends InFullMvpActivity> {
+public abstract class InFullMvpActivityBaseTest<T extends AppCompatActivity> {
 
     private T activity;
 

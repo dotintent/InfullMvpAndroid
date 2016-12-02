@@ -1,14 +1,13 @@
 package com.infullmobile.android.infullmvp.basetest;
 
 import android.support.annotation.NonNull;
-
-import com.infullmobile.android.infullmvp.InFullMvpDialogFragment;
+import android.support.design.widget.BottomSheetDialogFragment;
 
 import org.junit.Before;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.shadows.support.v4.SupportFragmentController;
 
-public abstract class InFullMvpDialogFragmentBaseTest<T extends InFullMvpDialogFragment> {
+public abstract class InFullMvpDialogFragmentBaseTest<T extends BottomSheetDialogFragment> {
 
     private T fragment;
 
