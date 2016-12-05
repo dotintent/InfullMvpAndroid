@@ -1,13 +1,12 @@
 package com.infullmobile.android.infullmvp.basetest;
 
 import android.support.annotation.NonNull;
-
-import com.infullmobile.android.infullmvp.InFullMvpFragment;
+import android.support.v4.app.Fragment;
 
 import org.junit.Before;
 import org.robolectric.shadows.support.v4.SupportFragmentController;
 
-public abstract class InFullMvpFragmentBaseTest<T extends InFullMvpFragment> {
+public abstract class InFullMvpFragmentBaseTest<T extends Fragment> {
 
     private T fragment;
 
