@@ -41,10 +41,6 @@ allprojects {
 }
 
 ext {
-    mvpVersion = "1.0.0"
-    mvp = "com.infullmobile.android:infullmvp:$mvpVersion"
-    mvpKotlin = "com.infullmobile.android:infullmvp-kotlin:$mvpVersion"
-
     support_version = '24.2.1'
     androidAppcompat = "com.android.support:appcompat-v7:$support_version"
     androidDesign = "com.android.support:design:$support_version"
