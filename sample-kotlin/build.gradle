@@ -33,6 +33,8 @@ android {
 
 dependencies {
     compile project(path: ':infullmvp-kotlin')
+    compile androidAppcompat
+    compile androidDesign
     compile dagger
     compile kotlin
     kapt daggerCompiler

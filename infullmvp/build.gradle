@@ -19,8 +19,8 @@ android {
 }
 
 dependencies {
-    compile androidAppcompat
-    compile androidDesign
+    provided androidAppcompat
+    provided androidDesign
     compile finbugsAnnotations
 }
 
