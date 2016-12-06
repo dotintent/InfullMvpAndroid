@@ -20,13 +20,6 @@ For Windows:
 Just copy InFullMvp folder to `$ANDROID_STUDIO_FOLDER$\plugins\android\lib\templates\activities\
 
 
-![template-usecause](android-studio-plugin/template-usecause.png)
+![template-usecause](
 
-
-
-![template-usecause](https://bytebucket.org/infullmobile/infullmvpandroid/raw/develop/android-studio-plugin/template_usecause.png)
-
-
-
-
-![template-usecause](https://bytebucket.org/infullmobile/infullmvpandroid/raw/android-studio-plugin/template_usecause.png)
+![template-usecause](https://bytebucket.org/infullmobile/infullmvpandroid/raw/develop/android-studio-plugin/template_usecause.png))
