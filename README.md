@@ -24,7 +24,7 @@ Just copy InFullMvp folder to `$ANDROID_STUDIO_FOLDER$\plugins\android\lib\templ
 
 
 
-![template-usecause](https://bytebucket.org/infullmobile/infullmvpandroid/raw/7619f8116cdf99775eb3ff6f5f41b8b7b4033af7/android-studio-plugin/template_usecause.png)
+![template-usecause](https://bytebucket.org/infullmobile/infullmvpandroid/raw/develop/android-studio-plugin/template_usecause.png)
 
 
 
