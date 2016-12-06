@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="5"
+    name="MVP Activity (kotlin)"
+    description="Creates a new MVP template">
+
+    <category value="InFullMvp" />
+    <formfactor value="Mobile" />
+
+    <parameter
+        id="activityClass"
+        name="Activity Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="MvpActivity"
+        help="The name of the activity class to create" />
+
+    <parameter
+        id="layoutName"
+        name="Layout Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        suggest="${activityToLayout(activityClass)}"
+        default="activity_mvp"
+        help="The name of the layout to create for the activity" />
+
+    <parameter
+        id="packageName"
+        name="Package name"
+        type="string"
+        constraints="package"
+        default="com.infullmobile.app" />
+
+    <parameter
+        id="rPackage"
+        name=".R Package"
+        type="string"
+        constraints="package|exists|nonempty"
+        suggest="${applicationPackage}"
+        help="Path to .R of this app/module" />
+
+    <parameter
+        id="useApplicationComponent"
+        name="Use ApplicationComponent"
+        type="boolean"
+        default="true"
+        help="If true, ApplicationComponent will be used in generated Graph" />
+
+    <parameter
+        id="appComponentPackage"
+        name="Application Path"
+        type="string"
+        constraints="package|empty"
+        suggest="${packageName}.application"
+        visibility="useApplicationComponent"
+        help="Package where we can find di.ApplicationComponent and di.Components" />
+
+    <thumbs>
+        <thumb>template_infullmvp.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
