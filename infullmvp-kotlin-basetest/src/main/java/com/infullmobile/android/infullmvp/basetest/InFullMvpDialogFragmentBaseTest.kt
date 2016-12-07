@@ -19,7 +19,7 @@ abstract class InFullMvpDialogFragmentBaseTest<T : InFullMvpDialogFragment<*, *>
         get() = testedFragment.presentedView
 
     @Before
-    fun setUp() {
+    open fun setUp() {
         val fragmentController = SupportFragmentController.of(provideFragment())
         testedFragment = fragmentController.create().get()
         substituteModules(testedFragment)
