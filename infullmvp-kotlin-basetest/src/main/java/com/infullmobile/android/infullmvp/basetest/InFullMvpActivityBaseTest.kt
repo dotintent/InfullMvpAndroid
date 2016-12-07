@@ -22,7 +22,7 @@ abstract class InFullMvpActivityBaseTest<T : InFullMvpActivity<*, *>> {
         get() = testedActivity.presentedView
 
     @Before
-    fun setUp() {
+    open fun setUp() {
         val controller = activity
         testedActivity = controller.get()
         substituteModules(testedActivity)
@@ -34,8 +34,12 @@ abstract class InFullMvpActivityBaseTest<T : InFullMvpActivity<*, *>> {
 
     protected abstract val testActivityClass: Class<T>
 
-    protected val activityIntent: Intent
+    open protected val activityIntent: Intent
         get() = Intent(RuntimeEnvironment.application, testActivityClass)
+
+    protected fun getString(stringResourceId: Int): String {
+        return RuntimeEnvironment.application.resources.getString(stringResourceId)
+    }
 
     open fun substituteModules(activity: T) {
         /* NO OP */

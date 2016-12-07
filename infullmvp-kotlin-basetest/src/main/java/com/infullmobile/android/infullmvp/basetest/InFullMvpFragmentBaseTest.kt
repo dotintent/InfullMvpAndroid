@@ -5,6 +5,7 @@ import com.infullmobile.android.infullmvp.PresentedFragmentView
 import com.infullmobile.android.infullmvp.Presenter
 
 import org.junit.Before
+import org.robolectric.RuntimeEnvironment
 import org.robolectric.shadows.support.v4.SupportFragmentController
 
 abstract class InFullMvpFragmentBaseTest<T : InFullMvpFragment<*, *>> {
@@ -18,11 +19,15 @@ abstract class InFullMvpFragmentBaseTest<T : InFullMvpFragment<*, *>> {
         get() = testedFragment.presentedView
 
     @Before
-    fun setUp() {
+    open fun setUp() {
         val fragmentController = SupportFragmentController.of(provideFragment())
         testedFragment = fragmentController.create().get()
         substituteModules(testedFragment)
         fragmentController.start().resume().visible()
+    }
+
+    protected fun getString(stringResourceId: Int): String {
+        return RuntimeEnvironment.application.resources.getString(stringResourceId)
     }
 
     protected abstract fun provideFragment(): T
