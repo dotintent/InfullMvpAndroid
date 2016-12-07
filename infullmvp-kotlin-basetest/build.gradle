@@ -11,6 +11,7 @@ buildscript {
 apply plugin: 'com.android.library'
 apply plugin: 'com.infullmobile.toolkit'
 apply plugin: 'com.infullmobile.gradle.mavenplugin'
+apply plugin: 'kotlin-android'
 
 android {
     lintOptions {
@@ -24,8 +25,10 @@ dependencies {
     compile robolectric
     compile robolectricShadows
 
+    provided project(path: ':infullmvp-kotlin')
     provided androidAppcompat
     provided androidDesign
+    provided kotlin
 }
 
 ifmmaven {
