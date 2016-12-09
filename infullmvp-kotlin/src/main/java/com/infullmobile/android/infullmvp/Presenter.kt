@@ -33,4 +33,8 @@ abstract class Presenter<out PresentedViewType : PresentedView<*, *>>(val presen
     open fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         /* NO OP */
     }
+
+    open fun onBackPressed(): Boolean {
+        return false
+    }
 }

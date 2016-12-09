@@ -71,4 +71,11 @@ public abstract class InFullMvpActivity<
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         getPresenter().onRequestPermissionResult(requestCode, permissions, grantResults);
     }
+
+    @Override
+    public void onBackPressed() {
+        if (!getPresenter().onBackPressed()) {
+            super.onBackPressed();
+        }
+    }
 }
