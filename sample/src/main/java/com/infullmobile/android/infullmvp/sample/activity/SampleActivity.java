@@ -1,5 +1,7 @@
 package com.infullmobile.android.infullmvp.sample.activity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.infullmobile.android.infullmvp.InFullMvpActivity;
@@ -33,5 +35,9 @@ public class SampleActivity extends InFullMvpActivity<SampleActivityPresenter, S
     @Override
     protected void injectIntoGraph() {
         sampleActivityGraph.inject(this);
+    }
+
+    public static Intent getIntent(Context context) {
+        return new Intent(context, SampleActivity.class);
     }
 }
