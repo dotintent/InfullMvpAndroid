@@ -10,7 +10,7 @@ public abstract class Presenter<PresentedViewType extends PresentedView> {
 
     private final PresentedViewType presentedView;
 
-    protected abstract void bind(@NonNull Bundle bundle);
+    protected abstract void bind(@NonNull Bundle bundle, @NonNull Bundle savedInstanceState);
 
     public Presenter(@NonNull PresentedViewType presentedView) {
         this.presentedView = presentedView;
@@ -52,5 +52,9 @@ public abstract class Presenter<PresentedViewType extends PresentedView> {
 
     protected boolean onBackPressed() {
         return false;
+    }
+
+    protected void saveInstanceState(final Bundle outState) {
+        /* NO OP */
     }
 }

@@ -16,7 +16,7 @@ public class SampleFragmentPresenter extends Presenter<SampleFragmentView> {
     }
 
     @Override
-    protected void bind(@NonNull final Bundle bundle) {
+    protected void bind(@NonNull final Bundle bundle, @NonNull Bundle savedInstanceState) {
         getPresentedView().setText(sampleFragmentModel.getMessage());
     }
 }

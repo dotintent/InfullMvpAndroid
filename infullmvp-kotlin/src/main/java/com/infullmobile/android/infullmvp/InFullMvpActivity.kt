@@ -21,7 +21,7 @@ abstract class InFullMvpActivity<
         injectIntoGraph()
         setContentView(presentedView.layoutResId)
         presentedView.bindUiElements(this, presenter)
-        presenter.bind(intent.extras?: Bundle())
+        presenter.bind(intent.extras?: Bundle(), savedInstanceState?: Bundle())
     }
 
     override final fun onDestroy() {
@@ -62,5 +62,10 @@ abstract class InFullMvpActivity<
         if (!presenter.onBackPressed()) {
             super.onBackPressed()
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        presenter.saveInstanceState(outState)
+        super.onSaveInstanceState(outState)
     }
 }

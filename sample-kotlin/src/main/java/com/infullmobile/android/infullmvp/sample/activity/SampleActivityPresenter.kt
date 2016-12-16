@@ -7,7 +7,7 @@ class SampleActivityPresenter(presentedView: SampleActivityView,
                               private val sampleActivityModel: SampleActivityModel)
     : Presenter<SampleActivityView>(presentedView) {
 
-    override fun bind(intentBundle: Bundle) {
+    override fun bind(intentBundle: Bundle, savedInstanceState: Bundle) {
         presentedView.message = sampleActivityModel.message
     }
 }

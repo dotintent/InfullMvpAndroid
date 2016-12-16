@@ -25,8 +25,22 @@ public abstract class InFullMvpFragment<
         injectIntoGraph();
         View rootView = inflater.inflate(getPresentedView().getLayoutResId(), container, false);
         getPresentedView().bindUiElements(rootView, getPresenter());
-        Bundle bundle = getActivity().getIntent().getExtras();
-        getPresenter().bind(bundle != null ? bundle : new Bundle());
         return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable final Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Bundle bundle = getActivity().getIntent().getExtras();
+        getPresenter().bind(
+                bundle != null ? bundle : new Bundle(),
+                savedInstanceState != null ? savedInstanceState : new Bundle()
+        );
+    }
+
+    @Override
+    public void onSaveInstanceState(final Bundle outState) {
+        getPresenter().saveInstanceState(outState);
+        super.onSaveInstanceState(outState);
     }
 }
