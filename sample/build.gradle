@@ -24,6 +24,8 @@ android {
 
 dependencies {
     compile project(path: ':infullmvp')
+    compile androidAppcompat
+    compile androidDesign
     compile dagger
     apt daggerCompiler
 

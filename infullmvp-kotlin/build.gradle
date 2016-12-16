@@ -20,9 +20,9 @@ android {
 }
 
 dependencies {
-    compile androidAppcompat
-    compile androidDesign
-    compile kotlin
+    provided androidAppcompat
+    provided androidDesign
+    provided kotlin
 }
 
 repositories {

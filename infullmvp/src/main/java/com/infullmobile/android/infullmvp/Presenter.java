@@ -49,4 +49,8 @@ public abstract class Presenter<PresentedViewType extends PresentedView> {
     protected void onRequestPermissionResult(int resultCode, String[] permissions, int[] grantResult) {
         /* NO OP */
     }
+
+    protected boolean onBackPressed() {
+        return false;
+    }
 }

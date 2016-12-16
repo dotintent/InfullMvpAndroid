@@ -57,4 +57,10 @@ abstract class InFullMvpActivity<
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         presenter.onRequestPermissionsResult(requestCode, permissions, grantResults)
     }
+
+    override fun onBackPressed() {
+        if (!presenter.onBackPressed()) {
+            super.onBackPressed()
+        }
+    }
 }
