@@ -30,7 +30,7 @@ public class SampleActivityPresenterTest {
         when(sampleActivityModel.getMessage()).thenReturn(TEST_MESSAGE);
 
         // when
-        sampleActivityPresenter.bind(new Bundle());
+        sampleActivityPresenter.bind(new Bundle(), new Bundle());
 
         // then
         verify(sampleActivityView).setMessage(TEST_MESSAGE);

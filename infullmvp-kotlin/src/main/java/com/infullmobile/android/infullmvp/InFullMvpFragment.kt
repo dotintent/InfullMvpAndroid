@@ -22,8 +22,12 @@ abstract class InFullMvpFragment<
         injectIntoGraph()
         val rootView = inflater.inflate(presentedView.layoutResId, container, false)
         presentedView.bindUiElements(rootView, presenter)
-        presenter.bind(activity.intent.extras?: Bundle())
         return rootView
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        presenter.bind(activity.intent.extras?: Bundle(), savedInstanceState ?: Bundle())
     }
 
     override final fun onDestroy() {
@@ -39,5 +43,10 @@ abstract class InFullMvpFragment<
     override fun onPause() {
         super.onPause()
         presenter.onPause()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        presenter.saveInstanceState(outState)
+        super.onSaveInstanceState(outState)
     }
 }

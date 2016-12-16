@@ -16,7 +16,7 @@ public class SampleActivityPresenter extends Presenter<SampleActivityView> {
     }
 
     @Override
-    protected void bind(@NonNull Bundle bundle) {
+    protected void bind(@NonNull Bundle bundle, @NonNull Bundle savedInstanceState) {
         getPresentedView().setMessage(sampleActivityModel.getMessage());
     }
 }

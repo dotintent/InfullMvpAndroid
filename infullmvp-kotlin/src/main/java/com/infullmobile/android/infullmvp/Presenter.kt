@@ -12,7 +12,7 @@ abstract class Presenter<out PresentedViewType : PresentedView<*, *>>(val presen
     val tag: String
         get() = javaClass.simpleName
 
-    abstract fun bind(intentBundle: Bundle)
+    abstract fun bind(intentBundle: Bundle, savedInstanceState: Bundle)
 
     open fun unbind() {
         /* No OP */
@@ -36,5 +36,9 @@ abstract class Presenter<out PresentedViewType : PresentedView<*, *>>(val presen
 
     open fun onBackPressed(): Boolean {
         return false
+    }
+
+    open fun saveInstanceState(outState: Bundle) {
+        /* NO OP */
     }
 }
