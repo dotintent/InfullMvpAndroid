@@ -21,6 +21,10 @@ public abstract class InFullMvpDialogFragment<
         View rootView = View.inflate(getContext(), getPresentedView().getLayoutResId(), null);
         dialog.setContentView(rootView);
         getPresentedView().bindUiElements(dialog, getPresenter());
-        getPresenter().bind(getArguments() != null ? getArguments() : new Bundle(), new Bundle());
+        getPresenter().bind(
+                getArguments() != null ? getArguments() : new Bundle(),
+                new Bundle(),
+                getActivity().getIntent().getData()
+        );
     }
 }

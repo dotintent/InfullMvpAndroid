@@ -2,6 +2,7 @@ package com.infullmobile.android.infullmvp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,7 +11,7 @@ public abstract class Presenter<PresentedViewType extends PresentedView> {
 
     private final PresentedViewType presentedView;
 
-    protected abstract void bind(@NonNull Bundle bundle, @NonNull Bundle savedInstanceState);
+    protected abstract void bind(@NonNull Bundle bundle, @NonNull Bundle savedInstanceState, @Nullable Uri intentData);
 
     public Presenter(@NonNull PresentedViewType presentedView) {
         this.presentedView = presentedView;
