@@ -25,7 +25,8 @@ public abstract class InFullMvpActivity<
         getPresentedView().bindUiElements(this, getPresenter());
         getPresenter().bind(
                 getIntent().getExtras() != null ? getIntent().getExtras() : new Bundle(),
-                savedInstanceState != null ? savedInstanceState : new Bundle()
+                savedInstanceState != null ? savedInstanceState : new Bundle(),
+                getIntent().getData()
         );
     }
 

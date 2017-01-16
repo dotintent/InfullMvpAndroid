@@ -27,7 +27,7 @@ abstract class InFullMvpFragment<
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        presenter.bind(activity.intent.extras?: Bundle(), savedInstanceState ?: Bundle())
+        presenter.bind(activity.intent.extras?: Bundle(), savedInstanceState ?: Bundle(), activity.intent.data)
     }
 
     override final fun onDestroy() {

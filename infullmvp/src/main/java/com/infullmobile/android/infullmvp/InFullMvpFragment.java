@@ -34,7 +34,8 @@ public abstract class InFullMvpFragment<
         Bundle bundle = getActivity().getIntent().getExtras();
         getPresenter().bind(
                 bundle != null ? bundle : new Bundle(),
-                savedInstanceState != null ? savedInstanceState : new Bundle()
+                savedInstanceState != null ? savedInstanceState : new Bundle(),
+                getActivity().getIntent().getData()
         );
     }
 

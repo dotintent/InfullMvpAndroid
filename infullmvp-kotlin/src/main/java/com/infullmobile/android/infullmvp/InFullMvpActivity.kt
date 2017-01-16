@@ -21,7 +21,7 @@ abstract class InFullMvpActivity<
         injectIntoGraph()
         setContentView(presentedView.layoutResId)
         presentedView.bindUiElements(this, presenter)
-        presenter.bind(intent.extras?: Bundle(), savedInstanceState?: Bundle())
+        presenter.bind(intent.extras?: Bundle(), savedInstanceState?: Bundle(), intent.data)
     }
 
     override final fun onDestroy() {
