@@ -21,7 +21,7 @@ abstract class InFullMvpActivity<
         injectIntoGraph()
         setContentView(presentedView.layoutResId)
         presentedView.bindUiElements(this, presenter)
-        presenter.bind(intent.extras?: Bundle())
+        presenter.bind(intent.extras?: Bundle(), savedInstanceState?: Bundle(), intent.data)
     }
 
     override final fun onDestroy() {
@@ -56,5 +56,16 @@ abstract class InFullMvpActivity<
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         presenter.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+    override fun onBackPressed() {
+        if (!presenter.onBackPressed()) {
+            super.onBackPressed()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        presenter.saveInstanceState(outState)
+        super.onSaveInstanceState(outState)
     }
 }

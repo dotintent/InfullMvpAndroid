@@ -2,6 +2,7 @@ package com.infullmobile.android.infullmvp
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 
 abstract class Presenter<out PresentedViewType : PresentedView<*, *>>(val presentedView: PresentedViewType) {
@@ -12,7 +13,7 @@ abstract class Presenter<out PresentedViewType : PresentedView<*, *>>(val presen
     val tag: String
         get() = javaClass.simpleName
 
-    abstract fun bind(intentBundle: Bundle)
+    abstract fun bind(intentBundle: Bundle, savedInstanceState: Bundle, intentData: Uri?)
 
     open fun unbind() {
         /* No OP */
@@ -31,6 +32,14 @@ abstract class Presenter<out PresentedViewType : PresentedView<*, *>>(val presen
     }
 
     open fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        /* NO OP */
+    }
+
+    open fun onBackPressed(): Boolean {
+        return false
+    }
+
+    open fun saveInstanceState(outState: Bundle) {
         /* NO OP */
     }
 }

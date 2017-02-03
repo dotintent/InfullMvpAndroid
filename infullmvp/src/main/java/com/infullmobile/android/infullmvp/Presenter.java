@@ -2,6 +2,7 @@ package com.infullmobile.android.infullmvp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,7 +11,7 @@ public abstract class Presenter<PresentedViewType extends PresentedView> {
 
     private final PresentedViewType presentedView;
 
-    protected abstract void bind(@NonNull Bundle bundle);
+    protected abstract void bind(@NonNull Bundle bundle, @NonNull Bundle savedInstanceState, @Nullable Uri intentData);
 
     public Presenter(@NonNull PresentedViewType presentedView) {
         this.presentedView = presentedView;
@@ -47,6 +48,14 @@ public abstract class Presenter<PresentedViewType extends PresentedView> {
     }
 
     protected void onRequestPermissionResult(int resultCode, String[] permissions, int[] grantResult) {
+        /* NO OP */
+    }
+
+    protected boolean onBackPressed() {
+        return false;
+    }
+
+    protected void saveInstanceState(final Bundle outState) {
         /* NO OP */
     }
 }
