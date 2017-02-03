@@ -21,6 +21,6 @@ abstract class InFullMvpDialogFragment<
         val rootView = View.inflate(context, presentedView.layoutResId, null)
         dialog.setContentView(rootView)
         presentedView.bindUiElements(dialog, presenter)
-        presenter.bind(arguments?: Bundle())
+        presenter.bind(arguments?: Bundle(), Bundle(), activity.intent.data)
     }
 }
