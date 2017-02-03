@@ -23,7 +23,11 @@ public abstract class InFullMvpActivity<
         injectIntoGraph();
         setContentView(getPresentedView().getLayoutResId());
         getPresentedView().bindUiElements(this, getPresenter());
-        getPresenter().bind(savedInstanceState != null ? savedInstanceState : new Bundle());
+        getPresenter().bind(
+                getIntent().getExtras() != null ? getIntent().getExtras() : new Bundle(),
+                savedInstanceState != null ? savedInstanceState : new Bundle(),
+                getIntent().getData()
+        );
     }
 
     @Override
@@ -77,5 +81,11 @@ public abstract class InFullMvpActivity<
         if (!getPresenter().onBackPressed()) {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(final Bundle outState) {
+        getPresenter().saveInstanceState(outState);
+        super.onSaveInstanceState(outState);
     }
 }
