@@ -1,5 +1,6 @@
 package com.infullmobile.android.infullmvp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -25,8 +26,37 @@ public abstract class InFullMvpFragment<
         injectIntoGraph();
         View rootView = inflater.inflate(getPresentedView().getLayoutResId(), container, false);
         getPresentedView().bindUiElements(rootView, getPresenter());
-        Bundle bundle = getActivity().getIntent().getExtras();
-        getPresenter().bind(bundle != null ? bundle : new Bundle());
         return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable final Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Bundle bundle = getActivity().getIntent().getExtras();
+        getPresenter().bind(
+                bundle != null ? bundle : new Bundle(),
+                savedInstanceState != null ? savedInstanceState : new Bundle(),
+                getActivity().getIntent().getData()
+        );
+    }
+
+    @Override
+    public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        getPresenter().onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(final int requestCode,
+                                           @NonNull final String[] permissions,
+                                           @NonNull final int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        getPresenter().onRequestPermissionResult(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    public void onSaveInstanceState(final Bundle outState) {
+        getPresenter().saveInstanceState(outState);
+        super.onSaveInstanceState(outState);
     }
 }
