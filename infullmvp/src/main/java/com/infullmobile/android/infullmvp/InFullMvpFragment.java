@@ -1,5 +1,6 @@
 package com.infullmobile.android.infullmvp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -36,6 +37,20 @@ public abstract class InFullMvpFragment<
                 bundle != null ? bundle : new Bundle(),
                 savedInstanceState != null ? savedInstanceState : new Bundle()
         );
+    }
+
+    @Override
+    public void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        getPresenter().onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(final int requestCode,
+                                           @NonNull final String[] permissions,
+                                           @NonNull final int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        getPresenter().onRequestPermissionResult(requestCode, permissions, grantResults);
     }
 
     @Override
