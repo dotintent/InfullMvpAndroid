@@ -1,12 +1,17 @@
 [InFullMvp] MVP lib for android
 ==================================
-TODO add documentation
 
+in your build.gradle:
 
+```
+repositories {
+    maven { url 'https://maven.infullmobile.com/public' }
+}
 
-
-
-
+dependencies {
+    compile 'com.infullmobile.android:infullmvp-kotlin:$mvp_version:1.1.2'
+}
+```
 
 [InFullMvp] Android Studio Template
 ==================================
