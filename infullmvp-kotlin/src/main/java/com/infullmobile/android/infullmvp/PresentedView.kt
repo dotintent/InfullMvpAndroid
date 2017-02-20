@@ -16,6 +16,10 @@ abstract class PresentedView<PresenterType : Any, in PresentedViewType: Any> {
     abstract val stringFinder: PresentedView<PresenterType, *>.(Int) -> String?
     abstract val colorFinder: PresentedView<PresenterType, *>.(Int) -> Int?
     abstract val drawableFinder: PresentedView<PresenterType, *>.(Int) -> Drawable?
+    abstract val fractionFinder: PresentedView<PresenterType, *>.(Int) -> Float?
+    abstract val parentFractionFinder: PresentedView<PresenterType, *>.(Int, Int, Int) -> Float?
+    abstract val integerFinder: PresentedView<PresenterType, *>.(Int) -> Int?
+    abstract val boolFinder: PresentedView<PresenterType, *>.(Int) -> Boolean?
 
     abstract fun bindUiElements(boundingView: PresentedViewType, presenter: PresenterType)
     abstract fun onViewsBound()
@@ -46,5 +50,24 @@ abstract class PresentedView<PresenterType : Any, in PresentedViewType: Any> {
     protected fun PresentedView<PresenterType, *>.bindDrawable(id: Int)
             : Lazy<PresentedView<PresenterType, *>, Drawable> {
         return requiredDrawable(id, drawableFinder)
+    }
+
+    protected fun PresentedView<PresenterType, *>.bindInteger(id: Int): Lazy<PresentedView<PresenterType, *>, Int> {
+        return requiredInt(id, integerFinder)
+    }
+
+    protected fun PresentedView<PresenterType, *>.bindFloat(id: Int)
+            : Lazy<PresentedView<PresenterType, *>, Float> {
+        return requiredFraction(id, fractionFinder)
+    }
+
+    protected fun PresentedView<PresenterType, *>.bindFloat(id: Int, base: Int, parentBase: Int)
+            : Lazy<PresentedView<PresenterType, *>, Float> {
+        return requiredFraction(id, base, parentBase, parentFractionFinder)
+    }
+
+    protected fun PresentedView<PresenterType, *>.bindBool(id: Int)
+            : Lazy<PresentedView<PresenterType, *>, Boolean> {
+        return requiredBool(id, boolFinder)
     }
 }

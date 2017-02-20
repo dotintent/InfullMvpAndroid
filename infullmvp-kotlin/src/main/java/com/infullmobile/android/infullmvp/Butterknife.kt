@@ -148,17 +148,20 @@ private val View.intFinder: View.(Int) -> Int?
 private val ViewHolder.dimensionFinder: ViewHolder.(Int) -> Int?
     get() = { itemView.context.resources?.getDimensionPixelSize(it) }
 
-fun viewNotFound(id: Int, desc: KProperty<*>): Nothing =
-        throw IllegalStateException("View ID $id for '${desc.name}' not found.")
-
-fun dimenNotFound(id: Int, desc: KProperty<*>): Nothing =
-        throw IllegalStateException("Dimen ID $id for '${desc.name}' not found.")
+fun boolNotFound(id: Int, desc: KProperty<*>): Nothing =
+        throw IllegalStateException("Boolean ID $id for '${desc.name}' not found.")
 
 fun colorNotFound(id: Int, desc: KProperty<*>): Nothing =
         throw IllegalStateException("Color ID $id for '${desc.name}' not found.")
 
+fun dimenNotFound(id: Int, desc: KProperty<*>): Nothing =
+        throw IllegalStateException("Dimen ID $id for '${desc.name}' not found.")
+
 fun drawableNotFound(id: Int, desc: KProperty<*>): Nothing =
         throw IllegalStateException("Drawable ID $id for '${desc.name}' not found.")
+
+fun fractionNotFound(id: Int, desc: KProperty<*>): Nothing =
+        throw IllegalStateException("Fraction ID $id for '${desc.name}' not found.")
 
 fun intNotFound(id: Int, desc: KProperty<*>): Nothing =
         throw IllegalStateException("Int ID $id for '${desc.name}' not found.")
@@ -166,33 +169,48 @@ fun intNotFound(id: Int, desc: KProperty<*>): Nothing =
 fun stringNotFound(id: Int, desc: KProperty<*>): Nothing =
         throw IllegalStateException("String ID $id for '${desc.name}' not found.")
 
+fun viewNotFound(id: Int, desc: KProperty<*>): Nothing =
+        throw IllegalStateException("View ID $id for '${desc.name}' not found.")
+
 @Suppress("UNCHECKED_CAST")
 fun <T, V : View> required(id: Int, finder: T.(Int) -> View?)
         = Lazy { t: T, desc -> t.finder(id) as V? ?: viewNotFound(id, desc) }
 
 @Suppress("UNCHECKED_CAST")
-fun <T> requiredDimen(id: Int, finder: T.(Int) -> Int?)
-        = Lazy { t: T, desc -> t.finder(id) ?: dimenNotFound(id, desc) }
+fun <T> requiredBool(id: Int, finder: T.(Int) -> Boolean?)
+        = Lazy { t: T, desc -> t.finder(id) ?: boolNotFound(id, desc) }
 
 @Suppress("UNCHECKED_CAST")
 fun <T> requiredColor(id: Int, finder: T.(Int) -> Int?)
         = Lazy { t: T, desc -> t.finder(id) ?: colorNotFound(id, desc) }
 
 @Suppress("UNCHECKED_CAST")
+fun <T> requiredDimen(id: Int, finder: T.(Int) -> Int?)
+        = Lazy { t: T, desc -> t.finder(id) ?: dimenNotFound(id, desc) }
+
+@Suppress("UNCHECKED_CAST")
 fun <T> requiredDrawable(id: Int, finder: T.(Int) -> Drawable?)
         = Lazy { t: T, desc -> t.finder(id) ?: drawableNotFound(id, desc) }
+
+@Suppress("UNCHECKED_CAST")
+fun <T> requiredFraction(id: Int, finder: T.(Int) -> Float?)
+        = Lazy { t: T, desc -> t.finder(id) ?: fractionNotFound(id, desc) }
+
+@Suppress("UNCHECKED_CAST")
+fun <T> requiredFraction(id: Int, base: Int, parentBase: Int, finder: T.(Int, Int, Int) -> Float?)
+        = Lazy { t: T, desc -> t.finder(id, base, parentBase) ?: fractionNotFound(id, desc) }
 
 @Suppress("UNCHECKED_CAST")
 fun <T> requiredInt(id: Int, finder: T.(Int) -> Int?)
         = Lazy { t: T, desc -> t.finder(id) ?: intNotFound(id, desc) }
 
 @Suppress("UNCHECKED_CAST")
-fun <T> requiredString(id: Int, finder: T.(Int) -> String?)
-        = Lazy { t: T, desc -> t.finder(id) ?: dimenNotFound(id, desc) }
-
-@Suppress("UNCHECKED_CAST")
 fun <T> requiredPluralString(id: Int, quantity: Int, finder: T.(id: Int, quantity: Int) -> String?)
         = Lazy { t: T, desc -> t.finder(id, quantity) ?: stringNotFound(id, desc) }
+
+@Suppress("UNCHECKED_CAST")
+fun <T> requiredString(id: Int, finder: T.(Int) -> String?)
+        = Lazy { t: T, desc -> t.finder(id) ?: dimenNotFound(id, desc) }
 
 @Suppress("UNCHECKED_CAST")
 private fun <T, V : View> optional(id: Int, finder: T.(Int) -> View?)
