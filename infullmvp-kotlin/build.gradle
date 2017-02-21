@@ -23,6 +23,10 @@ dependencies {
     provided androidAppcompat
     provided androidDesign
     provided kotlin
+
+    testCompile junit
+    testCompile mockito
+    testCompile robolectric
 }
 
 repositories {
