@@ -171,6 +171,10 @@ fun <T, V : View> required(id: Int, finder: T.(Int) -> View?)
         = Lazy { t: T, desc -> t.finder(id) as V? ?: viewNotFound(id, desc) }
 
 @Suppress("UNCHECKED_CAST")
+fun <T, V : SupportFragment> requiredFragment(id: Int, finder: T.(Int) -> SupportFragment?)
+        = Lazy { t: T, desc -> t.finder(id) as V? ?: viewNotFound(id, desc) }
+
+@Suppress("UNCHECKED_CAST")
 fun <T> requiredDimen(id: Int, finder: T.(Int) -> Int?)
         = Lazy { t: T, desc -> t.finder(id) ?: dimenNotFound(id, desc) }
 
