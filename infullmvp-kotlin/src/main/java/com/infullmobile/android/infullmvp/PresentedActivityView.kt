@@ -9,13 +9,16 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import kotlin.properties.ReadOnlyProperty
+
+import android.support.v4.app.Fragment as SupportFragment
 
 abstract class PresentedActivityView<PresenterType : Any> : PresentedView<PresenterType, InFullMvpActivity<*, *>>() {
 
     private var activity: InFullMvpActivity<*, *>? = null
 
     override val context: Context
-        get() = activity?:throw IllegalStateException("This view must be bound to activity")
+        get() = activity ?: throw IllegalStateException("This view must be bound to activity")
 
     override val viewFinder: PresentedView<PresenterType, *>.(Int) -> View?
         get() = { activity?.findViewById(it) }
@@ -31,6 +34,14 @@ abstract class PresentedActivityView<PresenterType : Any> : PresentedView<Presen
 
     override val drawableFinder: PresentedView<PresenterType, *>.(Int) -> Drawable?
         get() = { ContextCompat.getDrawable(activity, it) }
+
+    val fragmentFinder: PresentedView<PresenterType, *>.(Int) -> SupportFragment?
+        get() = { activity?.getSupportFragmentManager()?.findFragmentById(it) }
+
+    protected fun <Fragment : SupportFragment> PresentedView<PresenterType, *>.bindFragment(id: Int)
+            : ReadOnlyProperty<PresentedView<PresenterType, *>, Fragment> {
+        return requiredFragment(id, fragmentFinder)
+    }
 
     override fun bindUiElements(boundingView: InFullMvpActivity<*, *>, presenter: PresenterType) {
         this.activity = boundingView
