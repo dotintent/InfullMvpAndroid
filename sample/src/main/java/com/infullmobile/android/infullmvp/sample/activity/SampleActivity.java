@@ -23,12 +23,12 @@ public class SampleActivity extends InFullMvpActivity<SampleActivityPresenter, S
     }
 
     @Override
-    protected SampleActivityPresenter getPresenter() {
+    public SampleActivityPresenter getPresenter() {
         return sampleActivityPresenter;
     }
 
     @Override
-    protected SampleActivityView getPresentedView() {
+    public SampleActivityView getPresentedView() {
         return sampleActivityView;
     }
 

@@ -11,14 +11,17 @@ import org.robolectric.Robolectric
 import org.robolectric.RuntimeEnvironment
 import org.robolectric.util.ActivityController
 
-abstract class InFullMvpActivityBaseTest<T : InFullMvpActivity<*, *>> {
+abstract class InFullMvpActivityBaseTest<
+        T : InFullMvpActivity<PresenterType, PresentedViewType>,
+        PresenterType : Presenter<PresentedViewType>,
+        out PresentedViewType : PresentedActivityView<PresenterType>> {
 
     lateinit var testedActivity: T
         private set
 
-    val testedPresenter: Presenter<*>
+    val testedPresenter: PresenterType
         get() = testedActivity.presenter
-    val testedView: PresentedActivityView<*>
+    val testedView: PresentedViewType
         get() = testedActivity.presentedView
 
     @Before

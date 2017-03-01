@@ -1,5 +1,6 @@
 package com.infullmobile.android.infullmvp.sample.activity;
 
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
@@ -17,24 +18,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
 @RunWith(RobolectricGradleTestRunner.class)
-public class SampleActivityTest extends InFullMvpActivityBaseTest<SampleActivity> {
+public class SampleActivityTest extends InFullMvpActivityBaseTest<
+        SampleActivity, SampleActivityPresenter, SampleActivityView> {
 
-    FragmentStatePagerAdapter mockFragmentStatePagerAdapter = mock(FragmentStatePagerAdapter.class);
+    private FragmentStatePagerAdapter mockFragmentStatePagerAdapter = mock(FragmentStatePagerAdapter.class);
 
+    @NonNull
     @Override
     protected Class<SampleActivity> getTestActivityClass() {
         return SampleActivity.class;
     }
 
     @Override
-    public void substituteModules(final SampleActivity activity) {
+    public void substituteModules(@NonNull final SampleActivity activity) {
         super.substituteModules(activity);
         activity.sampleActivityGraph.setAddNewItemModule(new TestSampleActivityModule(activity));
     }
 
     @Test
     public void shouldSetAdapterOnViewsBound() {
-        assertThat(getTestedActivity().getPresentedView().getPager().getAdapter())
+        assertThat(getTestedView().getPager().getAdapter())
                 .isEqualTo(mockFragmentStatePagerAdapter);
     }
 
