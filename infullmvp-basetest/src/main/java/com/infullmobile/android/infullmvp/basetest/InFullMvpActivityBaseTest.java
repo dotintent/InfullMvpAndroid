@@ -1,16 +1,29 @@
 package com.infullmobile.android.infullmvp.basetest;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import com.infullmobile.android.infullmvp.InFullMvpActivity;
+import com.infullmobile.android.infullmvp.PresentedActivityView;
+import com.infullmobile.android.infullmvp.Presenter;
 
 import org.junit.Before;
 import org.robolectric.Robolectric;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.util.ActivityController;
 
-public abstract class InFullMvpActivityBaseTest<T extends AppCompatActivity> {
+public abstract class InFullMvpActivityBaseTest<
+        T extends InFullMvpActivity<PresenterType, PresentedViewType>,
+        PresenterType extends Presenter<PresentedViewType>,
+        PresentedViewType extends PresentedActivityView<PresenterType>> {
 
     private T activity;
+
+    public PresenterType getPresenter() {
+        return activity.getPresenter();
+    }
+
+    public PresentedViewType getPresentedView() {
+        return activity.getPresentedView();
+    }
 
     @Before
     public void setUp() {
