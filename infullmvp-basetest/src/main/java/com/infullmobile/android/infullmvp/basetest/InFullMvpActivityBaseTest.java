@@ -17,10 +17,12 @@ public abstract class InFullMvpActivityBaseTest<
 
     private T activity;
 
+    @edu.umd.cs.findbugs.annotations.SuppressWarnings("UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
     public PresenterType getPresenter() {
         return activity.getPresenter();
     }
 
+    @edu.umd.cs.findbugs.annotations.SuppressWarnings("UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
     public PresentedViewType getPresentedView() {
         return activity.getPresentedView();
     }
