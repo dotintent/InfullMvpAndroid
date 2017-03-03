@@ -28,7 +28,20 @@ abstract class InFullMvpFragment<
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        presenter.bind(activity.intent.extras?: Bundle(), savedInstanceState ?: Bundle(), activity.intent.data)
+        if (checkAllKeysAreUnique())
+            throw IllegalStateException("Bundles cannot both have an extra with the same key")
+        presenter.bind(assembleBundleSum(), savedInstanceState ?: Bundle(), activity.intent.data)
+    }
+
+    private fun checkAllKeysAreUnique(): Boolean {
+        return arguments.keySet().intersect(activity.intent.extras?.keySet() ?: emptySet()).isNotEmpty()
+    }
+
+    private fun assembleBundleSum(): Bundle {
+        return Bundle().apply {
+            putAll(activity.intent.extras ?: Bundle())
+            putAll(arguments)
+        }
     }
 
     override final fun onDestroy() {
