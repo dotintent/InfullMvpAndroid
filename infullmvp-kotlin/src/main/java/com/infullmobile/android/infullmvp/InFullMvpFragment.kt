@@ -36,13 +36,13 @@ abstract class InFullMvpFragment<
     }
 
     private fun checkAllKeysAreUnique(): Boolean {
-        return arguments.keySet().intersect(activity.intent.extras?.keySet() ?: emptySet()).isEmpty()
+        return arguments?.keySet()?.intersect(activity.intent.extras?.keySet() ?: emptySet())?.isEmpty() ?: true
     }
 
     private fun assembleBundleSum(): Bundle {
         return Bundle().apply {
             putAll(activity.intent.extras ?: Bundle())
-            putAll(arguments)
+            putAll(arguments ?: Bundle())
         }
     }
 
