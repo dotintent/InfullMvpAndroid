@@ -13,7 +13,6 @@ abstract class PresentedFragmentView<PresenterType: Any> : ContextPresentedView<
     override val viewFinder: PresentedView<PresenterType, *>.(Int) -> View?
         get() = { fragmentRootView?.findViewById(it) }
 
-
     override fun bindUiElements(boundingView: View, presenter: PresenterType) {
         this.fragmentRootView = boundingView
         this.boundPresenter = presenter

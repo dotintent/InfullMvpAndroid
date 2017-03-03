@@ -28,13 +28,15 @@ abstract class InFullMvpFragment<
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        if (checkAllKeysAreUnique())
-            throw IllegalStateException("Bundles cannot both have an extra with the same key")
+        if (!checkAllKeysAreUnique()) {
+            throw IllegalStateException(
+                    "Bundle for your fragment cannot have the same keys as the one from your activity")
+        }
         presenter.bind(assembleBundleSum(), savedInstanceState ?: Bundle(), activity.intent.data)
     }
 
     private fun checkAllKeysAreUnique(): Boolean {
-        return arguments.keySet().intersect(activity.intent.extras?.keySet() ?: emptySet()).isNotEmpty()
+        return arguments.keySet().intersect(activity.intent.extras?.keySet() ?: emptySet()).isEmpty()
     }
 
     private fun assembleBundleSum(): Bundle {

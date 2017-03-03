@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import android.view.View
 
 abstract class PresentedActivityView<PresenterType : Any>
     : ContextPresentedView<PresenterType, InFullMvpActivity<*, *>>() {
@@ -14,6 +15,9 @@ abstract class PresentedActivityView<PresenterType : Any>
 
     override val context: Context
         get() = activity ?: throw IllegalStateException("This view must be bound to activity")
+
+    override val viewFinder: PresentedView<PresenterType, *>.(Int) -> View?
+        get() = { activity?.findViewById(it) }
 
     override fun bindUiElements(boundingView: InFullMvpActivity<*, *>, presenter: PresenterType) {
         this.activity = boundingView
