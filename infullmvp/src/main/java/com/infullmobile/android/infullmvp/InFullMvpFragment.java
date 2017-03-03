@@ -38,7 +38,8 @@ public abstract class InFullMvpFragment<
     public void onActivityCreated(@Nullable final Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (!checkAllKeysAreUnique()) {
-            throw new IllegalStateException("Bundles cannot both have an extra with the same key");
+            throw new IllegalStateException(
+                    "Bundle for your fragment cannot have the same keys as the one from your activity");
         }
         getPresenter().bind(
                 assembleBundleSum(),
