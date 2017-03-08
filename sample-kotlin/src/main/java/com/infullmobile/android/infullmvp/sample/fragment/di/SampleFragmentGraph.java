@@ -21,7 +21,7 @@ public class SampleFragmentGraph {
     }
 
     @VisibleForTesting
-    public void setAddNewItemModule(SampleFragmentModule sampleFragmentModule) {
+    public void setSampleFragmentModule(SampleFragmentModule sampleFragmentModule) {
         sampleFragmentComponentBuilder.sampleFragmentModule(sampleFragmentModule);
     }
 
