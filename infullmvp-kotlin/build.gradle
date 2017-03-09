@@ -22,7 +22,7 @@ android {
 dependencies {
     provided androidAppcompat
     provided androidDesign
-    provided kotlin
+    provided kotlinLanguageDependency
 }
 
 repositories {

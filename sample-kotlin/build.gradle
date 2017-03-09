@@ -2,11 +2,9 @@ buildscript {
     repositories {
         jcenter()
     }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
 }
 
+apply plugin: 'kotlin-kapt'
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
@@ -32,12 +30,12 @@ android {
 }
 
 dependencies {
+    kapt daggerCompiler
     compile project(path: ':infullmvp-kotlin')
     compile androidAppcompat
     compile androidDesign
     compile dagger
-    compile kotlin
-    kapt daggerCompiler
+    compile kotlinLanguageDependency
 
     testCompile project(path: ':infullmvp-kotlin-basetest')
     testCompile junit
