@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricGradleTestRunner;
 
+import dagger.Module;
 import dagger.Provides;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -48,9 +49,8 @@ public class SampleActivityTest extends InFullMvpActivityBaseTest<
         }
 
         @Override
-        @Provides
         @SampleActivityScope
-        protected FragmentStatePagerAdapter providesPagerAdapter(FragmentManager fragmentManager) {
+        public FragmentStatePagerAdapter providesPagerAdapter(FragmentManager fragmentManager) {
             return mockFragmentStatePagerAdapter;
         }
     }

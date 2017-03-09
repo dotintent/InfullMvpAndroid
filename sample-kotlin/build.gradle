@@ -12,7 +12,7 @@ apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.infullmobile.android.infullmvp.sample_kotlin"
         minSdkVersion 16
@@ -36,7 +36,6 @@ dependencies {
     compile androidAppcompat
     compile androidDesign
     compile dagger
-    compile kotlin
     kapt daggerCompiler
 
     testCompile project(path: ':infullmvp-kotlin-basetest')
@@ -46,4 +45,8 @@ dependencies {
     testCompile(assertJ) {
         exclude module: 'support-annotations'
     }
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
 }
