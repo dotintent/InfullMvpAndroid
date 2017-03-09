@@ -38,6 +38,3 @@ ifmmaven {
     description "Base test classes for InFullMvp library for kotlin android"
     buildType "release"
 }
-repositories {
-    mavenCentral()
-}
