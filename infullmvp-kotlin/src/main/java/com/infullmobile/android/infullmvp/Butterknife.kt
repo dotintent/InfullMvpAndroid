@@ -116,6 +116,10 @@ fun <V : View> ViewHolder.bindOptionalViews(vararg ids: Int)
 fun View.bindInt(id: Int)
         : ReadOnlyProperty<View, Int> = requiredInt(id, intFinder)
 
+fun PresentedActivityView<Any>.bindInt(id: Int)
+        : ReadOnlyProperty<View, Int> = requiredInt(id, intFinder)
+
+
 private val View.viewFinder: View.(Int) -> View?
     get() = { findViewById(it) }
 private val Activity.viewFinder: Activity.(Int) -> View?
@@ -144,6 +148,8 @@ private val View.drawableFinder: View.(Int) -> Drawable?
     get() = { ContextCompat.getDrawable(context, it) }
 private val View.intFinder: View.(Int) -> Int?
     get() = { resources.getInteger(it) }
+private val PresentedActivityView<Any>.intFinder: View.(Int) -> Int?
+    get() = { resources.getInteger(it)}
 
 private val ViewHolder.dimensionFinder: ViewHolder.(Int) -> Int?
     get() = { itemView.context.resources?.getDimensionPixelSize(it) }
