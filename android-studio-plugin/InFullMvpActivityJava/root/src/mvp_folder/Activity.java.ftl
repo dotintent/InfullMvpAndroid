@@ -23,12 +23,12 @@ public class ${activityClass} extends InFullMvpActivity<${presenterClass}, ${vie
     }
 
     @Override
-    protected ${presenterClass} getPresenter() {
+    public ${presenterClass} getPresenter() {
         return ${presenterClass?uncap_first};
     }
 
     @Override
-    protected ${viewClass} getPresentedView() {
+    public ${viewClass} getPresentedView() {
         return ${viewClass?uncap_first};
     }
 

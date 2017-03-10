@@ -31,8 +31,8 @@ public class SampleFragmentModule {
 
     @Provides
     @SampleFragmentScope
-    SampleFragmentPresenter providesAddNewItemPresenter(SampleFragmentView sampleFragmentView,
-                                                        SampleFragmentModel sampleFragmentModel) {
+    SampleFragmentPresenter providesSampleFragmentPresenter(SampleFragmentView sampleFragmentView,
+                                                            SampleFragmentModel sampleFragmentModel) {
         return new SampleFragmentPresenter(sampleFragmentView, sampleFragmentModel);
     }
 }
