@@ -28,7 +28,7 @@ dependencies {
     provided project(path: ':infullmvp-kotlin')
     provided androidAppcompat
     provided androidDesign
-    provided kotlin
+    provided kotlinLanguageDependency
 }
 
 ifmmaven {

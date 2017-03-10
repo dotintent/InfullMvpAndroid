@@ -9,13 +9,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public abstract class InFullMvpFragment<
         PresenterType extends Presenter<PresentedViewType>,
         PresentedViewType extends PresentedFragmentView<PresenterType>
         > extends Fragment {
 
     protected abstract PresenterType getPresenter();
+
     protected abstract PresentedViewType getPresentedView();
+
     protected abstract void injectIntoGraph();
 
     @Nullable
@@ -32,12 +37,36 @@ public abstract class InFullMvpFragment<
     @Override
     public void onActivityCreated(@Nullable final Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Bundle bundle = getActivity().getIntent().getExtras();
+        if (!checkAllKeysAreUnique()) {
+            throw new IllegalStateException(
+                    "Bundle for your fragment cannot have the same keys as the one from your activity");
+        }
         getPresenter().bind(
-                bundle != null ? bundle : new Bundle(),
+                assembleBundleSum(),
                 savedInstanceState != null ? savedInstanceState : new Bundle(),
                 getActivity().getIntent().getData()
         );
+    }
+
+    private Boolean checkAllKeysAreUnique() {
+        Set<String> intersectionSet;
+        if (getArguments() == null || getActivity().getIntent().getExtras() == null) {
+            return true;
+        }
+        intersectionSet = new HashSet<>(getArguments().keySet());
+        intersectionSet.retainAll(getActivity().getIntent().getExtras().keySet());
+        return intersectionSet.isEmpty();
+    }
+
+    private Bundle assembleBundleSum() {
+        Bundle sumBundle = new Bundle();
+        if (getActivity().getIntent().getExtras() != null) {
+            sumBundle.putAll(getActivity().getIntent().getExtras());
+        }
+        if (getArguments() != null) {
+            sumBundle.putAll(getArguments());
+        }
+        return sumBundle;
     }
 
     @Override

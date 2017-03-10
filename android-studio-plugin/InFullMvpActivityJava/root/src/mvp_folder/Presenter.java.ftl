@@ -1,7 +1,9 @@
 package ${relativePackage};
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.infullmobile.android.infullmvp.Presenter;
 
@@ -16,7 +18,7 @@ public class ${presenterClass} extends Presenter<${viewClass}> {
     }
 
     @Override
-    protected void bind(@NonNull Bundle bundle) {
+    protected void bind(@NonNull Bundle bundle, @NonNull Bundle savedInstanceState, @Nullable Uri intentData) {
 
     }
 }

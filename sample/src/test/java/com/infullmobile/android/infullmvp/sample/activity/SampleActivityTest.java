@@ -17,7 +17,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
 @RunWith(RobolectricGradleTestRunner.class)
-public class SampleActivityTest extends InFullMvpActivityBaseTest<SampleActivity> {
+public class SampleActivityTest extends InFullMvpActivityBaseTest<
+        SampleActivity, SampleActivityPresenter, SampleActivityView> {
 
     FragmentStatePagerAdapter mockFragmentStatePagerAdapter = mock(FragmentStatePagerAdapter.class);
 
@@ -33,7 +34,8 @@ public class SampleActivityTest extends InFullMvpActivityBaseTest<SampleActivity
 
     @Test
     public void shouldSetAdapterOnViewsBound() {
-        assertThat(getTestedActivity().getPresentedView().pager.getAdapter()).isEqualTo(mockFragmentStatePagerAdapter);
+        assertThat(getPresentedView().pager.getAdapter())
+                .isEqualTo(mockFragmentStatePagerAdapter);
     }
 
     private final class TestSampleActivityModule extends SampleActivityModule {
