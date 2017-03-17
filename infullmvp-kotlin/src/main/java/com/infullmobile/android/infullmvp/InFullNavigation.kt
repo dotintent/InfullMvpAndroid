@@ -1,6 +1,8 @@
 package com.infullmobile.android.infullmvp
 
 import android.app.Activity
+import android.support.v4.app.Fragment
+import android.content.Context
 import android.content.Intent
 import android.provider.MediaStore
 
@@ -13,6 +15,13 @@ open class InFullNavigation(private val activity: Activity) {
     private val ASPECT_X_VALUE = 1
     private val ASPECT_Y_VALUE = 1
     private val SCALE_VALUE = true
+    private var context: Context = activity
+    private var fragment: Fragment? = null
+
+    constructor(activity: Activity, fragment: Fragment) : this(activity) {
+        this.fragment = fragment
+        this.context = fragment.context
+    }
 
     fun finishWithResultOk() {
         finishWithResult(activity, Activity.RESULT_OK, null)
@@ -35,11 +44,11 @@ open class InFullNavigation(private val activity: Activity) {
     }
 
     fun startCapturingUsingCamera(): LaunchableIntent {
-        return LaunchableIntent(activity, cameraIntent())
+        return buildLaunchableIntent(cameraIntent())
     }
 
     fun startPhotoGallery(title: String): LaunchableIntent {
-        return LaunchableIntent(activity, galleryIntent(title))
+        return buildLaunchableIntent(galleryIntent(title))
     }
 
     private fun cameraIntent(): Intent {
@@ -63,4 +72,6 @@ open class InFullNavigation(private val activity: Activity) {
                 .putExtra(ASPECT_Y, ASPECT_Y_VALUE)
                 .putExtra(SCALE, SCALE_VALUE)
     }
+
+    private fun buildLaunchableIntent(intent: Intent) = LaunchableIntent(activity, intent, fragment)
 }
