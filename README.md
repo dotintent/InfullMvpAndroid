@@ -9,7 +9,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.infullmobile.android:infullmvp-kotlin:1.2.6'
+    compile 'com.infullmobile.android:infullmvp-kotlin:1.1.7'
 }
 ```
 
