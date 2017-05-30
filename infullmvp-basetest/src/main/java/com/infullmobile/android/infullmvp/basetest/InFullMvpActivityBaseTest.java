@@ -8,7 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.robolectric.Robolectric;
 import org.robolectric.RuntimeEnvironment;
-import org.robolectric.util.ActivityController;
+import org.robolectric.android.controller.ActivityController;
 
 public abstract class InFullMvpActivityBaseTest<
         T extends InFullMvpActivity<PresenterType, PresentedViewType>,
