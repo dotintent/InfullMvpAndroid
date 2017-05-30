@@ -4,7 +4,7 @@ import android.content.Intent;
 import com.infullmobile.android.infullmvp.InFullMvpActivity;
 import com.infullmobile.android.infullmvp.PresentedActivityView;
 import com.infullmobile.android.infullmvp.Presenter;
-
+import org.junit.After;
 import org.junit.Before;
 import org.robolectric.Robolectric;
 import org.robolectric.RuntimeEnvironment;
@@ -15,6 +15,7 @@ public abstract class InFullMvpActivityBaseTest<
         PresenterType extends Presenter<PresentedViewType>,
         PresentedViewType extends PresentedActivityView<PresenterType>> {
 
+    private ActivityController<T> controller;
     private T activity;
 
     @edu.umd.cs.findbugs.annotations.SuppressWarnings("UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
@@ -29,10 +30,15 @@ public abstract class InFullMvpActivityBaseTest<
 
     @Before
     public void setUp() {
-        final ActivityController<T> controller = getActivity();
+        controller = getActivity();
         activity = controller.get();
         substituteModules(activity);
         controller.postCreate(null).visible();
+    }
+
+    @After
+    public void tearDown() {
+        controller.pause().stop().destroy();
     }
 
     public T getTestedActivity() {

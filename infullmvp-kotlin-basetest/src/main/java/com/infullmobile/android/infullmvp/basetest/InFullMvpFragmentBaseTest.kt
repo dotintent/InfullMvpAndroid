@@ -3,6 +3,7 @@ package com.infullmobile.android.infullmvp.basetest
 import com.infullmobile.android.infullmvp.InFullMvpFragment
 import com.infullmobile.android.infullmvp.PresentedFragmentView
 import com.infullmobile.android.infullmvp.Presenter
+import org.junit.After
 
 import org.junit.Before
 import org.robolectric.RuntimeEnvironment
@@ -18,12 +19,19 @@ abstract class InFullMvpFragmentBaseTest<T : InFullMvpFragment<*, *>> {
     val testedView: PresentedFragmentView<*>
         get() = testedFragment.presentedView
 
+    private lateinit var fragmentController: SupportFragmentController<T>
+
     @Before
     open fun setUp() {
-        val fragmentController = SupportFragmentController.of(provideFragment())
+        fragmentController = SupportFragmentController.of(provideFragment())
         testedFragment = fragmentController.create().get()
         substituteModules(testedFragment)
         fragmentController.start().resume().visible()
+    }
+
+    @After
+    fun tearDown() {
+        fragmentController.pause().stop().destroy()
     }
 
     protected fun getString(stringResourceId: Int): String {
