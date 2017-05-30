@@ -1,11 +1,10 @@
 package com.infullmobile.android.infullmvp.basetest
 
 import android.content.Intent
-
 import com.infullmobile.android.infullmvp.InFullMvpActivity
 import com.infullmobile.android.infullmvp.PresentedActivityView
 import com.infullmobile.android.infullmvp.Presenter
-
+import org.junit.After
 import org.junit.Before
 import org.robolectric.Robolectric
 import org.robolectric.RuntimeEnvironment
@@ -19,6 +18,9 @@ abstract class InFullMvpActivityBaseTest<
     lateinit var testedActivity: T
         private set
 
+    private lateinit var activityController: ActivityController<T>
+    protected abstract val testActivityClass: Class<T>
+
     val testedPresenter: PresenterType
         get() = testedActivity.presenter
     val testedView: PresentedViewType
@@ -26,16 +28,16 @@ abstract class InFullMvpActivityBaseTest<
 
     @Before
     open fun setUp() {
-        val controller = activity
-        testedActivity = controller.get()
+        activityController = Robolectric.buildActivity(testActivityClass).withIntent(activityIntent).create()
+        testedActivity = activityController.get()
         substituteModules(testedActivity)
-        controller.postCreate(null).visible()
+        activityController.postCreate(null).visible()
     }
 
-    private val activity: ActivityController<T>
-        get() = Robolectric.buildActivity(testActivityClass).withIntent(activityIntent).create()
-
-    protected abstract val testActivityClass: Class<T>
+    @After
+    fun tearDown() {
+        activityController.pause().stop().destroy()
+    }
 
     open protected val activityIntent: Intent
         get() = Intent(RuntimeEnvironment.application, testActivityClass)

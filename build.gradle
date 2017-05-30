@@ -9,7 +9,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath 'com.android.tools.build:gradle:2.3.0'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.infullmobile:toolkit:0.3.20'
@@ -52,6 +52,6 @@ ext {
     assertJ = 'com.squareup.assertj:assertj-android:1.1.1'
     junit = 'junit:junit:4.12'
     mockito = 'org.mockito:mockito-all:2.0.2-beta'
-    robolectric = 'org.robolectric:robolectric:3.1'
-    robolectricShadows = 'org.robolectric:shadows-support-v4:3.1'
+    robolectric = 'org.robolectric:robolectric:3.3.2'
+    robolectricShadows = 'org.robolectric:shadows-support-v4:3.3.2'
 }
