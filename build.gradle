@@ -41,7 +41,7 @@ allprojects {
 }
 
 ext {
-    support_version = '24.2.1'
+    support_version = '25.3.1'
     androidAppcompat = "com.android.support:appcompat-v7:$support_version"
     androidDesign = "com.android.support:design:$support_version"
     dagger = 'com.google.dagger:dagger:2.2'
@@ -52,6 +52,6 @@ ext {
     assertJ = 'com.squareup.assertj:assertj-android:1.1.1'
     junit = 'junit:junit:4.12'
     mockito = 'org.mockito:mockito-all:2.0.2-beta'
-    robolectric = 'org.robolectric:robolectric:3.3.2'
-    robolectricShadows = 'org.robolectric:shadows-support-v4:3.3.2'
+    robolectric = 'org.robolectric:robolectric:3.4-rc2'
+    robolectricShadows = 'org.robolectric:shadows-support-v4:3.4-rc2'
 }
