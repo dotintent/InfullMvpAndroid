@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.view.MenuItem
 
 abstract class Presenter<out PresentedViewType : PresentedView<*, *>>(val presentedView: PresentedViewType) {
 
@@ -41,5 +42,9 @@ abstract class Presenter<out PresentedViewType : PresentedView<*, *>>(val presen
 
     open fun saveInstanceState(outState: Bundle) {
         /* NO OP */
+    }
+
+    open fun onContextItemSelected(item: MenuItem?): Boolean {
+        return false
     }
 }

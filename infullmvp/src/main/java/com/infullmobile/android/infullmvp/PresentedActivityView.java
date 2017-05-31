@@ -62,4 +62,8 @@ public abstract class PresentedActivityView<PresenterType extends Presenter>
     protected boolean onOptionsItemSelected(@NonNull MenuItem item) {
         return false;
     }
+    
+    public void invalidateOptionMenu() {
+        presentedActivity.invalidateOptionsMenu();
+    }
 }

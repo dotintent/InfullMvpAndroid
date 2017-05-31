@@ -88,4 +88,9 @@ public abstract class InFullMvpActivity<
         getPresenter().saveInstanceState(outState);
         super.onSaveInstanceState(outState);
     }
+
+    @Override
+    public boolean onContextItemSelected(final MenuItem item) {
+        return getPresenter().onContextItemSelected(item) || super.onContextItemSelected(item);
+    }
 }
