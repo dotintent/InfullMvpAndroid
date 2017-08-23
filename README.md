@@ -8,8 +8,31 @@ repositories {
     maven { url 'https://maven.infullmobile.com/public' }
 }
 
-dependencies {
-    compile 'com.infullmobile.android:infullmvp-kotlin:1.1.7'
+````
+
+
+### For Kotlin
+```
+dependencies {    
+    compile 'com.infullmobile.android:infullmvp-kotlin:1.1.11'
+    testCcompile 'com.infullmobile.android:infullmvp-kotlin-basetest:1.1.11'
+}
+```
+
+### For Java
+```
+dependencies {    
+    compile 'com.infullmobile.android:infullmvp:1.1.11'
+    testCompile 'com.infullmobile.android:infullmvp-basetest:1.1.11'
+}
+```
+
+## InfullNavigation
+
+We've made some classes to cut down navigation.
+```
+dependencies {    
+    compile 'com.infullmobile.android:navigation:1.1.11'    
 }
 ```
 
