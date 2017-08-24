@@ -3,6 +3,7 @@ package com.infullmobile.android.infullmvp
 import android.app.Dialog
 import android.os.Bundle
 import android.support.design.widget.BottomSheetDialogFragment
+import android.view.MenuItem
 import android.view.View
 
 abstract class InFullMvpDialogFragment<
@@ -22,5 +23,9 @@ abstract class InFullMvpDialogFragment<
         dialog.setContentView(rootView)
         presentedView.bindUiElements(dialog, presenter)
         presenter.bind(arguments?: Bundle(), Bundle(), activity.intent.data)
+    }
+
+    override fun onContextItemSelected(item: MenuItem?): Boolean {
+        return presenter.onContextItemSelected(item) ||  super.onContextItemSelected(item)
     }
 }

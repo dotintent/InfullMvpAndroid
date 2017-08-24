@@ -39,4 +39,8 @@ abstract class PresentedActivityView<PresenterType : Any>
     open fun onOptionsItemSelected(item: MenuItem): Boolean {
         return false
     }
+
+    open fun invalidateOptionsMenu() {
+        activity?.invalidateOptionsMenu()
+    }
 }

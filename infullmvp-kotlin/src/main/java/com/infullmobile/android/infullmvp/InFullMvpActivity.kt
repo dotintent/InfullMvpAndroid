@@ -68,4 +68,8 @@ abstract class InFullMvpActivity<
         presenter.saveInstanceState(outState)
         super.onSaveInstanceState(outState)
     }
+
+    override fun onContextItemSelected(item: MenuItem?): Boolean {
+        return presenter.onContextItemSelected(item) ||  super.onContextItemSelected(item)
+    }
 }

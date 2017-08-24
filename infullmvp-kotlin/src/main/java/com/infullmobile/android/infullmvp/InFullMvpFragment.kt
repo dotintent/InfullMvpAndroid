@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 
@@ -74,5 +75,9 @@ abstract class InFullMvpFragment<
     override fun onSaveInstanceState(outState: Bundle) {
         presenter.saveInstanceState(outState)
         super.onSaveInstanceState(outState)
+    }
+
+    override fun onContextItemSelected(item: MenuItem?): Boolean {
+        return presenter.onContextItemSelected(item) ||  super.onContextItemSelected(item)
     }
 }

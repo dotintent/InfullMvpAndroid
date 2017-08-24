@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -87,5 +88,10 @@ public abstract class InFullMvpFragment<
     public void onSaveInstanceState(final Bundle outState) {
         getPresenter().saveInstanceState(outState);
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public boolean onContextItemSelected(final MenuItem item) {
+        return getPresenter().onContextItemSelected(item) || super.onContextItemSelected(item);
     }
 }
