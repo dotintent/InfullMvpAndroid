@@ -1,4 +1,4 @@
-package com.infullmobile.android.infullmvp
+package com.infullmobile.android.kotlin.navigation
 
 import android.app.Activity
 import android.support.v4.app.Fragment

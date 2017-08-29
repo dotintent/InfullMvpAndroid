@@ -2,14 +2,14 @@ package com.infullmobile.android.infullmvp;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
+import android.support.design.widget.BottomSheetDialogFragment;
 import android.view.MenuItem;
 import android.view.View;
 
-public abstract class InFullMvpDialogFragment<
+public abstract class InFullMvpBottomSheetDialogFragment<
         PresenterType extends Presenter<PresentedViewType>,
         PresentedViewType extends PresentedDialogView<PresenterType>
-        > extends DialogFragment {
+        > extends BottomSheetDialogFragment {
 
     protected abstract PresenterType getPresenter();
 
@@ -21,8 +21,9 @@ public abstract class InFullMvpDialogFragment<
     public void setupDialog(Dialog dialog, int style) {
         super.setupDialog(dialog, style);
         injectIntoGraph();
-        View rootView = View.inflate(getContext(), getPresentedView().getLayoutResId(), null);
-        dialog.setContentView(rootView);
+        dialog.setContentView(
+                View.inflate(getContext(), getPresentedView().getLayoutResId(), null)
+        );
         getPresentedView().bindUiElements(dialog, getPresenter());
         getPresenter().bind(
                 getArguments() != null ? getArguments() : new Bundle(),
