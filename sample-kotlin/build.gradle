@@ -1,22 +1,11 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-}
-
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.infullmobile.toolkit'
 
 android {
-    compileSdkVersion 24
-    buildToolsVersion '25.0.0'
     defaultConfig {
         applicationId "com.infullmobile.android.infullmvp.sample_kotlin"
-        minSdkVersion 16
-        targetSdkVersion 24
-        versionCode 1
-        versionName "1.0"
     }
     buildTypes {
         release {

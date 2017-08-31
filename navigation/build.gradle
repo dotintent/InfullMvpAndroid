@@ -1,8 +1,4 @@
 buildscript {
-    repositories {
-        jcenter()
-        maven { url 'https://maven.infullmobile.com/public'}
-    }
     dependencies {
         classpath 'com.infullmobile.gradle:mavenplugin:1.0.3'
     }
@@ -14,17 +10,8 @@ apply plugin: 'com.infullmobile.toolkit'
 apply plugin: 'com.infullmobile.gradle.mavenplugin'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
-
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
     buildTypes {
         release {
