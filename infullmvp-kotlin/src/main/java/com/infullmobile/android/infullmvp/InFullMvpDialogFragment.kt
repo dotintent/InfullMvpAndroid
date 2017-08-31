@@ -17,6 +17,11 @@ abstract class InFullMvpDialogFragment<
     abstract fun injectIntoGraph()
 
     override fun setupDialog(dialog: Dialog, style: Int) {
+        /*
+          Method is group restricted via @hide and @Restricted in source
+          but we can still call it from kotlin.
+          This may change with further kotlin plugin support.
+         */
         super.setupDialog(dialog, style)
         injectIntoGraph()
         val rootView = View.inflate(context, presentedView.layoutResId, null)
