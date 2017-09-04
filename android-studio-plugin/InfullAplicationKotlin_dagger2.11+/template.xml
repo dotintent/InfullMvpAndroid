@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<template
+    name="Dagger Application (kotlin)"
+    description="Creates a new template for Application component in Dagger 2.11"
+    format="5"
+    revision="1">
+
+    <category value="InFullMvp Dagger 2.11+"/>
+    <formfactor value="Mobile"/>
+
+    <parameter
+        name="Application Class Name"
+        constraints="class|unique|nonempty"
+        default="Application"
+        help="The name of your application class"
+        id="applicationClass"
+        type="string"/>
+
+    <parameter
+        name="Package name"
+        constraints="package"
+        default="com.infullmobile.app"
+        id="packageName"
+        type="string"/>
+
+    <parameter
+        name=".R Package"
+        constraints="package|exists|nonempty"
+        help="Path to .R of this app/module"
+        id="rPackage"
+        suggest="${applicationPackage}"
+        type="string"/>
+
+    <parameter
+        name="Application Path"
+        constraints="package|empty"
+        help="Package where we can find di.ApplicationComponent and di.Components"
+        id="appComponentPackage"
+        suggest="${packageName}.application"
+        type="string"
+        visibility="useApplicationComponent"/>
+
+    <thumbs>
+        <thumb>ifmdagger.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl"/>
+    <execute file="recipe.xml.ftl"/>
+
+</template>

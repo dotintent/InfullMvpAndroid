@@ -5,7 +5,7 @@
     name="MVP Activity (kotlin)"
     description="Creates a new MVP template">
 
-    <category value="InFullMvp" />
+    <category value="InFullMvp Dagger 2.2" />
     <formfactor value="Mobile" />
 
     <parameter

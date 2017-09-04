@@ -2,28 +2,28 @@
 <template
     format="5"
     revision="5"
-    name="MVP Fragment (java)"
+    name="MVP Activity (java)"
     description="Creates a new MVP template">
 
-    <category value="InFullMvp Dagger 2.2" />
+    <category value="InFullMvp Dagger 2.11+" />
     <formfactor value="Mobile" />
 
     <parameter
-        id="fragmentClass"
-        name="Fragment Name"
+        id="activityClass"
+        name="Activity Name"
         type="string"
         constraints="class|unique|nonempty"
-        default="MvpFragment"
-        help="The name of the fragment class to create" />
+        default="MvpActivity"
+        help="The name of the activity class to create" />
 
     <parameter
         id="layoutName"
         name="Layout Name"
         type="string"
         constraints="layout|unique|nonempty"
-        suggest="fragment_${classToResource(fragmentClass)}"
-        default="fragment_mvp"
-        help="The name of the layout to create for the fragment" />
+        suggest="${activityToLayout(activityClass)}"
+        default="activity_mvp"
+        help="The name of the layout to create for the activity" />
 
     <parameter
         id="packageName"
@@ -57,7 +57,7 @@
         help="Package where we can find di.ApplicationComponent and di.Components" />
 
     <thumbs>
-        <thumb>template_infullmvp.png</thumb>
+        <thumb>ifmdagger.png</thumb>
     </thumbs>
 
     <globals file="globals.xml.ftl" />
