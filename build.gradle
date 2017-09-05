@@ -2,7 +2,6 @@
 
 buildscript {
     ext.kotlin_version = '1.1.4-2'
-    ext.kotlin_version = '1.1.0'
     repositories {
         jcenter()
         maven {
@@ -13,13 +12,21 @@ buildscript {
         classpath 'com.android.tools.build:gradle:2.3.0'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.infullmobile:toolkit:0.3.20'
+        classpath 'com.infullmobile:toolkit:0.3.24'
     }
 }
 
 allprojects {
     repositories {
         jcenter()
+        maven { url 'https://maven.infullmobile.com/public' }
+        mavenCentral()
+    }
+    buildscript {
+        repositories {
+            jcenter()
+            maven { url 'https://maven.infullmobile.com/public' }
+        }
     }
 }
 
