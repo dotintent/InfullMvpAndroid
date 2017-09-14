@@ -26,7 +26,7 @@ dependencies {
 
     testCompile project(path: ':infullmvp-basetest')
     testCompile junit
-    testCompile mockito
+    testCompile mockitoCore
     testCompile robolectric
     testCompile(assertJ) {
         exclude module: 'support-annotations'

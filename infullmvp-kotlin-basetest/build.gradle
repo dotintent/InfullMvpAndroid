@@ -17,7 +17,7 @@ android {
 
 dependencies {
     compile junit
-    compile mockito
+    compile mockitoCore
     compile robolectric
     compile robolectricShadows
 
@@ -33,4 +33,7 @@ ifmmaven {
 
     description "Base test classes for InFullMvp library for kotlin android"
     buildType "release"
+}
+repositories {
+    mavenCentral()
 }

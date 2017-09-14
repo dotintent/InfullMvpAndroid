@@ -1,1 +1,6 @@
-include ':sample', ':infullmvp-basetest', ':infullmvp-kotlin-basetest', ':navigation', 'sample-kotlin', ':infullmvp', ':infullmvp-kotlin'
+include ':infullmvp', ':infullmvp-kotlin'
+include ':infullmvp-basetest', ':infullmvp-kotlin-basetest'
+include ':navigation'
+include ':sample'
+include ':sample-kotlin'
+include ':sample-kotlin-dagger-2.1x'
