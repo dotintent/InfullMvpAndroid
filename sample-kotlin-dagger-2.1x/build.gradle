@@ -1,11 +1,21 @@
-apply plugin: 'kotlin-kapt'
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'com.infullmobile.toolkit'
 
 android {
     defaultConfig {
-        applicationId "com.infullmobile.android.infullmvp.sample_kotlin"
+        applicationId "com.infullmobile.android.infullmvp.sample_dagger21x"
     }
     buildTypes {
         release {
@@ -18,22 +28,32 @@ android {
     }
 }
 
+kapt { generateStubs = true }
+
 dependencies {
-    kapt daggerCompiler
     compile project(path: ':infullmvp-kotlin')
     compile androidAppcompat
     compile androidDesign
-    compile dagger
+    compile dagger211
+    compile daggerSupport211
     compile kotlinLanguageDependency
+    kapt daggerCompiler211
+    kapt daggerAnnotationProcessor211
+
+    kaptTest daggerCompiler211
+    kaptTest daggerAnnotationProcessor211
+    kaptTest dagger211
+    kaptTest daggerSupport211
 
     testCompile project(path: ':infullmvp-kotlin-basetest')
     testCompile junit
+    testCompile mockitoInline
     testCompile mockitoCore
     testCompile robolectric
     testCompile(assertJ) {
         exclude module: 'support-annotations'
     }
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
 }
 repositories {
     mavenCentral()
