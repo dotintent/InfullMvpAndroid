@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<template
+    name="MVP Fragment (kotlin)"
+    description="Creates a new MVP template"
+    format="5"
+    revision="5">
+
+    <category value="InFullMvp Dagger 2.11+"/>
+    <formfactor value="Mobile"/>
+
+    <parameter
+        name="Fragment Name"
+        constraints="class|unique|nonempty"
+        default="MvpFragment"
+        help="The name of the activity class to create"
+        id="fragmentClass"
+        type="string"/>
+
+    <parameter
+        name="Layout Name"
+        constraints="layout|unique|nonempty"
+        default="fragment_mvp"
+        help="The name of the layout to create for the fragment"
+        id="layoutName"
+        suggest="fragment_${classToResource(fragmentClass)}"
+        type="string"/>
+
+    <parameter
+        name="Package name"
+        constraints="package"
+        default="com.infullmobile.app"
+        id="packageName"
+        type="string"/>
+
+    <parameter
+        name=".R Package"
+        constraints="package|exists|nonempty"
+        help="Path to .R of this app/module"
+        id="rPackage"
+        suggest="${applicationPackage}"
+        type="string"/>
+
+    <parameter
+        name="Use ApplicationComponent"
+        default="true"
+        help="If true, ApplicationComponent will be used in generated Graph"
+        id="useApplicationComponent"
+        type="boolean"/>
+
+    <parameter
+        name="Application Path"
+        constraints="package|empty"
+        help="Package where we can find di.ApplicationComponent and di.Components"
+        id="appComponentPackage"
+        suggest="${packageName}.application"
+        type="string"
+        visibility="useApplicationComponent"/>
+
+    <thumbs>
+        <thumb>ifmdagger.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl"/>
+    <execute file="recipe.xml.ftl"/>
+
+</template>
