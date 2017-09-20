@@ -33,7 +33,7 @@ public abstract class InFullMvpActivityBaseTest<
         controller = getActivity();
         activity = controller.get();
         substituteModules(activity);
-        controller.postCreate(null).visible();
+        controller.start().postCreate(null).visible();
     }
 
     @After
