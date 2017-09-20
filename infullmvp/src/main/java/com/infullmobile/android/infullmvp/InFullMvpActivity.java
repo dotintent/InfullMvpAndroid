@@ -18,10 +18,15 @@ public abstract class InFullMvpActivity<
     protected abstract void injectIntoGraph();
 
     @Override
-    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
+    protected final void onStart() {
+        super.onStart();
         injectIntoGraph();
         setContentView(getPresentedView().getLayoutResId());
+    }
+
+    @Override
+    protected final void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
         getPresentedView().bindUiElements(this, getPresenter());
         getPresenter().bind(
                 getIntent().getExtras() != null ? getIntent().getExtras() : new Bundle(),

@@ -16,10 +16,14 @@ abstract class InFullMvpActivity<
 
     abstract fun injectIntoGraph()
 
-    override final fun onPostCreate(savedInstanceState: Bundle?) {
-        super.onPostCreate(savedInstanceState)
+    override final fun onStart() {
+        super.onStart()
         injectIntoGraph()
         setContentView(presentedView.layoutResId)
+    }
+
+    override final fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
         presentedView.bindUiElements(this, presenter)
         presenter.bind(intent.extras?: Bundle(), savedInstanceState?: Bundle(), intent.data)
     }

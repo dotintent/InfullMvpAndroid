@@ -31,7 +31,7 @@ abstract class InFullMvpActivityBaseTest<
         activityController = Robolectric.buildActivity(testActivityClass).withIntent(activityIntent).create()
         testedActivity = activityController.get()
         substituteModules(testedActivity)
-        activityController.postCreate(null).visible()
+        activityController.start().postCreate(null).visible()
     }
 
     @After
