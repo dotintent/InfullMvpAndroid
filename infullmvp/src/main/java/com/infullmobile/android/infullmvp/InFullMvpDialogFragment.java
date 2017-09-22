@@ -2,6 +2,7 @@ package com.infullmobile.android.infullmvp;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.support.annotation.CallSuper;
 import android.support.v4.app.DialogFragment;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,7 @@ public abstract class InFullMvpDialogFragment<
 
     protected abstract void injectIntoGraph();
 
+    @CallSuper
     @Override
     public void setupDialog(Dialog dialog, int style) {
         unrestrictedSetup(dialog, style);

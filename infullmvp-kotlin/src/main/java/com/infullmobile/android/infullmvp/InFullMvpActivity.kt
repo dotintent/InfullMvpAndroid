@@ -2,6 +2,7 @@ package com.infullmobile.android.infullmvp
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.annotation.CallSuper
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
@@ -18,12 +19,13 @@ abstract class InFullMvpActivity<
 
     override final fun onStart() {
         super.onStart()
-        injectIntoGraph()
-        setContentView(presentedView.layoutResId)
     }
 
-    override final fun onPostCreate(savedInstanceState: Bundle?) {
-        super.onPostCreate(savedInstanceState)
+    @CallSuper
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        injectIntoGraph()
+        setContentView(presentedView.layoutResId)
         presentedView.bindUiElements(this, presenter)
         presenter.bind(intent.extras?: Bundle(), savedInstanceState?: Bundle(), intent.data)
     }

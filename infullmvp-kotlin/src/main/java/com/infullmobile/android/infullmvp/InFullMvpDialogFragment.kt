@@ -2,6 +2,7 @@ package com.infullmobile.android.infullmvp
 
 import android.app.Dialog
 import android.os.Bundle
+import android.support.annotation.CallSuper
 import android.support.v4.app.DialogFragment
 import android.view.MenuItem
 import android.view.View
@@ -16,6 +17,7 @@ abstract class InFullMvpDialogFragment<
 
     abstract fun injectIntoGraph()
 
+    @CallSuper
     override fun setupDialog(dialog: Dialog, style: Int) {
         /*
           Method is group restricted via @hide and @Restricted in source

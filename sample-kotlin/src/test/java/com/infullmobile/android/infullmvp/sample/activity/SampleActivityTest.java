@@ -32,7 +32,7 @@ public class SampleActivityTest extends InFullMvpActivityBaseTest<
     @Override
     public void substituteModules(@NonNull final SampleActivity activity) {
         super.substituteModules(activity);
-        activity.sampleActivityGraph.setAddNewItemModule(new TestSampleActivityModule(activity));
+        activity.getSampleActivityGraph().setAddNewItemModule(new TestSampleActivityModule(activity));
     }
 
     @Test
