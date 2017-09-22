@@ -18,7 +18,6 @@ public abstract class InFullMvpActivity<
     public abstract PresentedViewType getPresentedView();
     protected abstract void injectIntoGraph();
 
-    @CallSuper
     @Override
     public void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
