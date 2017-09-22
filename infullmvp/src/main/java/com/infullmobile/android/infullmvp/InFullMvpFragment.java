@@ -25,7 +25,6 @@ public abstract class InFullMvpFragment<
 
     protected abstract void injectIntoGraph();
 
-    @CallSuper
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,

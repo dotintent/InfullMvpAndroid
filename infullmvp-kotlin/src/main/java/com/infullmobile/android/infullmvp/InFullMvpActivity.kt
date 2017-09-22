@@ -17,11 +17,6 @@ abstract class InFullMvpActivity<
 
     abstract fun injectIntoGraph()
 
-    override final fun onStart() {
-        super.onStart()
-    }
-
-    @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injectIntoGraph()

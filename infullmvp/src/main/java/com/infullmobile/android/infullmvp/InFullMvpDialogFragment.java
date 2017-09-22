@@ -20,7 +20,6 @@ public abstract class InFullMvpDialogFragment<
 
     protected abstract void injectIntoGraph();
 
-    @CallSuper
     @Override
     public void setupDialog(Dialog dialog, int style) {
         unrestrictedSetup(dialog, style);

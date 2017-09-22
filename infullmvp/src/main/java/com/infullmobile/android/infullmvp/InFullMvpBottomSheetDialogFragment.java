@@ -18,7 +18,6 @@ public abstract class InFullMvpBottomSheetDialogFragment<
 
     protected abstract void injectIntoGraph();
 
-    @CallSuper
     @Override
     public void setupDialog(Dialog dialog, int style) {
         super.setupDialog(dialog, style);

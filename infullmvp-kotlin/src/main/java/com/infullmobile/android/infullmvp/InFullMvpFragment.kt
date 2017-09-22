@@ -19,7 +19,6 @@ abstract class InFullMvpFragment<
 
     abstract fun injectIntoGraph()
 
-    @CallSuper
     override final fun onCreateView(inflater: LayoutInflater,
                                     container: ViewGroup?,
                                     savedInstanceState: Bundle?): View? {
