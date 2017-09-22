@@ -21,6 +21,7 @@ android {
 dependencies {
     kapt daggerCompiler
     compile project(path: ':infullmvp-kotlin')
+    compile project(path: ':navigation')
     compile androidAppcompat
     compile androidDesign
     compile dagger
