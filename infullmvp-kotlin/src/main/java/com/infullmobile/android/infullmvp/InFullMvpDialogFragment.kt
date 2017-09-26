@@ -17,7 +17,6 @@ abstract class InFullMvpDialogFragment<
 
     abstract fun injectIntoGraph()
 
-    @CallSuper
     override fun setupDialog(dialog: Dialog, style: Int) {
         /*
           Method is group restricted via @hide and @Restricted in source
