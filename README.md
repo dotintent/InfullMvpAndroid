@@ -20,16 +20,16 @@ repositories {
 #### Kotlin
 ```
 dependencies {    
-    compile 'com.infullmobile.android:infullmvp-kotlin:1.1.13'
-    testCcompile 'com.infullmobile.android:infullmvp-kotlin-basetest:1.1.13'
+    compile 'com.infullmobile.android:infullmvp-kotlin:1.1.14'
+    testCcompile 'com.infullmobile.android:infullmvp-kotlin-basetest:1.1.14'
 }
 ```
 
 #### Java
 ```
 dependencies {    
-    compile 'com.infullmobile.android:infullmvp:1.1.13'
-    testCompile 'com.infullmobile.android:infullmvp-basetest:1.1.13'
+    compile 'com.infullmobile.android:infullmvp:1.1.14'
+    testCompile 'com.infullmobile.android:infullmvp-basetest:1.1.14'
 }
 ```
 
@@ -40,7 +40,7 @@ Covers basics, in more complex apps you probably want an interface for testabili
 
 ```
 dependencies {    
-    compile 'com.infullmobile.android.kotlin:navigation:1.1.13'    
+    compile 'com.infullmobile.android.kotlin:navigation:1.1.14'    
 }
 ```
 
