@@ -2,6 +2,7 @@ package com.infullmobile.android.infullmvp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;

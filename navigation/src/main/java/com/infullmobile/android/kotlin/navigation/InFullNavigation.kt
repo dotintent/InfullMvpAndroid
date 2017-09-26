@@ -1,12 +1,12 @@
-package com.infullmobile.android.infullmvp
+package com.infullmobile.android.kotlin.navigation
 
 import android.app.Activity
-import android.support.v4.app.Fragment
 import android.content.Context
 import android.content.Intent
 import android.provider.MediaStore
+import android.support.v4.app.Fragment
 
-open class InFullNavigation(private val activity: Activity) {
+open class InFullNavigation(protected val activity: Activity) {
 
     private val ALL_IMAGES_TYPE = "image/*"
     private val ASPECT_X = "aspectX"
@@ -73,5 +73,5 @@ open class InFullNavigation(private val activity: Activity) {
                 .putExtra(SCALE, SCALE_VALUE)
     }
 
-    private fun buildLaunchableIntent(intent: Intent) = LaunchableIntent(activity, intent, fragment)
+    protected fun buildLaunchableIntent(intent: Intent) = LaunchableIntent(activity, intent, fragment)
 }

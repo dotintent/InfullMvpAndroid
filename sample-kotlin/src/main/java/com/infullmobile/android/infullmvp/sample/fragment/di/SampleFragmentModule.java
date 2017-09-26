@@ -1,10 +1,11 @@
 package com.infullmobile.android.infullmvp.sample.fragment.di;
 
+import com.infullmobile.android.infullmvp.sample.Navigation;
+import com.infullmobile.android.infullmvp.sample.SampleNavigation;
 import com.infullmobile.android.infullmvp.sample.fragment.SampleFragment;
 import com.infullmobile.android.infullmvp.sample.fragment.SampleFragmentModel;
 import com.infullmobile.android.infullmvp.sample.fragment.SampleFragmentPresenter;
 import com.infullmobile.android.infullmvp.sample.fragment.SampleFragmentView;
-
 import dagger.Module;
 import dagger.Provides;
 
@@ -15,6 +16,12 @@ public class SampleFragmentModule {
 
     public SampleFragmentModule(SampleFragment sampleFragment) {
         this.sampleFragment = sampleFragment;
+    }
+
+    @Provides
+    @SampleFragmentScope
+    Navigation providesNavigation() {
+        return new SampleNavigation(sampleFragment.getActivity(), sampleFragment);
     }
 
     @Provides
@@ -31,8 +38,11 @@ public class SampleFragmentModule {
 
     @Provides
     @SampleFragmentScope
-    SampleFragmentPresenter providesSampleFragmentPresenter(SampleFragmentView sampleFragmentView,
-                                                            SampleFragmentModel sampleFragmentModel) {
-        return new SampleFragmentPresenter(sampleFragmentView, sampleFragmentModel);
+    SampleFragmentPresenter providesSampleFragmentPresenter(
+            SampleFragmentView sampleFragmentView,
+            SampleFragmentModel sampleFragmentModel,
+            Navigation navigation
+    ) {
+        return new SampleFragmentPresenter(sampleFragmentView, sampleFragmentModel, navigation);
     }
 }

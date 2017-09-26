@@ -2,6 +2,7 @@ package com.infullmobile.android.infullmvp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -18,8 +19,8 @@ public abstract class InFullMvpActivity<
     protected abstract void injectIntoGraph();
 
     @Override
-    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
+    public void onCreate(@Nullable final Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         injectIntoGraph();
         setContentView(getPresentedView().getLayoutResId());
         getPresentedView().bindUiElements(this, getPresenter());
@@ -47,7 +48,6 @@ public abstract class InFullMvpActivity<
         super.onPause();
         getPresenter().onPause();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

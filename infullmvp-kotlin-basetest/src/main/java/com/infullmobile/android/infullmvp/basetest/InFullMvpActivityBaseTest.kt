@@ -28,15 +28,15 @@ abstract class InFullMvpActivityBaseTest<
 
     @Before
     open fun setUp() {
-        activityController = Robolectric.buildActivity(testActivityClass).withIntent(activityIntent).create()
+        activityController = Robolectric.buildActivity(testActivityClass, activityIntent)
         testedActivity = activityController.get()
         substituteModules(testedActivity)
-        activityController.postCreate(null).visible()
+        activityController.create().visible()
     }
 
     @After
     fun tearDown() {
-        activityController.pause().stop().destroy()
+        activityController.destroy()
     }
 
     open protected val activityIntent: Intent

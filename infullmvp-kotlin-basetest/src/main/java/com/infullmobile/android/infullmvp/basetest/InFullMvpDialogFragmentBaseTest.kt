@@ -1,22 +1,25 @@
 package com.infullmobile.android.infullmvp.basetest
 
+import android.os.Bundle
 import com.infullmobile.android.infullmvp.InFullMvpDialogFragment
 import com.infullmobile.android.infullmvp.PresentedDialogView
 import com.infullmobile.android.infullmvp.Presenter
 import org.junit.After
-
 import org.junit.Before
 import org.robolectric.RuntimeEnvironment
 import org.robolectric.shadows.support.v4.SupportFragmentController
 
-abstract class InFullMvpDialogFragmentBaseTest<T : InFullMvpDialogFragment<*, *>> {
+abstract class InFullMvpDialogFragmentBaseTest<
+        T : InFullMvpDialogFragment<PresenterType, PresentedViewType>,
+        PresenterType : Presenter<PresentedViewType>,
+        out PresentedViewType : PresentedDialogView<PresenterType>> {
 
     lateinit var testedFragment: T
         private set
 
-    val testedPresenter: Presenter<*>
+    val testedPresenter: PresenterType
         get() = testedFragment.presenter
-    val testedView: PresentedDialogView<*>
+    val testedView: PresentedViewType
         get() = testedFragment.presentedView
 
     private lateinit var fragmentController: SupportFragmentController<T>
@@ -27,6 +30,7 @@ abstract class InFullMvpDialogFragmentBaseTest<T : InFullMvpDialogFragment<*, *>
         testedFragment = fragmentController.create().get()
         substituteModules(testedFragment)
         fragmentController.start().resume().visible()
+        testedFragment.setupDialog(testedFragment.onCreateDialog(Bundle()), 0)
     }
 
     @After
@@ -44,3 +48,4 @@ abstract class InFullMvpDialogFragmentBaseTest<T : InFullMvpDialogFragment<*, *>
         /* NO OP */
     }
 }
+

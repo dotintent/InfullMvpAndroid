@@ -13,14 +13,7 @@ public class ${activityClass} extends InFullMvpActivity<${presenterClass}, ${vie
 
     @Inject ${presenterClass} ${presenterClass?uncap_first};
     @Inject ${viewClass} ${viewClass?uncap_first};
-
-    protected ${graphClass} ${graphClass?uncap_first};
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ${graphClass?uncap_first} = new ${graphClass}(this);
-    }
+    protected ${graphClass} ${graphClass?uncap_first} = new ${graphClass}(this);
 
     @Override
     public ${presenterClass} getPresenter() {

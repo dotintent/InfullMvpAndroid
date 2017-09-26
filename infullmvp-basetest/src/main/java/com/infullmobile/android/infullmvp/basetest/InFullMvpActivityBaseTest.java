@@ -33,7 +33,7 @@ public abstract class InFullMvpActivityBaseTest<
         controller = getActivity();
         activity = controller.get();
         substituteModules(activity);
-        controller.postCreate(null).visible();
+        controller.create().visible();
     }
 
     @After
@@ -46,7 +46,7 @@ public abstract class InFullMvpActivityBaseTest<
     }
 
     private ActivityController<T> getActivity() {
-        return Robolectric.buildActivity(getTestActivityClass()).withIntent(getActivityIntent()).create();
+        return Robolectric.buildActivity(getTestActivityClass(), getActivityIntent());
     }
 
     protected abstract Class<T> getTestActivityClass();

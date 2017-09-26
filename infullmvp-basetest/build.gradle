@@ -1,8 +1,4 @@
 buildscript {
-    repositories {
-        jcenter()
-        maven { url 'https://maven.infullmobile.com/public'}
-    }
     dependencies {
         classpath 'com.infullmobile.gradle:mavenplugin:1.0.3'
     }
@@ -16,12 +12,11 @@ android {
     lintOptions {
         lintConfig rootProject.file('gradle/lint.xml')
     }
-    buildToolsVersion '25.0.0'
 }
 
 dependencies {
     compile junit
-    compile mockito
+    compile mockitoCore
     compile robolectric
     compile robolectricShadows
 
