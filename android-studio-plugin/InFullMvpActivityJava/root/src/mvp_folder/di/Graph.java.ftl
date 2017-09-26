@@ -17,14 +17,16 @@ public class ${graphClass} {
     public ${graphClass}(${activityClass} activity) {
         this.builder = Dagger${graphClass}_${componentClass}
                 .builder()
-                <#if useApplicationComponent>
-                .applicationComponent(Components.from(activity.getApplication()))
-                </#if>
                 .${moduleClass?uncap_first}(new ${moduleClass}(activity));
     }
 
     public void inject(${activityClass} activity) {
-        builder.build().inject(activity);
+        builder
+                <#if useApplicationComponent>
+                .applicationComponent(Components.from(activity.getApplication()))
+                </#if>
+                .build()
+                .inject(activity);
     }
 
     @VisibleForTesting
