@@ -21,10 +21,11 @@ public class ${graphClass} {
     }
 
     public void inject(${activityClass} activity) {
-        builder.build()
+        builder
                 <#if useApplicationComponent>
                 .applicationComponent(Components.from(activity.getApplication()))
                 </#if>
+                .build()
                 .inject(activity);
     }
 
