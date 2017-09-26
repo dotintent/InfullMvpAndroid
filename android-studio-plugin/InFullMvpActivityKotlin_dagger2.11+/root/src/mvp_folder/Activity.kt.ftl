@@ -21,8 +21,6 @@ class ${activityClass} : InFullMvpActivity<${presenterClass}, ${viewClass}>() {
     }
 
     companion object {
-        fun getIntent(context: Context): Intent {
-            return Intent(context, ${activityClass}::class.java)
-        }
+        fun getIntent(context: Context): Intent = Intent(context, ${activityClass}::class.java)
     }
 }

@@ -11,12 +11,7 @@ class ${activityClass} : InFullMvpActivity<${presenterClass}, ${viewClass}>() {
 
     @Inject lateinit var ${presenterClass?uncap_first}: ${presenterClass}
     @Inject lateinit var ${viewClass?uncap_first}: ${viewClass}
-    lateinit var ${graphClass?uncap_first}: ${graphClass}
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        ${graphClass?uncap_first} = ${graphClass}(this)
-    }
+    val ${graphClass?uncap_first} = ${graphClass}(this)
 
     override val presenter: ${presenterClass} get() = ${presenterClass?uncap_first}
     override val presentedView: ${viewClass} get() = ${viewClass?uncap_first}
@@ -26,8 +21,6 @@ class ${activityClass} : InFullMvpActivity<${presenterClass}, ${viewClass}>() {
     }
 
     companion object {
-        fun getIntent(context: Context): Intent {
-            return Intent(context, ${activityClass}::class.java)
-        }
+        fun getIntent(context: Context): Intent = Intent(context, ${activityClass}::class.java)
     }
 }

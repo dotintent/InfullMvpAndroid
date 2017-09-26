@@ -39,8 +39,10 @@ public class ${moduleClass} {
 
     @${scopeClass}
     @Provides
-    ${presenterClass} provides${presenterClass}(${modelClass} model,
-                                                ${viewClass} view) {
+    public ${presenterClass} provides${presenterClass}(
+            ${modelClass} model,
+            ${viewClass} view
+    ) {
         return new ${presenterClass}(model, view);
     }
 }
