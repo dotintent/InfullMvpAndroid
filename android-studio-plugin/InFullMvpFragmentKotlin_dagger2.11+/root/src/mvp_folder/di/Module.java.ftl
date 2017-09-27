@@ -27,7 +27,7 @@ public abstract class ${moduleClass} {
 
     @${scopeClass}
     @Provides
-    static public ${modelClass} provides${modelClass}() {
+    static ${modelClass} provides${modelClass}() {
         return new ${modelClass}();
     }
 
