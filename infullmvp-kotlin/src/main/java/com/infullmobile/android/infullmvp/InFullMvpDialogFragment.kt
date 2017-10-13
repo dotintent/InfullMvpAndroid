@@ -2,7 +2,6 @@ package com.infullmobile.android.infullmvp
 
 import android.app.Dialog
 import android.os.Bundle
-import android.support.annotation.CallSuper
 import android.support.v4.app.DialogFragment
 import android.view.MenuItem
 import android.view.View
@@ -33,5 +32,10 @@ abstract class InFullMvpDialogFragment<
 
     override fun onContextItemSelected(item: MenuItem?): Boolean {
         return presenter.onContextItemSelected(item) || super.onContextItemSelected(item)
+    }
+
+    override fun onDestroyView() {
+        presenter.unbind()
+        super.onDestroyView()
     }
 }
