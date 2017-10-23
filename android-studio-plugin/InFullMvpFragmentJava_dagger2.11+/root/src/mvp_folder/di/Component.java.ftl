@@ -1,11 +1,9 @@
 package ${relativePackage}.di;
 
 import ${relativePackage}.${fragmentClass};
-import ${relativePackage}.di.${scopeClass};
 import dagger.Subcomponent;
 import dagger.android.AndroidInjector;
 
-@${scopeClass}
 @Subcomponent
 public interface ${componentClass} {
 

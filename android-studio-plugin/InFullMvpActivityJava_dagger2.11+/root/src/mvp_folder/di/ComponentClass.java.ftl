@@ -4,7 +4,6 @@ import ${relativePackage}.${activityClass};
 import dagger.Subcomponent;
 import dagger.android.AndroidInjector;
 
-@${scopeClass}
 @Subcomponent
 public interface ${componentClass} {
 

@@ -4,7 +4,6 @@ import ${relativePackage}.${fragmentClass}
 import dagger.Subcomponent
 import dagger.android.AndroidInjector
 
-@${scopeClass}
 @Subcomponent
 interface ${componentClass} : AndroidInjector<${fragmentClass}> {
 

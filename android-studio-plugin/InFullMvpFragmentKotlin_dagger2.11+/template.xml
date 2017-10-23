@@ -41,20 +41,12 @@
         type="string"/>
 
     <parameter
-        name="Use ApplicationComponent"
-        default="true"
-        help="If true, ApplicationComponent will be used in generated Graph"
-        id="useApplicationComponent"
-        type="boolean"/>
-
-    <parameter
         name="Application Path"
         constraints="package|empty"
         help="Package where we can find di.ApplicationComponent and di.Components"
         id="appComponentPackage"
         suggest="${packageName}.application"
-        type="string"
-        visibility="useApplicationComponent"/>
+        type="string"/>
 
     <thumbs>
         <thumb>ifmdagger.png</thumb>

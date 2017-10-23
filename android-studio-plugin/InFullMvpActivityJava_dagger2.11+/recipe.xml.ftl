@@ -27,9 +27,6 @@
     <instantiate from="root/src/mvp_folder/di/ComponentClass.java.ftl"
                  to="${newFolder}/di/${componentClass}.java" />
 
-    <instantiate from="root/src/mvp_folder/di/Scope.java.ftl"
-                 to="${newFolder}/di/${scopeClass}.java" />
-
     <instantiate from="root/src/mvp_folder/di/Module.java.ftl"
                  to="${newFolder}/di/${moduleClass}.java" />
 

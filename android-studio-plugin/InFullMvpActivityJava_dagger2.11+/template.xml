@@ -41,19 +41,11 @@
         help="Path to .R of this app/module" />
 
     <parameter
-        id="useApplicationComponent"
-        name="Use ApplicationComponent"
-        type="boolean"
-        default="true"
-        help="If true, ApplicationComponent will be used in generated Graph" />
-
-    <parameter
         id="appComponentPackage"
         name="Application Path"
         type="string"
         constraints="package|empty"
         suggest="${packageName}.application"
-        visibility="useApplicationComponent"
         help="Package where we can find di.ApplicationComponent and di.Components" />
 
     <thumbs>
