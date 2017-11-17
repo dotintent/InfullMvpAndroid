@@ -3,7 +3,54 @@ MVP library for android
 
 ## Usage
 
-Please see `sample` and `sample-kotlin` for how we are usually using it.
+#### Presenter
+```kotlin
+class SampleMvpActivityPresenter @Inject constructor(
+        private val model: SampleMvpActivityModel,
+        view: SampleMvpActivityView
+) : Presenter<SampleMvpActivityView>(view) {
+
+    override fun bind(intentBundle: Bundle, savedInstanceState: Bundle, intentData: Uri?) {
+        presentedView.displayedText = model.messageToBeDisplayed
+    }
+}
+```
+
+#### View
+```kotlin
+class SampleMvpActivityView @Inject constructor(
+) : PresentedActivityView<SampleMvpActivityPresenter>() {
+
+    @LayoutRes override val layoutResId = R.layout.activity_mvp
+    val textDisplay: TextView by bindView(R.id.textDisplay)
+
+    override fun onViewsBound() {
+        /* empty */
+    }
+
+    var displayedText: String
+        get() = textDisplay.text.toString()
+        set(value) {
+            textDisplay.text = value
+        }
+}
+```
+#### Model
+```kotlin
+
+class SampleMvpActivityModel @Inject constructor(
+    private val someUseCase: SomeUseCase
+) {
+
+    fun useSomeUseCase(param: String): Single<DomainObject> {
+        return someUseCase
+                    .parameter(param)
+                    .perform()
+    }
+}
+```
+
+For working example see `sample` and `sample-kotlin` for more details.
 
 ## Integrate
 
