@@ -3,6 +3,8 @@ MVP library for android
 
 ## Usage
 
+Article: https://github.com/inFullMobile/InfullMvpAndroid
+
 #### Presenter
 ```kotlin
 class SampleMvpActivityPresenter @Inject constructor(
