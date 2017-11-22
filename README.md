@@ -1,6 +1,9 @@
 MVP library for android
 ==================================
 
+## Article
+The whole library and its setup are described in [https://blog.infullmobile.com/mvp-cooked-the-infullmobile-way-25c01cf5cf52](THIS) medium article.
+
 ## Usage
 
 #### Presenter
