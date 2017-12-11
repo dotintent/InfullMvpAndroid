@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">InFullMvp</string>
+    <string name="temperature">Temperature: %s</string>
+    <string name="custom_view">custom view</string>
 </resources>
