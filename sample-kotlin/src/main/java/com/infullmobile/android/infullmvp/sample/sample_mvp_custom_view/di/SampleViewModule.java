@@ -18,6 +18,10 @@ public class SampleViewModule {
         this.customView = new SampleMvpCustomView(context, attributeSet);
     }
 
+    public SampleViewModule(SampleMvpCustomView sampleMvpCustomView) {
+        this.customView = sampleMvpCustomView;
+    }
+
     @Provides
     @SampleViewScope
     Context providesContext() {
@@ -26,20 +30,20 @@ public class SampleViewModule {
 
     @Provides
     @SampleViewScope
-    SampleMvpCustomViewView providesSampleActivityView() {
+    public SampleMvpCustomViewView providesSampleActivityView() {
         return new SampleMvpCustomViewView();
     }
 
     @Provides
     @SampleViewScope
-    SampleMvpCustomViewPresenter providesAddNewItemPresenter(SampleMvpCustomViewView sampleActivityView,
-                                                             SampleMvpCustomViewModel sampleActivityModel) {
+    public SampleMvpCustomViewPresenter providesAddNewItemPresenter(SampleMvpCustomViewView sampleActivityView,
+                                                                    SampleMvpCustomViewModel sampleActivityModel) {
         return new SampleMvpCustomViewPresenter(sampleActivityView, sampleActivityModel);
     }
 
     @Provides
     @SampleViewScope
-    SampleMvpCustomViewModel providesSampleActivityModel() {
+    public SampleMvpCustomViewModel providesSampleActivityModel() {
         return new SampleMvpCustomViewModel();
     }
 }

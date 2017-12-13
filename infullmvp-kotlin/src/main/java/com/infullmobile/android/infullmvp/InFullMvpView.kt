@@ -22,7 +22,7 @@ abstract class InFullMvpView<
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
         injectIntoGraph()
-        view = View.inflate(parentContext, presentedView.layoutResId, this)
+        view = inflate(parentContext, presentedView.layoutResId, this)
         presentedView.bindUiElements(this, presenter)
         presenter.bind(Bundle(), Bundle(), null)
     }

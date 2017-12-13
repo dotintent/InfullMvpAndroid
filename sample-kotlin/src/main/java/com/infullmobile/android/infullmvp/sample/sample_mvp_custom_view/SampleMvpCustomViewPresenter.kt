@@ -4,7 +4,7 @@ import android.net.Uri
 import android.os.Bundle
 import com.infullmobile.android.infullmvp.Presenter
 
-class SampleMvpCustomViewPresenter(
+open class SampleMvpCustomViewPresenter(
         view: SampleMvpCustomViewView,
         private val model: SampleMvpCustomViewModel
 ) : Presenter<SampleMvpCustomViewView>(view) {
