@@ -14,7 +14,7 @@ class SampleMvpCustomView(
 
     @Inject override lateinit var presenter: SampleMvpCustomViewPresenter
     @Inject override lateinit var presentedView: SampleMvpCustomViewView
-    lateinit var sampleActivityGraph: SampleViewGraph
+    lateinit var sampleActivityGraph : SampleViewGraph
 
     constructor(parentContext: Context) : this(parentContext, null)
 

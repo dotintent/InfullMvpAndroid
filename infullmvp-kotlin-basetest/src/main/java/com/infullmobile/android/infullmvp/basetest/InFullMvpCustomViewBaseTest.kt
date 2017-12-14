@@ -1,6 +1,7 @@
 package com.infullmobile.android.infullmvp.basetest
 
 import android.app.Activity
+import android.view.LayoutInflater
 import com.infullmobile.android.infullmvp.InFullMvpView
 import com.infullmobile.android.infullmvp.PresentedCustomView
 import com.infullmobile.android.infullmvp.Presenter
@@ -10,15 +11,18 @@ import org.robolectric.Robolectric
 import org.robolectric.RuntimeEnvironment
 import org.robolectric.android.controller.ActivityController
 
-abstract class InFullMvpCustomViewBaseTest<T : InFullMvpView<*, *>> {
+abstract class InFullMvpCustomViewBaseTest
+<T : InFullMvpView<PresenterType, PresentedViewType>,
+        PresenterType : Presenter<PresentedViewType>,
+        out PresentedViewType : PresentedCustomView<PresenterType>> {
 
     lateinit var testedCustomView: T
 
     abstract val layoutResId: Int
 
-    val testedPresenter: Presenter<*>
+    val testedPresenter: PresenterType
         get() = testedCustomView.presenter
-    val testedView: PresentedCustomView<*>
+    val testedView: PresentedViewType
         get() = testedCustomView.presentedView
 
     protected lateinit var activityController: ActivityController<Activity>
@@ -26,6 +30,11 @@ abstract class InFullMvpCustomViewBaseTest<T : InFullMvpView<*, *>> {
     @Before
     open fun setUp() {
         activityController = Robolectric.buildActivity(Activity::class.java)
+        testedCustomView = LayoutInflater.from(activityController.get()).inflate(
+                layoutResId,
+                null
+        ) as T
+        substituteModules(testedCustomView)
     }
 
     @After

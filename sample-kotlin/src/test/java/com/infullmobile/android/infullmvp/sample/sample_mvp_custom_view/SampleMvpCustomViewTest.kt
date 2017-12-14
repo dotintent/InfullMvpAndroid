@@ -16,7 +16,8 @@ import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
 
 @RunWith(RobolectricTestRunner::class)
-class SampleMvpCustomViewTest : InFullMvpCustomViewBaseTest<SampleMvpCustomView>() {
+class SampleMvpCustomViewTest : InFullMvpCustomViewBaseTest
+<SampleMvpCustomView, SampleMvpCustomViewPresenter, SampleMvpCustomViewView>() {
 
     @get:Rule val rule: MockitoRule = MockitoJUnit.rule()
 
@@ -24,24 +25,11 @@ class SampleMvpCustomViewTest : InFullMvpCustomViewBaseTest<SampleMvpCustomView>
     @Mock private lateinit var mockedPresenter: SampleMvpCustomViewPresenter
     @Mock private lateinit var mockedModel: SampleMvpCustomViewModel
 
-    override val layoutResId: Int
-        get() = R.layout.custom_view_sample
+    override val layoutResId: Int = R.layout.custom_view_sample
 
     @Before
     override fun setUp() {
         super.setUp()
-
-        /*1st way of creating a view*/
-        testedCustomView = SampleMvpCustomView(activityController.get())
-
-        /*2nd way of creating a view*/
-        //        testedCustomView = LayoutInflater.from(activityController.get()).inflate(
-        //                layoutResId,
-        //                null
-        //        ) as SampleMvpCustomView
-
-        substituteModules(testedCustomView)
-        activityController.start().resume().visible()
     }
 
     @Test
@@ -62,6 +50,7 @@ class SampleMvpCustomViewTest : InFullMvpCustomViewBaseTest<SampleMvpCustomView>
     }
 
     override fun substituteModules(customView: SampleMvpCustomView) {
+        customView.injectIntoGraph()
         customView.sampleActivityGraph.setAddNewItemModule(TestSampleMvpCustomViewModule(customView))
     }
 
