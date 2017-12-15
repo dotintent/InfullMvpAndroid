@@ -6,8 +6,6 @@ The whole library and its setup are described in [THIS](https://blog.infullmobil
 
 ## Usage
 
-Article: https://github.com/inFullMobile/InfullMvpAndroid
-
 #### Presenter
 ```kotlin
 class SampleMvpActivityPresenter @Inject constructor(
