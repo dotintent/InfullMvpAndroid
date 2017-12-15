@@ -1,7 +1,6 @@
 package com.infullmobile.android.infullmvp.sample.sample_mvp_custom_view
 
 import com.infullmobile.android.infullmvp.basetest.InFullMvpCustomViewBaseTest
-import com.infullmobile.android.infullmvp.sample.R
 import com.infullmobile.android.infullmvp.sample.sample_mvp_custom_view.di.SampleViewModule
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
@@ -24,7 +23,6 @@ class SampleMvpCustomViewTest : InFullMvpCustomViewBaseTest
     @get:Rule val rule: MockitoRule = MockitoJUnit.rule()
     @Mock private lateinit var mockedModel: SampleMvpCustomViewModel
 
-    override val layoutResId: Int = R.layout.custom_view_sample
     val temperatureFromModel = 3
 
     @Before

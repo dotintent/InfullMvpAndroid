@@ -16,7 +16,7 @@ class SampleMvpActivityPresenter @Inject constructor(
 ) : Presenter<SampleMvpActivityView>(view) {
 
     override fun bind(intentBundle: Bundle, savedInstanceState: Bundle, intentData: Uri?) {
-        presentedView.displayedText = model.currentTemperature
+        presentedView.displayedText = model.messageToBeDisplayed
     }
 }
 ```

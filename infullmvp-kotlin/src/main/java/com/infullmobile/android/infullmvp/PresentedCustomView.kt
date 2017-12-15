@@ -9,7 +9,7 @@ abstract class PresentedCustomView<PresenterType : Any>
     private var customView: View? = null
 
     override val context: Context
-        get() = customView?.getContext() ?: throw IllegalStateException("This view must be bound to custom view")
+        get() = customView?.context ?: throw IllegalStateException("This view must be bound to custom view")
 
     override val viewFinder: PresentedView<PresenterType, *>.(Int) -> View?
         get() = { customView?.findViewById(it) }
