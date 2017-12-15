@@ -9,14 +9,14 @@ open class SampleMvpCustomViewView(
 
     override val layoutResId = R.layout.custom_view_sample
 
-    val temperature: TextView by bindView(R.id.temperature)
+    val temperatureTextView: TextView by bindView(R.id.temperature)
     val temperatureString by bindString(R.string.temperature)
 
     override fun onViewsBound() {}
 
-    var message: String
-        get() = temperature.text.toString()
+    var temperatureValue: Int
+        get() = temperatureTextView.text.toString().toInt()
         set(value) {
-            temperature.text = String.format(temperatureString, value)
+            temperatureTextView.text = String.format(temperatureString, value)
         }
 }

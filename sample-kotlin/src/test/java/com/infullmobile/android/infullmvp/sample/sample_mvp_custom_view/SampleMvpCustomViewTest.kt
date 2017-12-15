@@ -10,6 +10,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
+import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnit
 import org.mockito.junit.MockitoRule
 import org.robolectric.RobolectricTestRunner
@@ -17,32 +18,30 @@ import org.robolectric.RuntimeEnvironment
 
 @RunWith(RobolectricTestRunner::class)
 class SampleMvpCustomViewTest : InFullMvpCustomViewBaseTest
-<SampleMvpCustomView, SampleMvpCustomViewPresenter, SampleMvpCustomViewView>() {
+                                <SampleMvpCustomView, SampleMvpCustomViewPresenter, SampleMvpCustomViewView>() {
 
     @get:Rule val rule: MockitoRule = MockitoJUnit.rule()
 
-    @Mock private lateinit var mockedView: SampleMvpCustomViewView
     @Mock private lateinit var mockedPresenter: SampleMvpCustomViewPresenter
     @Mock private lateinit var mockedModel: SampleMvpCustomViewModel
 
     override val layoutResId: Int = R.layout.custom_view_sample
+    val temperatureFromModel = 3
 
     @Before
     override fun setUp() {
         super.setUp()
+        MockitoAnnotations.initMocks(this)
+        `when`(mockedModel.currentTemperature).thenReturn(temperatureFromModel)
     }
 
     @Test
     fun shouldShowTemperature() {
         //given
-        val expectedText = mockedView.temperatureString
-        val temperatureFromModel = "3* C"
-
-        //when
-        `when`(mockedModel.messageToBeDisplayed).thenReturn(temperatureFromModel)
+        val expectedText = String.format(testedView.temperatureString, mockedModel.currentTemperature)
 
         //then
-        assertThat(mockedView.temperature.text).isEqualTo(expectedText)
+        assertThat(testedCustomView.presentedView.temperatureTextView.text).isEqualTo(expectedText)
     }
 
     override fun provideCustomView(): SampleMvpCustomView {
@@ -55,17 +54,6 @@ class SampleMvpCustomViewTest : InFullMvpCustomViewBaseTest
     }
 
     private inner class TestSampleMvpCustomViewModule(customView: SampleMvpCustomView) : SampleViewModule(customView) {
-
-        override fun providesSampleActivityView(): SampleMvpCustomViewView {
-            return mockedView
-        }
-
-        override fun providesAddNewItemPresenter(
-                sampleActivityView: SampleMvpCustomViewView?,
-                sampleActivityModel: SampleMvpCustomViewModel?
-        ): SampleMvpCustomViewPresenter {
-            return mockedPresenter
-        }
 
         override fun providesSampleActivityModel(): SampleMvpCustomViewModel {
             return mockedModel

@@ -4,12 +4,12 @@ import android.content.Context
 import android.os.Bundle
 import android.util.AttributeSet
 import android.view.View
-import android.widget.LinearLayout
+import android.widget.FrameLayout
 
 abstract class InFullMvpView<
         PresenterType : Presenter<PresentedViewType>,
         out PresentedViewType : PresentedCustomView<PresenterType>
-        >(open val parentContext: Context, attrs: AttributeSet?) : LinearLayout(parentContext, attrs) {
+        >(open val parentContext: Context, attrs: AttributeSet?) : FrameLayout(parentContext, attrs) {
 
     constructor(parentContext: Context) : this(parentContext, null)
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : this(context, attrs)
@@ -21,9 +21,13 @@ abstract class InFullMvpView<
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
+        initialize()
+    }
+
+    fun initialize() {
         injectIntoGraph()
         view = inflate(parentContext, presentedView.layoutResId, this)
-        presentedView.bindUiElements(this, presenter)
+        presentedView.bindUiElements(view, presenter)
         presenter.bind(Bundle(), Bundle(), null)
     }
 

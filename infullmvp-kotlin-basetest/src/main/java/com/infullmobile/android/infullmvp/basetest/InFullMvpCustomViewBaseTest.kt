@@ -1,7 +1,6 @@
 package com.infullmobile.android.infullmvp.basetest
 
 import android.app.Activity
-import android.view.LayoutInflater
 import com.infullmobile.android.infullmvp.InFullMvpView
 import com.infullmobile.android.infullmvp.PresentedCustomView
 import com.infullmobile.android.infullmvp.Presenter
@@ -30,11 +29,10 @@ abstract class InFullMvpCustomViewBaseTest
     @Before
     open fun setUp() {
         activityController = Robolectric.buildActivity(Activity::class.java)
-        testedCustomView = LayoutInflater.from(activityController.get()).inflate(
-                layoutResId,
-                null
-        ) as T
+        testedCustomView = provideCustomView()
         substituteModules(testedCustomView)
+        testedCustomView.initialize()
+        activityController.create().visible()
     }
 
     @After

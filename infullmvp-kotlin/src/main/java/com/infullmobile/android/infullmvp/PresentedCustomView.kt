@@ -4,17 +4,17 @@ import android.content.Context
 import android.view.View
 
 abstract class PresentedCustomView<PresenterType : Any>
-    : ContextPresentedView<PresenterType, InFullMvpView<*, *>>() {
+    : ContextPresentedView<PresenterType, View>() {
 
-    private var customView: InFullMvpView<*, *>? = null
+    private var customView: View? = null
 
     override val context: Context
         get() = customView?.getContext() ?: throw IllegalStateException("This view must be bound to custom view")
 
     override val viewFinder: PresentedView<PresenterType, *>.(Int) -> View?
-        get() = { customView?.view?.findViewById(it) }
+        get() = { customView?.findViewById(it) }
 
-    override fun bindUiElements(boundingView: InFullMvpView<*, *>, presenter: PresenterType) {
+    override fun bindUiElements(boundingView: View, presenter: PresenterType) {
         this.customView = boundingView
         this.boundPresenter = presenter
         onViewsBound()
