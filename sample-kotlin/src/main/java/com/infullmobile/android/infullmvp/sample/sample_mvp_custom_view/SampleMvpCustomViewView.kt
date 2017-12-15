@@ -14,9 +14,7 @@ open class SampleMvpCustomViewView(
 
     override fun onViewsBound() {}
 
-    var temperatureValue: Int
-        get() = temperatureTextView.text.toString().toInt()
-        set(value) {
-            temperatureTextView.text = String.format(temperatureString, value)
-        }
+    open fun displayTemperature(temperature: Int) {
+        temperatureTextView.text = String.format(temperatureString, temperature)
+    }
 }

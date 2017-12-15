@@ -15,14 +15,13 @@ import org.mockito.junit.MockitoJUnit
 import org.mockito.junit.MockitoRule
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.RuntimeEnvironment
+import org.mockito.Mockito.`when` as whenDo
 
 @RunWith(RobolectricTestRunner::class)
 class SampleMvpCustomViewTest : InFullMvpCustomViewBaseTest
                                 <SampleMvpCustomView, SampleMvpCustomViewPresenter, SampleMvpCustomViewView>() {
 
     @get:Rule val rule: MockitoRule = MockitoJUnit.rule()
-
-    @Mock private lateinit var mockedPresenter: SampleMvpCustomViewPresenter
     @Mock private lateinit var mockedModel: SampleMvpCustomViewModel
 
     override val layoutResId: Int = R.layout.custom_view_sample
@@ -30,8 +29,8 @@ class SampleMvpCustomViewTest : InFullMvpCustomViewBaseTest
 
     @Before
     override fun setUp() {
-        super.setUp()
         MockitoAnnotations.initMocks(this)
+        super.setUp()
         `when`(mockedModel.currentTemperature).thenReturn(temperatureFromModel)
     }
 

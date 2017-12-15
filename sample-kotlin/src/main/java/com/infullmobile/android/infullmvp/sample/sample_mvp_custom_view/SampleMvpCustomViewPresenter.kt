@@ -10,7 +10,7 @@ open class SampleMvpCustomViewPresenter(
 ) : Presenter<SampleMvpCustomViewView>(view) {
 
     override fun bind(intentBundle: Bundle, savedInstanceState: Bundle, intentData: Uri?) {
-        presentedView.temperatureValue = model.currentTemperature
+        presentedView.displayTemperature(model.currentTemperature)
     }
 
 }

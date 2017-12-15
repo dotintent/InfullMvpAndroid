@@ -1,5 +1,3 @@
 <resources>
     <string name="app_name">infullmvp-kotlin-basetest</string>
-    <string name="custom_view">Custom view</string>
-    <string name="temperatureTextView">Temperature %s</string>
 </resources>
