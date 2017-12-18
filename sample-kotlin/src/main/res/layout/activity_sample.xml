@@ -4,7 +4,7 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <com.infullmobile.android.infullmvp.sample.sample_mvp_custom_view.SampleMvpCustomView
+    <com.infullmobile.android.infullmvp.sample.sample_mvp_card.SampleMvpCard
         android:id="@+id/customView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

@@ -15,9 +15,8 @@ abstract class PresentedCustomView<PresenterType : Any>
         get() = { customView?.findViewById(it) }
 
     override fun bindUiElements(boundingView: View, presenter: PresenterType) {
-        this.customView = boundingView
-        this.boundPresenter = presenter
+        customView = boundingView
+        boundPresenter = presenter
         onViewsBound()
     }
-
 }

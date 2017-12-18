@@ -21,7 +21,7 @@ public abstract class PresentedView<PresenterType extends Presenter, PresentedVi
     public abstract Context getContext();
 
     public void bindPresenter(@NonNull PresenterType presenter) {
-        this.boundPresenter = presenter;
+        boundPresenter = presenter;
     }
 
     @NonNull

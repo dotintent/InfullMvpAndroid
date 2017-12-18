@@ -14,8 +14,8 @@ abstract class PresentedFragmentView<PresenterType: Any> : ContextPresentedView<
         get() = { fragmentRootView?.findViewById(it) }
 
     override fun bindUiElements(boundingView: View, presenter: PresenterType) {
-        this.fragmentRootView = boundingView
-        this.boundPresenter = presenter
+        fragmentRootView = boundingView
+        boundPresenter = presenter
         onViewsBound()
     }
 }

@@ -6,7 +6,7 @@ import android.widget.TextView
 
 import com.infullmobile.android.infullmvp.PresentedActivityView
 import com.infullmobile.android.infullmvp.sample.R
-import com.infullmobile.android.infullmvp.sample.sample_mvp_custom_view.SampleMvpCustomView
+import com.infullmobile.android.infullmvp.sample.sample_mvp_card.SampleMvpCard
 
 open class SampleActivityView(
         private val pagerAdapter: FragmentStatePagerAdapter
@@ -14,7 +14,7 @@ open class SampleActivityView(
 
     val textField: TextView by bindView(R.id.textContainer)
     val pager: ViewPager by bindView(R.id.pagesContainer)
-    val customView: SampleMvpCustomView by bindView(R.id.customView)
+    val customView: SampleMvpCard by bindView(R.id.customView)
 
     override val layoutResId = R.layout.activity_sample
 

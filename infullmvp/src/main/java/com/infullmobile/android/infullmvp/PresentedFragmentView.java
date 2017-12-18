@@ -13,7 +13,7 @@ public abstract class PresentedFragmentView<PresenterType extends Presenter>
     @Override
     protected void bindUiElements(@NonNull View fragmentRootView, @NonNull PresenterType presenter) {
         this.fragmentRootView = fragmentRootView;
-        this.boundPresenter = presenter;
+        boundPresenter = presenter;
         bindViews();
         onViewsBound();
     }

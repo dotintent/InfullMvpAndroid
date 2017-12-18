@@ -20,8 +20,8 @@ abstract class PresentedActivityView<PresenterType : Any>
         get() = { activity?.findViewById(it) }
 
     override fun bindUiElements(boundingView: InFullMvpActivity<*, *>, presenter: PresenterType) {
-        this.activity = boundingView
-        this.boundPresenter = presenter
+        activity = boundingView
+        boundPresenter = presenter
         onViewsBound()
     }
 

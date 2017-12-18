@@ -11,9 +11,9 @@ abstract class InFullMvpCustomViewBaseTest<
         PresenterType : Presenter<PresentedViewType>,
         out PresentedViewType : PresentedCustomView<PresenterType>> {
 
-    lateinit var testedCustomView: T
+    open lateinit var testedCustomView: T
 
-    val testedPresenter: PresenterType
+    val testedPresenter: Presenter<*>
         get() = testedCustomView.presenter
     val testedView: PresentedViewType
         get() = testedCustomView.presentedView
@@ -25,13 +25,12 @@ abstract class InFullMvpCustomViewBaseTest<
         testedCustomView.initialize()
     }
 
-    protected fun getString(stringResourceId: Int): String {
-        return RuntimeEnvironment.application.resources.getString(stringResourceId)
-    }
+    protected fun getString(stringResourceId: Int): String = RuntimeEnvironment.application.resources
+            .getString(stringResourceId)
 
     protected abstract fun provideCustomView(): T
 
     open fun substituteModules(customView: T) {
-        /* NO OP */
+        testedCustomView.injectIntoGraph()
     }
 }
