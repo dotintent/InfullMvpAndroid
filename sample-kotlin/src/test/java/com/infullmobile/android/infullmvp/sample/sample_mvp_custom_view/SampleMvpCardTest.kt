@@ -45,7 +45,7 @@ class SampleMvpCardTest : InFullMvpCardBaseTest<
     override fun provideCustomView(): SampleMvpCard = SampleMvpCard(RuntimeEnvironment.application)
 
     override fun substituteModules(customView: SampleMvpCard) {
-        customView.sampleActivityGraph.setAddNewItemModule(TestSampleMvpCustomViewModule(customView))
+        customView.sampleMvpCardGraph.setAddNewItemModule(TestSampleMvpCustomViewModule(customView))
     }
 
     private inner class TestSampleMvpCustomViewModule(customView: SampleMvpCard)

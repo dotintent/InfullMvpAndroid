@@ -14,6 +14,7 @@ open class SampleMvpCardView(
 
     override fun onViewsBound() {
         /* NO OP */
+        temperatureTextView.setOnClickListener { presenter.click() }
     }
 
     open fun displayTemperature(temperature: Int) {
