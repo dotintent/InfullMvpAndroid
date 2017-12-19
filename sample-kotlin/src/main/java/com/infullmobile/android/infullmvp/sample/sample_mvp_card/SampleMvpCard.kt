@@ -8,9 +8,8 @@ import javax.inject.Inject
 
 class SampleMvpCard(
         override val parentContext: Context,
-        private val attrs: AttributeSet?
-) : InFullMvpView<SampleMvpCardPresenter,
-        SampleMvpCardView>(parentContext, attrs) {
+        attrs: AttributeSet?
+) : InFullMvpView<SampleMvpCardPresenter, SampleMvpCardView>(parentContext, attrs) {
 
     @Inject override lateinit var presenter: SampleMvpCardPresenter
     @Inject override lateinit var presentedView: SampleMvpCardView

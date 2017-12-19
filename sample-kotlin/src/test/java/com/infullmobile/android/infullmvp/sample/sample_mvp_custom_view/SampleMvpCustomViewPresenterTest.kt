@@ -33,7 +33,7 @@ class SampleMvpCustomViewPresenterTest {
     fun shouldSetTemperatureOnBind() {
         // given
         val temperature = 42
-        whenDo(mockedModel.currentTemperature).thenReturn(temperature)
+        whenDo(mockedModel.getCurrentTemperature()).thenReturn(temperature)
 
         // when
         testedPresenter.bind(Bundle(), Bundle(), null)
