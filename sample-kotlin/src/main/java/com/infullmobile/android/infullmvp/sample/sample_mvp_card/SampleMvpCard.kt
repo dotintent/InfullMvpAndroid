@@ -14,15 +14,11 @@ class SampleMvpCard(
 
     @Inject override lateinit var presenter: SampleMvpCardPresenter
     @Inject override lateinit var presentedView: SampleMvpCardView
-    lateinit var sampleActivityGraph : SampleMvpCardGraph
+    var sampleActivityGraph = SampleMvpCardGraph(parentContext)
 
     constructor(parentContext: Context) : this(parentContext, null)
 
     override fun injectIntoGraph() {
-        sampleActivityGraph = SampleMvpCardGraph(
-                parentContext,
-                attrs
-        )
         sampleActivityGraph.inject(this)
     }
 }

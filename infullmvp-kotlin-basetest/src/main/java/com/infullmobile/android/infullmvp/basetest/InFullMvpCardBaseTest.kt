@@ -6,14 +6,14 @@ import com.infullmobile.android.infullmvp.Presenter
 import org.junit.Before
 import org.robolectric.RuntimeEnvironment
 
-abstract class InFullMvpCustomViewBaseTest<
+abstract class InFullMvpCardBaseTest<
         T : InFullMvpView<PresenterType, PresentedViewType>,
         PresenterType : Presenter<PresentedViewType>,
         out PresentedViewType : PresentedCustomView<PresenterType>> {
 
     open lateinit var testedCustomView: T
 
-    val testedPresenter: Presenter<*>
+    val testedPresenter: PresenterType
         get() = testedCustomView.presenter
     val testedView: PresentedViewType
         get() = testedCustomView.presentedView
@@ -31,6 +31,6 @@ abstract class InFullMvpCustomViewBaseTest<
     protected abstract fun provideCustomView(): T
 
     open fun substituteModules(customView: T) {
-        testedCustomView.injectIntoGraph()
+        /* NO OP */
     }
 }

@@ -12,5 +12,4 @@ open class SampleMvpCardPresenter(
     override fun bind(intentBundle: Bundle, savedInstanceState: Bundle, intentData: Uri?) {
         presentedView.displayTemperature(model.currentTemperature)
     }
-
 }
