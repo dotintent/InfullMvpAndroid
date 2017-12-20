@@ -7,7 +7,8 @@ import dagger.Component;
 
 public class SampleActivityGraph {
 
-    final DaggerSampleActivityGraph_SampleActivityComponent.Builder sampleActivityComponentBuilder;
+    private final DaggerSampleActivityGraph_SampleActivityComponent.Builder sampleActivityComponentBuilder;
+    public SampleActivityComponent sampleActivityComponent;
 
     public SampleActivityGraph(SampleActivity sampleActivity) {
         this.sampleActivityComponentBuilder = DaggerSampleActivityGraph_SampleActivityComponent
@@ -16,7 +17,8 @@ public class SampleActivityGraph {
     }
 
     public void inject(SampleActivity sampleActivity) {
-        sampleActivityComponentBuilder.build().inject(sampleActivity);
+        sampleActivityComponent = sampleActivityComponentBuilder.build();
+        sampleActivityComponent.inject(sampleActivity);
     }
 
     @VisibleForTesting
