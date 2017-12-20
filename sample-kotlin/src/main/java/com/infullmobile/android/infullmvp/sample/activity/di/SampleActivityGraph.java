@@ -7,7 +7,7 @@ import dagger.Component;
 
 public class SampleActivityGraph {
 
-    private final DaggerSampleActivityGraph_SampleActivityComponent.Builder sampleActivityComponentBuilder;
+    final DaggerSampleActivityGraph_SampleActivityComponent.Builder sampleActivityComponentBuilder;
 
     public SampleActivityGraph(SampleActivity sampleActivity) {
         this.sampleActivityComponentBuilder = DaggerSampleActivityGraph_SampleActivityComponent
@@ -28,7 +28,7 @@ public class SampleActivityGraph {
     @Component(
             modules = SampleActivityModule.class
     )
-    interface SampleActivityComponent {
+    public interface SampleActivityComponent {
         void inject(SampleActivity sampleActivity);
     }
 }

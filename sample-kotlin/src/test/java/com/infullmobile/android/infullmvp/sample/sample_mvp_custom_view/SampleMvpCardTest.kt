@@ -45,19 +45,16 @@ class SampleMvpCardTest : InFullMvpCardBaseTest<
     override fun provideCustomView(): SampleMvpCard = SampleMvpCard(RuntimeEnvironment.application)
 
     override fun substituteModules(customView: SampleMvpCard) {
-        customView.sampleActivityGraph.setAddNewItemModule(TestSampleMvpCustomViewModule(customView))
+        customView.sampleMvpCardGraph.setAddNewItemModule(TestSampleMvpCustomViewModule(customView))
     }
 
-    private inner class TestSampleMvpCustomViewModule(customView: SampleMvpCard)
-        : SampleMvpCardModule(customView.context) {
+    private inner class TestSampleMvpCustomViewModule(customView: SampleMvpCard) : SampleMvpCardModule(customView.context) {
 
         @Provides
         @SampleMvpCardScope
-        override fun providesAddNewItemPresenter(
+        override fun providesSampleMvpCardPresenter(
                 sampleActivityView: SampleMvpCardView?,
                 sampleActivityModel: SampleMvpCardModel?
-        ): SampleMvpCardPresenter {
-            return mockedPresenter
-        }
+        ) = mockedPresenter
     }
 }
