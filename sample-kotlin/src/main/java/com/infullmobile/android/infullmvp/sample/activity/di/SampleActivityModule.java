@@ -12,8 +12,6 @@ import com.infullmobile.android.infullmvp.sample.activity.SampleActivityPresente
 import com.infullmobile.android.infullmvp.sample.activity.SampleActivityView;
 import com.infullmobile.android.infullmvp.sample.activity.TwoPagesAdapter;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 

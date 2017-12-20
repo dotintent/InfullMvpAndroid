@@ -6,9 +6,10 @@ import android.support.annotation.VisibleForTesting;
 import com.infullmobile.android.infullmvp.sample.Navigation;
 import com.infullmobile.android.infullmvp.sample.activity.SampleActivity;
 import com.infullmobile.android.infullmvp.sample.activity.di.DaggerSampleActivityGraph_SampleActivityComponent;
-import com.infullmobile.android.infullmvp.sample.activity.di.SampleActivityGraph;
+import com.infullmobile.android.infullmvp.sample.activity.di.SampleActivityGraph.SampleActivityComponent;
 import com.infullmobile.android.infullmvp.sample.activity.di.SampleActivityModule;
 import com.infullmobile.android.infullmvp.sample.activity.di.SampleActivityScope;
+import com.infullmobile.android.infullmvp.sample.di_components.HasComponent;
 import com.infullmobile.android.infullmvp.sample.sample_mvp_card.SampleMvpCard;
 import dagger.Component;
 
@@ -16,10 +17,10 @@ public class SampleMvpCardGraph {
 
     private final DaggerSampleMvpCardGraph_SampleMvpCardComponent.Builder sampleCustomMvpCardComponentBuilder;
 
-    private Context context;
+    private HasComponent<SampleActivityComponent> activityWithComponent;
 
     public SampleMvpCardGraph(Context context) {
-        this.context = context;
+        activityWithComponent = (HasComponent<SampleActivityComponent>)context;
         this.sampleCustomMvpCardComponentBuilder = DaggerSampleMvpCardGraph_SampleMvpCardComponent
                 .builder()
                 .sampleMvpCardModule(new SampleMvpCardModule(context));
@@ -27,7 +28,7 @@ public class SampleMvpCardGraph {
 
     public void inject(SampleMvpCard sampleMvpCard) {
         sampleCustomMvpCardComponentBuilder
-                .sampleActivityComponent(((SampleActivity)context).getSampleActivityGraph().sampleActivityComponentBuilder.build())
+                .sampleActivityComponent(activityWithComponent.getComponent())
                 .build().inject(sampleMvpCard);
     }
 
@@ -38,7 +39,7 @@ public class SampleMvpCardGraph {
 
     @SampleMvpCardScope
     @Component(
-            dependencies = SampleActivityGraph.SampleActivityComponent.class,
+            dependencies = SampleActivityComponent.class,
             modules = { SampleMvpCardModule.class }
     )
     interface SampleMvpCardComponent {
