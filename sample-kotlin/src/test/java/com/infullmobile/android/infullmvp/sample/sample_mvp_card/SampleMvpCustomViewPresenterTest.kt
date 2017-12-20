@@ -1,6 +1,9 @@
 package com.infullmobile.android.infullmvp.sample.sample_mvp_card
 
 import android.os.Bundle
+import com.infullmobile.android.infullmvp.sample.sample_mvp_card.SampleMvpCardModel
+import com.infullmobile.android.infullmvp.sample.sample_mvp_card.SampleMvpCardPresenter
+import com.infullmobile.android.infullmvp.sample.sample_mvp_card.SampleMvpCardView
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
