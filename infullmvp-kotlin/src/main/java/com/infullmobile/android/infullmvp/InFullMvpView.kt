@@ -7,9 +7,9 @@ import android.widget.FrameLayout
 
 abstract class InFullMvpView<
         PresenterType : Presenter<PresentedViewType>,
-        out PresentedViewType : PresentedCustomView<PresenterType>
-        >(open val parentContext: Context, attrs: AttributeSet?)
-    : FrameLayout(parentContext, attrs) {
+        out PresentedViewType : PresentedCustomView<PresenterType>>
+(open val parentContext: Context, attrs: AttributeSet?
+) : FrameLayout(parentContext, attrs) {
 
     constructor(parentContext: Context) : this(parentContext, null)
 
@@ -34,4 +34,3 @@ abstract class InFullMvpView<
         presenter.unbind()
     }
 }
-

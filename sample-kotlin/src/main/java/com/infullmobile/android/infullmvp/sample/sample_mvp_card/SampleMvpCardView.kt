@@ -4,8 +4,7 @@ import android.widget.TextView
 import com.infullmobile.android.infullmvp.PresentedCustomView
 import com.infullmobile.android.infullmvp.sample.R
 
-open class SampleMvpCardView(
-) : PresentedCustomView<SampleMvpCardPresenter>() {
+open class SampleMvpCardView : PresentedCustomView<SampleMvpCardPresenter>() {
 
     override val layoutResId = R.layout.custom_view_sample
 

@@ -1,10 +1,6 @@
-package com.infullmobile.android.infullmvp.sample.sample_mvp_custom_view
+package com.infullmobile.android.infullmvp.sample.sample_mvp_card
 
 import com.infullmobile.android.infullmvp.basetest.InFullMvpCardBaseTest
-import com.infullmobile.android.infullmvp.sample.sample_mvp_card.SampleMvpCard
-import com.infullmobile.android.infullmvp.sample.sample_mvp_card.SampleMvpCardModel
-import com.infullmobile.android.infullmvp.sample.sample_mvp_card.SampleMvpCardPresenter
-import com.infullmobile.android.infullmvp.sample.sample_mvp_card.SampleMvpCardView
 import com.infullmobile.android.infullmvp.sample.sample_mvp_card.di.SampleMvpCardModule
 import com.infullmobile.android.infullmvp.sample.sample_mvp_card.di.SampleMvpCardScope
 import dagger.Provides
@@ -45,19 +41,16 @@ class SampleMvpCardTest : InFullMvpCardBaseTest<
     override fun provideCustomView(): SampleMvpCard = SampleMvpCard(RuntimeEnvironment.application)
 
     override fun substituteModules(customView: SampleMvpCard) {
-        customView.sampleActivityGraph.setAddNewItemModule(TestSampleMvpCustomViewModule(customView))
+        customView.sampleMvpCardGraph.setAddNewItemModule(TestSampleMvpCustomViewModule(customView))
     }
 
-    private inner class TestSampleMvpCustomViewModule(customView: SampleMvpCard)
-        : SampleMvpCardModule(customView.context) {
+    private inner class TestSampleMvpCustomViewModule(customView: SampleMvpCard) : SampleMvpCardModule(customView.context) {
 
         @Provides
         @SampleMvpCardScope
-        override fun providesAddNewItemPresenter(
+        override fun providesSampleMvpCardPresenter(
                 sampleActivityView: SampleMvpCardView?,
                 sampleActivityModel: SampleMvpCardModel?
-        ): SampleMvpCardPresenter {
-            return mockedPresenter
-        }
+        ) = mockedPresenter
     }
 }

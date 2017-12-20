@@ -25,8 +25,8 @@ abstract class InFullMvpCardBaseTest<
         testedCustomView.initialize()
     }
 
-    protected fun getString(stringResourceId: Int): String = RuntimeEnvironment.application.resources
-            .getString(stringResourceId)
+    protected fun getString(stringResourceId: Int): String =
+            RuntimeEnvironment.application.resources.getString(stringResourceId)
 
     protected abstract fun provideCustomView(): T
 

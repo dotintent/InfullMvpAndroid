@@ -24,13 +24,13 @@ public class SampleMvpCardModule {
 
     @Provides
     @SampleMvpCardScope
-    SampleMvpCardView providesSampleActivityView() {
+    SampleMvpCardView providesSampleMvpCardView() {
         return new SampleMvpCardView();
     }
 
     @Provides
     @SampleMvpCardScope
-    public SampleMvpCardPresenter providesAddNewItemPresenter(
+    public SampleMvpCardPresenter providesSampleMvpCardPresenter(
             SampleMvpCardView sampleActivityView,
             SampleMvpCardModel sampleActivityModel
     ) {
@@ -39,7 +39,7 @@ public class SampleMvpCardModule {
 
     @Provides
     @SampleMvpCardScope
-    public SampleMvpCardModel providesSampleActivityModel() {
+    public SampleMvpCardModel providesSampleMvpCardModel() {
         return new SampleMvpCardModel();
     }
 }
