@@ -13,6 +13,7 @@ open class SampleMvpCardView : PresentedCustomView<SampleMvpCardPresenter>() {
 
     override fun onViewsBound() {
         /* NO OP */
+        temperatureTextView.setOnClickListener { presenter.navigateToNextScreen() }
     }
 
     open fun displayTemperature(temperature: Int) {

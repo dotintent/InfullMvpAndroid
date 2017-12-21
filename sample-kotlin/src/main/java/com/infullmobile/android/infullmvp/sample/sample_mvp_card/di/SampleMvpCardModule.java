@@ -1,7 +1,7 @@
 package com.infullmobile.android.infullmvp.sample.sample_mvp_card.di;
 
 import android.content.Context;
-import com.infullmobile.android.infullmvp.sample.SampleNavigation;
+import com.infullmobile.android.infullmvp.sample.Navigation;
 import com.infullmobile.android.infullmvp.sample.sample_mvp_card.SampleMvpCardModel;
 import com.infullmobile.android.infullmvp.sample.sample_mvp_card.SampleMvpCardPresenter;
 import com.infullmobile.android.infullmvp.sample.sample_mvp_card.SampleMvpCardView;
@@ -34,8 +34,9 @@ public class SampleMvpCardModule {
     public SampleMvpCardPresenter providesSampleMvpCardPresenter(
             SampleMvpCardView sampleActivityView,
             SampleMvpCardModel sampleActivityModel,
-            SampleNavigation sampleNavigation) {
-        return new SampleMvpCardPresenter(sampleActivityView, sampleActivityModel, sampleNavigation);
+            Navigation navigation
+    ) {
+        return new SampleMvpCardPresenter(sampleActivityView, sampleActivityModel, navigation);
     }
 
     @Provides

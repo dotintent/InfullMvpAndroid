@@ -1,6 +1,7 @@
 package com.infullmobile.android.infullmvp.sample.sample_mvp_card
 
 import android.os.Bundle
+import com.infullmobile.android.infullmvp.sample.SampleNavigation
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -20,6 +21,7 @@ class SampleMvpCardPresenterTest {
     @InjectMocks private lateinit var testedPresenter: SampleMvpCardPresenter
     @Mock lateinit var mockedView: SampleMvpCardView
     @Mock lateinit var mockedModel: SampleMvpCardModel
+    @Mock lateinit var mockedNavigator: SampleNavigation
 
     @Test
     fun shouldSetTemperatureOnBind() {

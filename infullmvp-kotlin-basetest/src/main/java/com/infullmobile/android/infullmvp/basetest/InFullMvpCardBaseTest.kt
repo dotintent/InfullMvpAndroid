@@ -15,15 +15,14 @@ abstract class InFullMvpCardBaseTest<
         out PresentedViewType : PresentedCustomView<PresenterType>,
         ActivityType : InFullMvpActivity<*, *>> {
 
-    open lateinit var testedCustomView: T
-
+    lateinit var testedCustomView: T
     val testedPresenter: PresenterType
         get() = testedCustomView.presenter
     val testedView: PresentedViewType
         get() = testedCustomView.presentedView
 
     abstract val activityClass: Class<ActivityType>
-    lateinit var activityController: ActivityController<ActivityType>
+    private lateinit var activityController: ActivityController<ActivityType>
     private lateinit var parentActivity: ActivityType
 
     @Before

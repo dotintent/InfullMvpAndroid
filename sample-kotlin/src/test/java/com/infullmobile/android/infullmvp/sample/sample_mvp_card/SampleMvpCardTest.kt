@@ -1,6 +1,7 @@
 package com.infullmobile.android.infullmvp.sample.sample_mvp_card
 
 import com.infullmobile.android.infullmvp.basetest.InFullMvpCardBaseTest
+import com.infullmobile.android.infullmvp.sample.Navigation
 import com.infullmobile.android.infullmvp.sample.activity.SampleActivity
 import com.infullmobile.android.infullmvp.sample.sample_mvp_card.di.SampleMvpCardModule
 import com.infullmobile.android.infullmvp.sample.sample_mvp_card.di.SampleMvpCardScope
@@ -53,7 +54,7 @@ class SampleMvpCardTest : InFullMvpCardBaseTest<
         override fun providesSampleMvpCardPresenter(
                 sampleActivityView: SampleMvpCardView,
                 sampleActivityModel: SampleMvpCardModel,
-                sampleNavigation: SampleNavigation
+                sampleNavigation: Navigation
         ): SampleMvpCardPresenter? = mockedPresenter
     }
 }
