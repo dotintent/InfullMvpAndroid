@@ -14,7 +14,7 @@ abstract class InFullMvpViewBaseTest<
         T : InFullMvpView<PresenterType, PresentedViewType>,
         PresenterType : Presenter<PresentedViewType>,
         out PresentedViewType : PresentedCustomView<PresenterType>,
-        ActivityType : InFullMvpActivity<*, *>
+        ContainingActivityType : Activity
 > {
 
     lateinit var testedCustomView: T
@@ -23,9 +23,9 @@ abstract class InFullMvpViewBaseTest<
     val testedView: PresentedViewType
         get() = testedCustomView.presentedView
 
-    abstract val activityClass: Class<ActivityType>
-    lateinit var activityController: ActivityController<ActivityType>
-    private lateinit var parentActivity: ActivityType
+    abstract val activityClass: Class<ContainingActivityType>
+    lateinit var activityController: ActivityController<ContainingActivityType>
+    private lateinit var parentActivity: ContainingActivityType
 
     @Before
     open fun setUp() {
