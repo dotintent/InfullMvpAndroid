@@ -15,7 +15,7 @@ open class SampleMvpCardPresenter(
         presentedView.displayTemperature(model.getCurrentTemperature())
     }
 
-    fun navigateToNextScreen() {
+    open fun navigateToNextScreen() {
         navigation.sampleScreen().start()
     }
 }

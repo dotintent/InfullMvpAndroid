@@ -4,8 +4,6 @@ class Components private constructor() {
 
     companion object {
 
-        fun <T> from(activityWithComponent: HasComponent<T>): T {
-            return activityWithComponent.component
-        }
+        fun <T> from(activityWithComponent: HasComponent<T>): T = activityWithComponent.component
     }
 }

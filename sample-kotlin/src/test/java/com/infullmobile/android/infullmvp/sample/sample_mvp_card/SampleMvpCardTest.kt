@@ -48,7 +48,9 @@ class SampleMvpCardTest : InFullMvpViewBaseTest<
         customView.sampleMvpCardGraph.setAddNewItemModule(TestSampleMvpCustomViewModule(customView))
     }
 
-    private inner class TestSampleMvpCustomViewModule(customView: SampleMvpCard) : SampleMvpCardModule(customView.context) {
+    private inner class TestSampleMvpCustomViewModule(
+            customView: SampleMvpCard
+    ) : SampleMvpCardModule(customView.context) {
 
         @Provides
         @SampleMvpCardScope

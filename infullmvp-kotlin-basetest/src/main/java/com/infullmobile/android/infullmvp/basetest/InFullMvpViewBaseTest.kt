@@ -14,7 +14,8 @@ abstract class InFullMvpViewBaseTest<
         T : InFullMvpView<PresenterType, PresentedViewType>,
         PresenterType : Presenter<PresentedViewType>,
         out PresentedViewType : PresentedCustomView<PresenterType>,
-        ActivityType : InFullMvpActivity<*, *>> {
+        ActivityType : InFullMvpActivity<*, *>
+> {
 
     lateinit var testedCustomView: T
     val testedPresenter: PresenterType

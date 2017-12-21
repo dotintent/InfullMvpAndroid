@@ -29,7 +29,8 @@ public class SampleMvpCardGraph {
     public void inject(SampleMvpCard sampleMvpCard) {
         sampleCustomMvpCardComponentBuilder
                 .sampleActivityComponent(activityWithComponent.getComponent())
-                .build().inject(sampleMvpCard);
+                .build()
+                .inject(sampleMvpCard);
     }
 
     @VisibleForTesting
