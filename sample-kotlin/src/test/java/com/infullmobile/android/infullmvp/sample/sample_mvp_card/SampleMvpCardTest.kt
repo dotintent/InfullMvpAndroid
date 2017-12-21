@@ -1,6 +1,7 @@
 package com.infullmobile.android.infullmvp.sample.sample_mvp_card
 
 import com.infullmobile.android.infullmvp.basetest.InFullMvpCardBaseTest
+import com.infullmobile.android.infullmvp.sample.activity.SampleActivity
 import com.infullmobile.android.infullmvp.sample.sample_mvp_card.di.SampleMvpCardModule
 import com.infullmobile.android.infullmvp.sample.sample_mvp_card.di.SampleMvpCardScope
 import dagger.Provides
@@ -12,18 +13,19 @@ import org.mockito.Mock
 import org.mockito.junit.MockitoJUnit
 import org.mockito.junit.MockitoRule
 import org.robolectric.RobolectricTestRunner
-import org.robolectric.RuntimeEnvironment
 import org.mockito.Mockito.`when` as whenDo
 
 @RunWith(RobolectricTestRunner::class)
 class SampleMvpCardTest : InFullMvpCardBaseTest<
         SampleMvpCard,
         SampleMvpCardPresenter,
-        SampleMvpCardView>() {
+        SampleMvpCardView,
+        SampleActivity>() {
 
     @get:Rule val rule: MockitoRule = MockitoJUnit.rule()
 
     @Mock lateinit var mockedPresenter: SampleMvpCardPresenter
+    override val activityClass = SampleActivity::class.java
     private val temperature = 42
 
     @Test
@@ -38,7 +40,7 @@ class SampleMvpCardTest : InFullMvpCardBaseTest<
         assertThat(testedView.temperatureTextView.text).isEqualTo(expectedText)
     }
 
-    override fun provideCustomView(): SampleMvpCard = SampleMvpCard(RuntimeEnvironment.application)
+    override fun provideCustomView(parentActivity: SampleActivity) = SampleMvpCard(parentActivity)
 
     override fun substituteModules(customView: SampleMvpCard) {
         customView.sampleMvpCardGraph.setAddNewItemModule(TestSampleMvpCustomViewModule(customView))
@@ -49,8 +51,9 @@ class SampleMvpCardTest : InFullMvpCardBaseTest<
         @Provides
         @SampleMvpCardScope
         override fun providesSampleMvpCardPresenter(
-                sampleActivityView: SampleMvpCardView?,
-                sampleActivityModel: SampleMvpCardModel?
-        ) = mockedPresenter
+                sampleActivityView: SampleMvpCardView,
+                sampleActivityModel: SampleMvpCardModel,
+                sampleNavigation: SampleNavigation
+        ): SampleMvpCardPresenter? = mockedPresenter
     }
 }
