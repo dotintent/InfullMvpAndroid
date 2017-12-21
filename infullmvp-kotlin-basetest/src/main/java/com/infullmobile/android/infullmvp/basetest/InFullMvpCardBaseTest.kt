@@ -22,7 +22,7 @@ abstract class InFullMvpCardBaseTest<
         get() = testedCustomView.presentedView
 
     abstract val activityClass: Class<ActivityType>
-    private lateinit var activityController: ActivityController<ActivityType>
+    lateinit var activityController: ActivityController<ActivityType>
     private lateinit var parentActivity: ActivityType
 
     @Before
