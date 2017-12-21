@@ -1,5 +1,6 @@
 package com.infullmobile.android.infullmvp.basetest
 
+import android.app.Activity
 import com.infullmobile.android.infullmvp.InFullMvpActivity
 import com.infullmobile.android.infullmvp.InFullMvpView
 import com.infullmobile.android.infullmvp.PresentedCustomView
@@ -9,7 +10,7 @@ import org.robolectric.Robolectric
 import org.robolectric.RuntimeEnvironment
 import org.robolectric.android.controller.ActivityController
 
-abstract class InFullMvpCardBaseTest<
+abstract class InFullMvpViewBaseTest<
         T : InFullMvpView<PresenterType, PresentedViewType>,
         PresenterType : Presenter<PresentedViewType>,
         out PresentedViewType : PresentedCustomView<PresenterType>,
@@ -22,7 +23,7 @@ abstract class InFullMvpCardBaseTest<
         get() = testedCustomView.presentedView
 
     abstract val activityClass: Class<ActivityType>
-    private lateinit var activityController: ActivityController<ActivityType>
+    lateinit var activityController: ActivityController<ActivityType>
     private lateinit var parentActivity: ActivityType
 
     @Before
@@ -32,13 +33,13 @@ abstract class InFullMvpCardBaseTest<
         testedCustomView = provideCustomView(parentActivity)
         substituteModules(testedCustomView)
         activityController.create().visible()
-        testedCustomView.initialize()
+        testedCustomView.initialize() // Robolectric never calls onAttachedToWindow()
     }
 
     protected fun getString(stringResourceId: Int): String =
             RuntimeEnvironment.application.resources.getString(stringResourceId)
 
-    protected abstract fun provideCustomView(parentActivity: ActivityType): T
+    protected abstract fun provideCustomView(parentActivity: Activity): T
 
     open fun substituteModules(customView: T) {
         /* NO OP */

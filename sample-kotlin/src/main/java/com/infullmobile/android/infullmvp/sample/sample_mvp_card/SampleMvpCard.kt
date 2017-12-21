@@ -1,10 +1,8 @@
 package com.infullmobile.android.infullmvp.sample.sample_mvp_card
 
-import android.app.Fragment
 import android.content.Context
 import android.util.AttributeSet
 import com.infullmobile.android.infullmvp.InFullMvpView
-import com.infullmobile.android.infullmvp.sample.Navigation
 import com.infullmobile.android.infullmvp.sample.sample_mvp_card.di.SampleMvpCardGraph
 import javax.inject.Inject
 
