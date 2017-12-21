@@ -5,7 +5,7 @@ import android.support.v4.app.Fragment
 import com.infullmobile.android.infullmvp.sample.activity.SampleActivity
 import com.infullmobile.android.kotlin.navigation.InFullNavigation
 
-class SampleNavigation: InFullNavigation, Navigation {
+open class SampleNavigation: InFullNavigation, Navigation {
 
     constructor(activity: Activity) : super(activity)
     constructor(activity: Activity, fragment: Fragment) : super(activity, fragment)

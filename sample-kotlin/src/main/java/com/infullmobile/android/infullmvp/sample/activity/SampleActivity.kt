@@ -8,8 +8,9 @@ import com.infullmobile.android.infullmvp.sample.activity.di.SampleActivityGraph
 import com.infullmobile.android.infullmvp.sample.di_components.HasComponent
 import javax.inject.Inject
 
-class SampleActivity : InFullMvpActivity<SampleActivityPresenter, SampleActivityView>()
-        , HasComponent<SampleActivityGraph.SampleActivityComponent> {
+class SampleActivity :
+        InFullMvpActivity<SampleActivityPresenter, SampleActivityView>(),
+        HasComponent<SampleActivityComponent> {
 
     @Inject lateinit var sampleActivityPresenter: SampleActivityPresenter
     @Inject lateinit var sampleActivityView: SampleActivityView

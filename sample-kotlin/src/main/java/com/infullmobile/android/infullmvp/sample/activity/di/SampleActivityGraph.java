@@ -1,7 +1,6 @@
 package com.infullmobile.android.infullmvp.sample.activity.di;
 
 import android.support.annotation.VisibleForTesting;
-
 import com.infullmobile.android.infullmvp.sample.activity.SampleActivity;
 import dagger.Component;
 

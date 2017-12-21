@@ -53,7 +53,6 @@ dependencies {
     testCompile(assertJ) {
         exclude module: 'support-annotations'
     }
-
 }
 repositories {
     mavenCentral()

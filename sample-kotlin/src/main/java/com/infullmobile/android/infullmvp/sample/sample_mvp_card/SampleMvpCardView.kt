@@ -12,7 +12,7 @@ open class SampleMvpCardView : PresentedCustomView<SampleMvpCardPresenter>() {
     val temperatureString by bindString(R.string.temperature)
 
     override fun onViewsBound() {
-        /* NO OP */
+        temperatureTextView.setOnClickListener { presenter.navigateToNextScreen() }
     }
 
     open fun displayTemperature(temperature: Int) {
