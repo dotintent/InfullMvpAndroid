@@ -11,25 +11,23 @@ import org.robolectric.RuntimeEnvironment
 import org.robolectric.android.controller.ActivityController
 
 abstract class InFullMvpViewBaseTest<
-        T : InFullMvpView<PresenterType, PresentedViewType>,
+        CustomMvpViewType : InFullMvpView<PresenterType, PresentedViewType>,
         PresenterType : Presenter<PresentedViewType>,
-        out PresentedViewType : PresentedCustomView<PresenterType>,
-        ContainingActivityType : Activity
+        out PresentedViewType : PresentedCustomView<PresenterType>
 > {
 
-    lateinit var testedCustomView: T
+    lateinit var testedCustomView: CustomMvpViewType
     val testedPresenter: PresenterType
         get() = testedCustomView.presenter
     val testedView: PresentedViewType
         get() = testedCustomView.presentedView
 
-    abstract val activityClass: Class<ContainingActivityType>
-    lateinit var activityController: ActivityController<ContainingActivityType>
-    private lateinit var parentActivity: ContainingActivityType
+    abstract val activityClass: Class<out Activity>
+    private lateinit var parentActivity: Activity
 
     @Before
     open fun setUp() {
-        activityController = Robolectric.buildActivity(activityClass)
+        val activityController = Robolectric.buildActivity(activityClass)
         parentActivity = activityController.get()
         testedCustomView = provideCustomView(parentActivity)
         substituteModules(testedCustomView)
@@ -40,9 +38,9 @@ abstract class InFullMvpViewBaseTest<
     protected fun getString(stringResourceId: Int): String =
             RuntimeEnvironment.application.resources.getString(stringResourceId)
 
-    protected abstract fun provideCustomView(parentActivity: Activity): T
+    protected abstract fun provideCustomView(parentActivity: Activity): CustomMvpViewType
 
-    open fun substituteModules(customView: T) {
+    open fun substituteModules(customView: CustomMvpViewType) {
         /* NO OP */
     }
 }

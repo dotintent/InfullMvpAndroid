@@ -21,8 +21,8 @@ import org.mockito.Mockito.`when` as whenDo
 class SampleMvpCardTest : InFullMvpViewBaseTest<
         SampleMvpCard,
         SampleMvpCardPresenter,
-        SampleMvpCardView,
-        SampleActivity>() {
+        SampleMvpCardView
+>() {
 
     @get:Rule val rule: MockitoRule = MockitoJUnit.rule()
 
@@ -58,6 +58,6 @@ class SampleMvpCardTest : InFullMvpViewBaseTest<
                 sampleActivityView: SampleMvpCardView,
                 sampleActivityModel: SampleMvpCardModel,
                 sampleNavigation: Navigation
-        ): SampleMvpCardPresenter? = mockedPresenter
+        ) = mockedPresenter
     }
 }
