@@ -32,7 +32,7 @@ class SampleMvpCardTest : InFullMvpViewBaseTest<
     @Test
     fun shouldShowTemperature() {
         // given
-        val expectedText = String.format(testedView.temperatureString, temperature)
+        val expectedText = testedView.temperatureString.format(temperature)
 
         // when
         testedView.displayTemperature(temperature)

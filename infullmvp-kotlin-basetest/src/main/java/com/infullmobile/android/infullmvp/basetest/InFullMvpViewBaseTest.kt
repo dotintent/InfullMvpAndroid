@@ -11,8 +11,7 @@ import org.robolectric.RuntimeEnvironment
 abstract class InFullMvpViewBaseTest<
         CustomMvpViewType : InFullMvpView<PresenterType, PresentedViewType>,
         PresenterType : Presenter<PresentedViewType>,
-        out PresentedViewType : PresentedCustomView<PresenterType>
-> {
+        out PresentedViewType : PresentedCustomView<PresenterType>> {
 
     lateinit var testedCustomView: CustomMvpViewType
     val testedPresenter: PresenterType
