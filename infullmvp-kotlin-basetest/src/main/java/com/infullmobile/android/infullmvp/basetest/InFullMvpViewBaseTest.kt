@@ -1,14 +1,12 @@
 package com.infullmobile.android.infullmvp.basetest
 
 import android.app.Activity
-import com.infullmobile.android.infullmvp.InFullMvpActivity
 import com.infullmobile.android.infullmvp.InFullMvpView
 import com.infullmobile.android.infullmvp.PresentedCustomView
 import com.infullmobile.android.infullmvp.Presenter
 import org.junit.Before
 import org.robolectric.Robolectric
 import org.robolectric.RuntimeEnvironment
-import org.robolectric.android.controller.ActivityController
 
 abstract class InFullMvpViewBaseTest<
         CustomMvpViewType : InFullMvpView<PresenterType, PresentedViewType>,

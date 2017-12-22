@@ -3,7 +3,7 @@ package com.infullmobile.android.infullmvp.sample.sample_mvp_card
 import android.app.Activity
 import com.infullmobile.android.infullmvp.basetest.InFullMvpViewBaseTest
 import com.infullmobile.android.infullmvp.sample.Navigation
-import com.infullmobile.android.infullmvp.sample.activity.SampleActivity
+import com.infullmobile.android.infullmvp.sample.mvp_card_activity.MvpCardActivity
 import com.infullmobile.android.infullmvp.sample.sample_mvp_card.di.SampleMvpCardModule
 import com.infullmobile.android.infullmvp.sample.sample_mvp_card.di.SampleMvpCardScope
 import dagger.Provides
@@ -21,13 +21,12 @@ import org.mockito.Mockito.`when` as whenDo
 class SampleMvpCardTest : InFullMvpViewBaseTest<
         SampleMvpCard,
         SampleMvpCardPresenter,
-        SampleMvpCardView
->() {
+        SampleMvpCardView>() {
 
     @get:Rule val rule: MockitoRule = MockitoJUnit.rule()
 
     @Mock lateinit var mockedPresenter: SampleMvpCardPresenter
-    override val activityClass = SampleActivity::class.java
+    override val activityClass = MvpCardActivity::class.java
     private val temperature = 42
 
     @Test
