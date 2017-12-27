@@ -1,7 +1,6 @@
 package com.infullmobile.android.infullmvp.sample.sample_mvp_card
 
-import android.app.Activity
-import com.infullmobile.android.infullmvp.basetest.InFullMvpViewBaseTest
+import com.infullmobile.android.infullmvp.basetest.InFullMvpCardBaseTest
 import com.infullmobile.android.infullmvp.sample.Navigation
 import com.infullmobile.android.infullmvp.sample.mvp_card_activity.MvpCardActivity
 import com.infullmobile.android.infullmvp.sample.sample_mvp_card.di.SampleMvpCardModule
