@@ -13,7 +13,7 @@ class SampleMvpCard(
 
     @Inject override lateinit var presenter: SampleMvpCardPresenter
     @Inject override lateinit var presentedView: SampleMvpCardView
-    var sampleMvpCardGraph = SampleMvpCardGraph(parentContext)
+    val sampleMvpCardGraph = SampleMvpCardGraph(parentContext)
 
     constructor(parentContext: Context) : this(parentContext, null)
 

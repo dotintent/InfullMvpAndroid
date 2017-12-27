@@ -7,8 +7,10 @@ import android.widget.FrameLayout
 
 abstract class InFullMvpView<
         PresenterType : Presenter<PresentedViewType>,
-        out PresentedViewType : PresentedCustomView<PresenterType>>
-(open val parentContext: Context, attrs: AttributeSet?
+        out PresentedViewType : PresentedCustomView<PresenterType>
+>(
+        open val parentContext: Context,
+        attrs: AttributeSet?
 ) : FrameLayout(parentContext, attrs) {
 
     constructor(parentContext: Context) : this(parentContext, null)
@@ -24,8 +26,10 @@ abstract class InFullMvpView<
 
     fun initialize() {
         injectIntoGraph()
-        val view = inflate(parentContext, presentedView.layoutResId, this)
-        presentedView.bindUiElements(view, presenter)
+        presentedView.bindUiElements(
+                inflate(parentContext, presentedView.layoutResId, this),
+                presenter
+        )
         presenter.bind(Bundle(), Bundle(), null)
     }
 
