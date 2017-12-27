@@ -18,8 +18,8 @@ abstract class PresentedDialogView<PresenterType: Any>: ContextPresentedView<Pre
         get() = { dialog?.findViewById(it) }
 
     override fun bindUiElements(boundingView: Dialog, presenter: PresenterType) {
-        this.dialog = boundingView
-        this.boundPresenter = presenter
+        dialog = boundingView
+        boundPresenter = presenter
         onViewsBound()
     }
 }

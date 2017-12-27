@@ -13,8 +13,8 @@ public abstract class PresentedDialogView<PresenterType extends Presenter>
 
     @Override
     protected void bindUiElements(@NonNull Dialog dialog, @NonNull PresenterType presenter) {
-        this.boundDialog = dialog;
-        this.boundPresenter = presenter;
+        boundDialog = dialog;
+        boundPresenter = presenter;
         bindViews();
         onViewsBound();
     }

@@ -24,8 +24,10 @@ dependencies {
     compile project(path: ':navigation')
     compile androidAppcompat
     compile androidDesign
+    compile androidCardView
     compile dagger
     compile kotlinLanguageDependency
+    compile kotlinLanguageJre7Dependency
 
     testCompile project(path: ':infullmvp-kotlin-basetest')
     testCompile junit
@@ -34,7 +36,6 @@ dependencies {
     testCompile(assertJ) {
         exclude module: 'support-annotations'
     }
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }
 repositories {
     mavenCentral()

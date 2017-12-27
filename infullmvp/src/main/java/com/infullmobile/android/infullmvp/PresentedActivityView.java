@@ -18,8 +18,8 @@ public abstract class PresentedActivityView<PresenterType extends Presenter>
 
     @Override
     protected void bindUiElements(@NonNull InFullMvpActivity boundingActivity, @NonNull PresenterType presenter) {
-        this.presentedActivity = boundingActivity;
-        this.boundPresenter = presenter;
+        presentedActivity = boundingActivity;
+        boundPresenter = presenter;
         bindViews();
         onViewsBound();
     }
@@ -56,7 +56,7 @@ public abstract class PresentedActivityView<PresenterType extends Presenter>
     }
 
     protected void inflateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
-        // NO OP
+        /* NO OP */
     }
 
     protected boolean onOptionsItemSelected(@NonNull MenuItem item) {
