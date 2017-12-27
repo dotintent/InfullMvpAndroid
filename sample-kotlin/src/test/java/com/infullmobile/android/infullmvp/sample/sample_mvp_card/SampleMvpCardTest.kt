@@ -17,7 +17,7 @@ import org.robolectric.RobolectricTestRunner
 import org.mockito.Mockito.`when` as whenDo
 
 @RunWith(RobolectricTestRunner::class)
-class SampleMvpCardTest : InFullMvpCardBaseTest<
+class SampleMvpCardTest : InFullMvpViewBaseTest<
         SampleMvpCard,
         SampleMvpCardPresenter,
         SampleMvpCardView>() {
@@ -40,7 +40,7 @@ class SampleMvpCardTest : InFullMvpCardBaseTest<
         assertThat(testedView.temperatureTextView.text).isEqualTo(expectedText)
     }
 
-    override fun provideCustomView(parentActivity: SampleActivity) = SampleMvpCard(parentActivity)
+    override fun provideCustomView(parentActivity: Activity) = SampleMvpCard(parentActivity)
 
     override fun substituteModules(customView: SampleMvpCard) {
         customView.sampleMvpCardGraph.setAddNewItemModule(TestSampleMvpCustomViewModule(customView))

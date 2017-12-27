@@ -1,6 +1,6 @@
 package com.infullmobile.android.infullmvp.basetest
 
-import com.infullmobile.android.infullmvp.InFullMvpActivity
+import android.app.Activity
 import com.infullmobile.android.infullmvp.InFullMvpView
 import com.infullmobile.android.infullmvp.PresentedCustomView
 import com.infullmobile.android.infullmvp.Presenter
@@ -8,8 +8,8 @@ import org.junit.Before
 import org.robolectric.Robolectric
 import org.robolectric.RuntimeEnvironment
 
-abstract class InFullMvpCardBaseTest<
-        T : InFullMvpView<PresenterType, PresentedViewType>,
+abstract class InFullMvpViewBaseTest<
+        CustomMvpViewType : InFullMvpView<PresenterType, PresentedViewType>,
         PresenterType : Presenter<PresentedViewType>,
         out PresentedViewType : PresentedCustomView<PresenterType>> {
 
@@ -30,13 +30,13 @@ abstract class InFullMvpCardBaseTest<
         testedCustomView = provideCustomView(parentActivity)
         substituteModules(testedCustomView)
         activityController.create().visible()
-        testedCustomView.initialize()
+        testedCustomView.initialize() // Robolectric never calls onAttachedToWindow()
     }
 
     protected fun getString(stringResourceId: Int): String =
             RuntimeEnvironment.application.resources.getString(stringResourceId)
 
-    protected abstract fun provideCustomView(parentActivity: ActivityType): T
+    protected abstract fun provideCustomView(parentActivity: Activity): CustomMvpViewType
 
     open fun substituteModules(customView: CustomMvpViewType) {
         /* NO OP */
