@@ -1,6 +1,7 @@
 package com.infullmobile.android.infullmvp.sample.activity.di;
 
 import android.support.annotation.VisibleForTesting;
+import com.infullmobile.android.infullmvp.sample.Navigation;
 import com.infullmobile.android.infullmvp.sample.activity.SampleActivity;
 import dagger.Component;
 
@@ -31,5 +32,6 @@ public class SampleActivityGraph {
     )
     public interface SampleActivityComponent {
         void inject(SampleActivity sampleActivity);
+        void inject(Navigation navigation);
     }
 }

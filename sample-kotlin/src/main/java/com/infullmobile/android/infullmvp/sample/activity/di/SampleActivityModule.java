@@ -3,7 +3,6 @@ package com.infullmobile.android.infullmvp.sample.activity.di;
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-
 import com.infullmobile.android.infullmvp.sample.Navigation;
 import com.infullmobile.android.infullmvp.sample.SampleNavigation;
 import com.infullmobile.android.infullmvp.sample.activity.SampleActivity;
@@ -11,9 +10,6 @@ import com.infullmobile.android.infullmvp.sample.activity.SampleActivityModel;
 import com.infullmobile.android.infullmvp.sample.activity.SampleActivityPresenter;
 import com.infullmobile.android.infullmvp.sample.activity.SampleActivityView;
 import com.infullmobile.android.infullmvp.sample.activity.TwoPagesAdapter;
-
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 
@@ -65,7 +61,8 @@ public class SampleActivityModule {
     @Provides
     @SampleActivityScope
     SampleActivityPresenter providesAddNewItemPresenter(SampleActivityView sampleActivityView,
-                                                         SampleActivityModel sampleActivityModel) {
-        return new SampleActivityPresenter(sampleActivityView, sampleActivityModel);
+                                                        SampleActivityModel sampleActivityModel,
+                                                        Navigation sampleNavigation) {
+        return new SampleActivityPresenter(sampleActivityView, sampleActivityModel, sampleNavigation);
     }
 }
