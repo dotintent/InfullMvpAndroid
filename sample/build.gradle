@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.infullmobile.toolkit'
-apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     defaultConfig {
@@ -22,7 +21,7 @@ dependencies {
     compile androidAppcompat
     compile androidDesign
     compile dagger
-    apt daggerCompiler
+    annotationProcessor daggerCompiler
 
     testCompile project(path: ':infullmvp-basetest')
     testCompile junit
