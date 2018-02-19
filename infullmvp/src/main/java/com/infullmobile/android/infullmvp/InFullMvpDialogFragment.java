@@ -2,7 +2,6 @@ package com.infullmobile.android.infullmvp;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.CallSuper;
 import android.support.v4.app.DialogFragment;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +12,9 @@ public abstract class InFullMvpDialogFragment<
         PresenterType extends Presenter<PresentedViewType>,
         PresentedViewType extends PresentedDialogView<PresenterType>
         > extends DialogFragment {
+
+    private static final int NO_INPUT_FLAGS =
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
 
     protected abstract PresenterType getPresenter();
 
@@ -54,11 +56,14 @@ public abstract class InFullMvpDialogFragment<
         }
     }
 
-    private static final int NO_INPUT_FLAGS =
-            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
-
     @Override
     public boolean onContextItemSelected(final MenuItem item) {
         return getPresenter().onContextItemSelected(item) || super.onContextItemSelected(item);
+    }
+
+    @Override
+    public void onDestroyView() {
+        getPresenter().unbind();
+        super.onDestroyView();
     }
 }

@@ -37,4 +37,10 @@ public abstract class InFullMvpBottomSheetDialogFragment<
     public boolean onContextItemSelected(final MenuItem item) {
         return getPresenter().onContextItemSelected(item) || super.onContextItemSelected(item);
     }
+
+    @Override
+    public void onDestroyView() {
+        getPresenter().unbind();
+        super.onDestroyView();
+    }
 }
