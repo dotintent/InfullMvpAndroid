@@ -15,9 +15,9 @@ android {
 }
 
 dependencies {
-    provided androidAppcompat
-    provided androidDesign
-    compile finbugsAnnotations
+    compileOnly androidAppcompat
+    compileOnly androidDesign
+    implementation finbugsAnnotations
 }
 
 ifmmaven {

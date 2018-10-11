@@ -16,10 +16,10 @@ android {
 }
 
 dependencies {
-    provided androidAppcompat
-    provided androidDesign
-    provided kotlinLanguageDependency
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compileOnly androidAppcompat
+    compileOnly androidDesign
+    compileOnly kotlinLanguageDependency
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
 ifmmaven {
@@ -30,5 +30,6 @@ ifmmaven {
     buildType "release"
 }
 repositories {
+    google()
     mavenCentral()
 }

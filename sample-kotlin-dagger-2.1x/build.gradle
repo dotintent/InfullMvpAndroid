@@ -31,12 +31,12 @@ android {
 kapt { generateStubs = true }
 
 dependencies {
-    compile project(path: ':infullmvp-kotlin')
-    compile androidAppcompat
-    compile androidDesign
-    compile dagger211
-    compile daggerSupport211
-    compile kotlinLanguageDependency
+    implementation project(path: ':infullmvp-kotlin')
+    implementation androidAppcompat
+    implementation androidDesign
+    implementation dagger211
+    implementation daggerSupport211
+    implementation kotlinLanguageDependency
     kapt daggerCompiler211
     kapt daggerAnnotationProcessor211
 
@@ -45,12 +45,12 @@ dependencies {
     kaptTest dagger211
     kaptTest daggerSupport211
 
-    testCompile project(path: ':infullmvp-kotlin-basetest')
-    testCompile junit
-    testCompile mockitoInline
-    testCompile mockitoCore
-    testCompile robolectric
-    testCompile(assertJ) {
+    testImplementation  project(path: ':infullmvp-kotlin-basetest')
+    testImplementation  junit
+    testImplementation  mockitoInline
+    testImplementation  mockitoCore
+    testImplementation  robolectric
+    testImplementation (assertJ) {
         exclude module: 'support-annotations'
     }
 }
