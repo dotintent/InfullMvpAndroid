@@ -45,7 +45,7 @@ allprojects {
 }
 
 ext {
-    support_version = '25.3.1'
+    support_version = '28.0.0'
     androidAppcompat = "com.android.support:appcompat-v7:$support_version"
     androidDesign = "com.android.support:design:$support_version"
     androidCardView = "com.android.support:cardview-v7:$support_version"
@@ -60,6 +60,10 @@ ext {
     daggerAnnotationProcessor211 = "com.google.dagger:dagger-android-processor:2.11"
     daggerCompiler211 = "com.google.dagger:dagger-compiler:2.11"
     daggerSupport211 = "com.google.dagger:dagger-android-support:2.11"
+
+    //Koin
+    koinAndroid = "org.koin:koin-android:1.0.1"
+    koinAndroidScope = "org.koin:koin-android-scope:1.0.1"
 
     assertJ = 'com.squareup.assertj:assertj-android:1.1.1'
     junit = 'junit:junit:4.12'

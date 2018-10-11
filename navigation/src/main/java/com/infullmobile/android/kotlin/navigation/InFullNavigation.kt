@@ -20,7 +20,7 @@ open class InFullNavigation(protected val activity: Activity) {
 
     constructor(activity: Activity, fragment: Fragment) : this(activity) {
         this.fragment = fragment
-        context = fragment.context
+        context = fragment.context!!
     }
 
     fun finishWithResultOk() {

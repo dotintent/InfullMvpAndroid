@@ -1,0 +1,43 @@
+buildscript {
+    dependencies {
+        classpath 'com.infullmobile.gradle:mavenplugin:1.0.3'
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.infullmobile.toolkit'
+apply plugin: 'com.infullmobile.gradle.mavenplugin'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    lintOptions {
+        lintConfig rootProject.file('gradle/lint.xml')
+    }
+}
+
+androidExtensions {
+    experimental = true
+}
+
+dependencies {
+    compileOnly androidAppcompat
+    compileOnly androidDesign
+    compileOnly kotlinLanguageDependency
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    api koinAndroid
+    api koinAndroidScope
+}
+
+ifmmaven {
+    artifactID "infullmvp-kotlin-koin"
+    group "com.infullmobile.android"
+
+    description "Model View Presenter library for kotlin android"
+    buildType "release"
+}
+repositories {
+    google()
+    mavenCentral()
+}
