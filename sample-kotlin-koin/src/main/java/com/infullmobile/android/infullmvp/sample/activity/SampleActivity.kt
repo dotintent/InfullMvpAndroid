@@ -11,9 +11,9 @@ import kotlinx.android.synthetic.main.activity_sample.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
-class SampleActivity : InFullMvpActivity<SampleActivityContract.View, SampleActivityContract.Presenter>(), SampleActivityContract.View {
+class SampleActivity : InFullMvpActivity<SampleActivityPresenter>(), SampleActivityView {
     override val scopeName: String = sampleActivityScopeName
-    override val presenter: SampleActivityContract.Presenter by inject { parametersOf(this) }
+    override val presenter: SampleActivityPresenter by inject { parametersOf(this) }
     override val layoutId = R.layout.activity_sample
 
     override fun onViewBound() {

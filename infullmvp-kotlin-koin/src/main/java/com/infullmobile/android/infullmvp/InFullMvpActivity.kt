@@ -1,6 +1,6 @@
 package com.infullmobile.android.infullmvp
 
-import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.CallSuper
@@ -8,12 +8,14 @@ import android.support.v7.app.AppCompatActivity
 import org.koin.android.scope.ext.android.bindScope
 import org.koin.android.scope.ext.android.getOrCreateScope
 
-abstract class InFullMvpActivity<VIEW : MvpView<PRESENTER>, out PRESENTER : MvpPresenter<VIEW>>
-    : AppCompatActivity(), MvpView<PRESENTER> {
+abstract class InFullMvpActivity<out PresenterType : InFullMvpPresenter<*>>
+    : AppCompatActivity(), MvpView {
 
     abstract val scopeName: String
     abstract val layoutId: Int
-    override val activity: Activity
+    abstract val presenter: PresenterType
+
+    override val androidContext: Context
         get() = this
 
     @CallSuper

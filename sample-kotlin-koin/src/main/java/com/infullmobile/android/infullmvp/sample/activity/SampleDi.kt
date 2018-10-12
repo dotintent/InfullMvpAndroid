@@ -4,6 +4,5 @@ import org.koin.dsl.module.module
 
 const val sampleActivityScopeName = "sampleActivityScopeName"
 val sampleActivityModule = module(sampleActivityScopeName) {
-
-    factory { (view: SampleActivityContract.View) -> SamplePresenter(view, get()) as SampleActivityContract.Presenter }
+    factory { (view: SampleActivityView) -> SampleActivityPresenter(view, get()) }
 }

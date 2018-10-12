@@ -1,11 +1,10 @@
 package com.infullmobile.android.infullmvp
 
-import android.app.Activity
+import android.content.Context
 
-interface MvpView<out T : MvpPresenter<*>> {
+interface MvpView {
 
-    val presenter: T
-    val activity: Activity
+    val androidContext: Context
 
     fun onViewBound() {
 
