@@ -9,10 +9,6 @@ abstract class InFullMvpPresenter<VIEW : MvpView>(var view: VIEW) {
 
     }
 
-    open fun onPageShow() {
-
-    }
-
     open fun bind(extras: Bundle?, savedInstanceState: Bundle?) {
 
     }

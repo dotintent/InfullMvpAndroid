@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.infullmobile.android.infullmvp.sample.customView.CustomMvpView
+    <com.infullmobile.android.infullmvp.sample.temperatureCard.TemperatureCard
         android:id="@+id/customViewTemperature"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

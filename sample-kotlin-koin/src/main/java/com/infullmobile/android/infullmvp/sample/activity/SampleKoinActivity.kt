@@ -5,15 +5,15 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 import com.infullmobile.android.infullmvp.InFullMvpActivity
 import com.infullmobile.android.infullmvp.sample.R
-import com.infullmobile.android.infullmvp.sample.activity2.SampleActivity2
+import com.infullmobile.android.infullmvp.sample.mvpCardActivity.MvpCardActivity
 import com.infullmobile.android.infullmvp.sample.fragment.SampleFragment
 import kotlinx.android.synthetic.main.activity_sample.*
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
-class SampleActivity : InFullMvpActivity<SampleActivityPresenter>(), SampleActivityView {
-    override val scopeName: String = sampleActivityScopeName
-    override val presenter: SampleActivityPresenter by inject { parametersOf(this) }
+class SampleKoinActivity : InFullMvpActivity<SampleKoinPresenter>(), SampleKoinView {
+    override val scopeName: String = sampleKoinActivityScopeName
+    override val presenter: SampleKoinPresenter by inject { parametersOf(this) }
     override val layoutId = R.layout.activity_sample
 
     override fun onViewBound() {
@@ -28,7 +28,7 @@ class SampleActivity : InFullMvpActivity<SampleActivityPresenter>(), SampleActiv
     }
 
     override fun openSample2() {
-        startActivity(Intent(this, SampleActivity2::class.java))
+        startActivity(Intent(this, MvpCardActivity::class.java))
     }
 
     class ItemsAdapter(fm: FragmentManager, private val items: List<String>) : FragmentStatePagerAdapter(fm) {

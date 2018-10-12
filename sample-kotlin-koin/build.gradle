@@ -30,10 +30,8 @@ dependencies {
     implementation androidAppcompat
     implementation androidDesign
     implementation androidCardView
-    implementation kotlinLanguageDependency
     implementation kotlinLanguageJre7Dependency
 
-//    testImplementation project(path: ':infullmvp-kotlin-basetest')
     testImplementation junit
     testImplementation mockitoCore
     testImplementation robolectric
@@ -41,7 +39,7 @@ dependencies {
         exclude module: 'support-annotations'
     }
 
-    testImplementation "org.koin:koin-test:1.0.1"
+    testImplementation koinTest
 }
 repositories {
     mavenCentral()

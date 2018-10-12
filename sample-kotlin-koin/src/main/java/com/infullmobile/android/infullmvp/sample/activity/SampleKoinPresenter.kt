@@ -5,9 +5,9 @@ import com.infullmobile.android.infullmvp.InFullMvpPresenter
 import com.infullmobile.android.infullmvp.sample.models.SharedPreferencesModel
 
 
-class SampleActivityPresenter(view: SampleActivityView,
-                              private val sharedPreferencesModel: SharedPreferencesModel
-) : InFullMvpPresenter<SampleActivityView>(view) {
+class SampleKoinPresenter(view: SampleKoinView,
+                          private val sharedPreferencesModel: SharedPreferencesModel
+) : InFullMvpPresenter<SampleKoinView>(view) {
 
     override fun bind(extras: Bundle?, savedInstanceState: Bundle?) {
         view.updateText(sharedPreferencesModel.welcomeText)

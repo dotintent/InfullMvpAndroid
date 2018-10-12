@@ -18,8 +18,7 @@ android {
 dependencies {
     compileOnly androidAppcompat
     compileOnly androidDesign
-    compileOnly kotlinLanguageDependency
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation kotlinLanguageJre7Dependency
 }
 
 ifmmaven {

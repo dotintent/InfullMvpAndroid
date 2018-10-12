@@ -44,12 +44,6 @@ abstract class InFullMvpFragment<out PresenterType : InFullMvpPresenter<*>>
     }
 
     @CallSuper
-    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        super.setUserVisibleHint(isVisibleToUser)
-        if (isVisibleToUser) presenter.onPageShow()
-    }
-
-    @CallSuper
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         presenter.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)

@@ -1,8 +1,8 @@
 package com.infullmobile.android.infullmvp.sample
 
-import com.infullmobile.android.infullmvp.sample.activity.SampleActivityPresenter
-import com.infullmobile.android.infullmvp.sample.activity.SampleActivityView
-import com.infullmobile.android.infullmvp.sample.activity2.sampleActivity2Module
+import com.infullmobile.android.infullmvp.sample.activity.SampleKoinPresenter
+import com.infullmobile.android.infullmvp.sample.activity.SampleKoinView
+import com.infullmobile.android.infullmvp.sample.mvpCardActivity.sampleActivity2Module
 import com.infullmobile.android.infullmvp.sample.models.SharedPreferencesModel
 import org.junit.Test
 import org.koin.core.parameter.parametersOf
@@ -28,11 +28,11 @@ class SamplePresenterTest : KoinTest {
     fun `check Sample Presenter`() {
         startKoin(allModules)
         declareMock<SharedPreferencesModel>()
-        declareMock<SampleActivityView>()
+        declareMock<SampleKoinView>()
         val sharedPreferencesModelMock = get<SharedPreferencesModel>()
-        val viewMock = get<SampleActivityView>()
+        val viewMock = get<SampleKoinView>()
 
-        val systemUnderTest = get<SampleActivityPresenter>("", null) { parametersOf(viewMock) }
+        val systemUnderTest = get<SampleKoinPresenter>("", null) { parametersOf(viewMock) }
 
         systemUnderTest.openCustomViewActivity()
 

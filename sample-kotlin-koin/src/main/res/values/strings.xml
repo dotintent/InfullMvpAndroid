@@ -3,4 +3,5 @@
     <string name="temperature">Temperature: %d °C</string>
     <string name="custom_view">custom view</string>
     <string name="show_custom_view">Show Custom View</string>
+    <string name="temperature_">temperature: %1$s</string>
 </resources>

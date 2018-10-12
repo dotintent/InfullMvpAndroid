@@ -2,9 +2,9 @@ package com.infullmobile.android.infullmvp.sample
 
 import android.app.Application
 import com.infullmobile.android.infullmvp.inject
-import com.infullmobile.android.infullmvp.sample.activity.sampleActivityModule
-import com.infullmobile.android.infullmvp.sample.activity2.sampleActivity2Module
-import com.infullmobile.android.infullmvp.sample.customView.customViewModule
+import com.infullmobile.android.infullmvp.sample.activity.sampleKoinActivityModule
+import com.infullmobile.android.infullmvp.sample.mvpCardActivity.sampleActivity2Module
+import com.infullmobile.android.infullmvp.sample.temperatureCard.temperatureCardModule
 import com.infullmobile.android.infullmvp.sample.fragment.sampleFragmentModule
 import com.infullmobile.android.infullmvp.sample.models.SharedPreferencesModel
 import org.koin.android.ext.android.startKoin
@@ -14,10 +14,10 @@ val allModules = listOf(
         module {
             single { SharedPreferencesModel(get()) }
         },
-        sampleActivityModule,
+        sampleKoinActivityModule,
         sampleActivity2Module,
         sampleFragmentModule,
-        customViewModule
+        temperatureCardModule
 )
 
 class SampleApplication : Application() {
@@ -26,7 +26,6 @@ class SampleApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        // Application has to Start Koin to register injections
         startKoin(this, allModules)
 
         sharedPreferencesModel.welcomeText = "MVP SAMPLE SHARED PREFS INJECTED TEXT"
