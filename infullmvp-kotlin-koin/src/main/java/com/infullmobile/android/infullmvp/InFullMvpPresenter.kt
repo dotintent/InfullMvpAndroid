@@ -3,7 +3,7 @@ package com.infullmobile.android.infullmvp
 import android.content.Intent
 import android.os.Bundle
 
-abstract class InFullMvpPresenter<VIEW : MvpView>(var view: VIEW) {
+abstract class InFullMvpPresenter<PresentedView : MvpView>(var view: PresentedView) {
 
     open fun onResume() {
 
@@ -21,7 +21,7 @@ abstract class InFullMvpPresenter<VIEW : MvpView>(var view: VIEW) {
 
     }
 
-    fun onSaveInstanceState(outState: Bundle) {
+    open fun onSaveInstanceState(outState: Bundle) {
 
     }
 }

@@ -4,7 +4,7 @@ import android.content.Context
 
 interface MvpView {
 
-    val androidContext: Context
+    val context: Context
 
     fun onViewBound() {
 

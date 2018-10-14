@@ -1,8 +1,32 @@
 package com.infullmobile.android.infullmvp.sample.activity
 
-import com.infullmobile.android.infullmvp.MvpView
+import android.content.Intent
+import android.support.v7.app.AppCompatActivity
+import com.infullmobile.android.infullmvp.PresentedActivityView
+import com.infullmobile.android.infullmvp.inject
+import com.infullmobile.android.infullmvp.sample.R
+import com.infullmobile.android.infullmvp.sample.mvpCardActivity.MvpCardActivity
+import kotlinx.android.synthetic.main.activity_sample.*
+import org.koin.core.parameter.parametersOf
 
-interface SampleKoinView : MvpView {
-    fun updateText(text: String)
-    fun openSample2()
+class SampleKoinView(activity: AppCompatActivity) : PresentedActivityView<SampleKoinPresenter>(activity) {
+    override val scopeName = "sampleKoinActivityScopeName"
+    override val layoutId = R.layout.activity_sample
+
+    private val twoPagesAdapter: TwoSimplePagesAdapter by inject { parametersOf(context) }
+
+    override fun onViewBound() {
+        showCustomView.setOnClickListener {
+            presenter.openCustomViewActivity()
+        }
+        pagesContainer.adapter = twoPagesAdapter
+    }
+
+    fun updateText(text: String) {
+        textContainer.text = text
+    }
+
+    fun openSample2() {
+        context.startActivity(Intent(context, MvpCardActivity::class.java))
+    }
 }

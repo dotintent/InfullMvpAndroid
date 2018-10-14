@@ -2,6 +2,7 @@ package com.infullmobile.android.infullmvp.sample
 
 import com.infullmobile.android.infullmvp.sample.activity.SampleKoinPresenter
 import com.infullmobile.android.infullmvp.sample.activity.SampleKoinView
+import com.infullmobile.android.infullmvp.sample.activity.sampleKoinActivityModule
 import com.infullmobile.android.infullmvp.sample.mvpCardActivity.sampleActivity2Module
 import com.infullmobile.android.infullmvp.sample.models.SharedPreferencesModel
 import org.junit.Test
@@ -18,7 +19,7 @@ class SamplePresenterTest : KoinTest {
 
     @Test
     fun `check MVP hierarchy`() {
-        checkModules(listOf(sampleActivity2Module))
+        checkModules(listOf(sampleKoinActivityModule))
 
 //        checkModules(allModules)
         //We can check full project DI also, but this would require RoboElectric to provide Android Context class

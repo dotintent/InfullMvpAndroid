@@ -1,16 +1,10 @@
 package com.infullmobile.android.infullmvp.sample.mvpCardActivity
 
 import com.infullmobile.android.infullmvp.InFullMvpActivity
-import com.infullmobile.android.infullmvp.sample.R
 import org.koin.android.ext.android.inject
 import org.koin.core.parameter.parametersOf
 
-class MvpCardActivity : InFullMvpActivity<MvpCardPresenter>(), MvpCardView {
-    override val scopeName: String = mvpCardActivityScopeName
+class MvpCardActivity : InFullMvpActivity<MvpCardView, MvpCardPresenter>() {
     override val presenter: MvpCardPresenter by inject { parametersOf(this) }
-    override val layoutId = R.layout.activity_mvp_card
-
-    override fun onViewBound() {
-    }
-
+    override val view: MvpCardView by inject { parametersOf(this) }
 }

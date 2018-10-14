@@ -1,6 +1,5 @@
 package com.infullmobile.android.infullmvp
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.CallSuper
@@ -11,30 +10,28 @@ import android.view.ViewGroup
 import org.koin.android.scope.ext.android.bindScope
 import org.koin.android.scope.ext.android.getOrCreateScope
 
-abstract class InFullMvpFragment<out PresenterType : InFullMvpPresenter<*>>
-    : Fragment(), MvpView {
+abstract class InFullMvpFragment<out PresentedViewType : PresentedView<PresenterType>, PresenterType : InFullMvpPresenter<*>>
+    : Fragment() {
 
-    abstract val scopeName: String
-    abstract val layoutId: Int
     abstract val presenter: PresenterType
-    override val androidContext: Context get() = context!!
+    abstract val view: PresentedViewType
 
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bindScope(getOrCreateScope(scopeName))
+        bindScope(getOrCreateScope(view.scopeName))
     }
 
     @CallSuper
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(layoutId, container, false)
+        return inflater.inflate(view.layoutId, container, false)
     }
 
     @CallSuper
     override fun onViewCreated(v: View, savedInstanceState: Bundle?) {
         super.onViewCreated(v, savedInstanceState)
+        view.bindView(presenter)
         presenter.bind(arguments, savedInstanceState)
-        onViewBound()
     }
 
     @CallSuper
