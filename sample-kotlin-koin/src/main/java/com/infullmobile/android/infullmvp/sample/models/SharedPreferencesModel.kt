@@ -10,7 +10,7 @@ class SharedPreferencesModel(context: Context) {
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences("sample", 0)
 
     var welcomeText by sharedPreferences.fieldString("welcomeText")
-    val temperature: String = "3"
+    val temperature = 3
 
     private fun SharedPreferences.fieldString(key: String): ReadWriteProperty<Any, String> {
         return object : ReadWriteProperty<Any, String> {

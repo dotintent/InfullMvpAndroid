@@ -10,6 +10,6 @@ class TemperatureCardPresenter(view: TemperatureCardView,
     : InFullMvpPresenter<TemperatureCardView>(view) {
 
     override fun bind(extras: Bundle?, savedInstanceState: Bundle?) {
-        view.updateText(sharedPreferencesModel.temperature)
+        view.updateTemperature(sharedPreferencesModel.temperature)
     }
 }

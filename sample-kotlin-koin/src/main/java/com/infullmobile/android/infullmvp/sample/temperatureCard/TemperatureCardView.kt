@@ -9,7 +9,7 @@ class TemperatureCardView(view: View) : PresentedCustomView<TemperatureCardPrese
     override val scopeName = temperatureCardScopeName
     override val layoutId = R.layout.custom_view_sample
 
-    fun updateText(text: String) {
-        temperature.text = context.getString(R.string.temperature_, text)
+    fun updateTemperature(temperatureValue: Int) {
+        temperature.text = context.getString(R.string.temperature, temperatureValue)
     }
 }
