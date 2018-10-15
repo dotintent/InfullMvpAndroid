@@ -26,7 +26,7 @@ class SampleKoinView(activity: AppCompatActivity) : PresentedActivityView<Sample
         textContainer.text = text
     }
 
-    fun openSample2() {
+    fun openMvpCardActivity() {
         context.startActivity(Intent(context, MvpCardActivity::class.java))
     }
 }

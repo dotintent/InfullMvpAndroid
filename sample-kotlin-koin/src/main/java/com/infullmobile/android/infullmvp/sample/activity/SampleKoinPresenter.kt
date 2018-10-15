@@ -15,6 +15,6 @@ class SampleKoinPresenter(view: SampleKoinView,
 
     fun openCustomViewActivity() {
         sharedPreferencesModel.welcomeText = "test"
-        view.openSample2()
+        view.openMvpCardActivity()
     }
 }

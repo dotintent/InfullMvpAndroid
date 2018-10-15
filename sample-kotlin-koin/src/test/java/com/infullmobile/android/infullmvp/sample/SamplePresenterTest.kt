@@ -3,7 +3,6 @@ package com.infullmobile.android.infullmvp.sample
 import com.infullmobile.android.infullmvp.sample.activity.SampleKoinPresenter
 import com.infullmobile.android.infullmvp.sample.activity.SampleKoinView
 import com.infullmobile.android.infullmvp.sample.activity.sampleKoinActivityModule
-import com.infullmobile.android.infullmvp.sample.mvpCardActivity.sampleActivity2Module
 import com.infullmobile.android.infullmvp.sample.models.SharedPreferencesModel
 import org.junit.Test
 import org.koin.core.parameter.parametersOf
@@ -38,6 +37,6 @@ class SamplePresenterTest : KoinTest {
         systemUnderTest.openCustomViewActivity()
 
         Mockito.verify(sharedPreferencesModelMock).welcomeText = "test"
-        Mockito.verify(viewMock).openSample2()
+        Mockito.verify(viewMock).openMvpCardActivity()
     }
 }
