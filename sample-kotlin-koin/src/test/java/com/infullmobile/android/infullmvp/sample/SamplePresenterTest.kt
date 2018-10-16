@@ -1,8 +1,13 @@
 package com.infullmobile.android.infullmvp.sample
 
+import com.infullmobile.android.infullmvp.InFullMvpActivity
+import com.infullmobile.android.infullmvp.InFullMvpPresenter
+import com.infullmobile.android.infullmvp.PresentedView
+import com.infullmobile.android.infullmvp.sample.activity.SampleKoinActivity
 import com.infullmobile.android.infullmvp.sample.activity.SampleKoinPresenter
 import com.infullmobile.android.infullmvp.sample.activity.SampleKoinView
 import com.infullmobile.android.infullmvp.sample.activity.sampleKoinActivityModule
+import com.infullmobile.android.infullmvp.sample.application.allModules
 import com.infullmobile.android.infullmvp.sample.models.SharedPreferencesModel
 import org.junit.Test
 import org.koin.core.parameter.parametersOf
@@ -17,26 +22,26 @@ import org.mockito.Mockito
 class SamplePresenterTest : KoinTest {
 
     @Test
-    fun `check MVP hierarchy`() {
-        checkModules(listOf(sampleKoinActivityModule))
-
-//        checkModules(allModules)
-        //We can check full project DI also, but this would require RoboElectric to provide Android Context class
-    }
-
-    @Test
     fun `check Sample Presenter`() {
         startKoin(allModules)
         declareMock<SharedPreferencesModel>()
-        declareMock<SampleKoinView>()
-        val sharedPreferencesModelMock = get<SharedPreferencesModel>()
-        val viewMock = get<SampleKoinView>()
 
-        val systemUnderTest = get<SampleKoinPresenter>("", null) { parametersOf(viewMock) }
+        val sharedPreferencesModelMock = get<SharedPreferencesModel>()
+
+        val systemUnderTest = createTestPresenter<SampleKoinActivity, SampleKoinView, SampleKoinPresenter>()
 
         systemUnderTest.openCustomViewActivity()
 
         Mockito.verify(sharedPreferencesModelMock).welcomeText = "test"
-        Mockito.verify(viewMock).openMvpCardActivity()
+    }
+
+    inline fun <reified T : InFullMvpActivity<View, Presenter>,
+            reified View : PresentedView<Presenter>,
+            reified Presenter : InFullMvpPresenter<View>
+            > createTestPresenter(): Presenter {
+        declareMock<T>()
+        val activityMock = get<T>()
+        Mockito.`when`(activityMock.presentedView).then { Mockito.mock(View::class.java) }
+        return get<Presenter>("", null) { parametersOf(activityMock) }
     }
 }
