@@ -1,6 +1,7 @@
 package com.infullmobile.android.infullmvp.sample.temperatureCard
 
 import android.content.Context
+import android.os.Bundle
 import android.util.AttributeSet
 import android.widget.FrameLayout
 import com.infullmobile.android.infullmvp.InFullMvpCustomView
@@ -17,7 +18,7 @@ class TemperatureCard(context: Context, attrs: AttributeSet?) : FrameLayout(cont
     init {
         inflate(context, R.layout.custom_view_sample, this)
         presentedView.bindView(presenter)
-        presenter.bind(null, null)
+        presenter.bind(Bundle(), Bundle(), null)
     }
 
 }

@@ -4,6 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.CallSuper
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
 import org.koin.android.scope.ext.android.bindScope
 import org.koin.android.scope.ext.android.getOrCreateScope
 
@@ -19,7 +21,11 @@ abstract class InFullMvpActivity<out PresentedViewType : PresentedView<Presenter
         setContentView(presentedView.layoutId)
         bindScope(getOrCreateScope(presentedView.scopeName))
         presentedView.bindView(presenter)
-        presenter.bind(intent.extras, savedInstanceState)
+        presenter.bind(
+                if (intent.extras != null) intent.extras else Bundle(),
+                savedInstanceState ?: Bundle(),
+                intent.data
+        )
     }
 
     @CallSuper
@@ -29,20 +35,33 @@ abstract class InFullMvpActivity<out PresentedViewType : PresentedView<Presenter
     }
 
     @CallSuper
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        presenter.onSaveInstanceState(outState)
+    override fun onPause() {
+        super.onPause()
+        presenter.onPause()
     }
 
-    @CallSuper
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        presenter.onActivityResult(requestCode, resultCode, data)
         super.onActivityResult(requestCode, resultCode, data)
+        presenter.onActivityResult(requestCode, resultCode, data)
     }
 
-    @CallSuper
-    override fun onDestroy() {
-        presenter.unbind()
-        super.onDestroy()
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        presenter.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+    override fun onBackPressed() {
+        if (!presenter.onBackPressed()) {
+            super.onBackPressed()
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        presenter.onSaveInstanceState(outState)
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        return presenter.onContextItemSelected(item) || super.onContextItemSelected(item)
     }
 }
