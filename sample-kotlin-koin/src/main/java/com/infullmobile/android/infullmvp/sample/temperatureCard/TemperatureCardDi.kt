@@ -6,6 +6,6 @@ import org.koin.dsl.module.module
 const val temperatureCardScopeName = "temperatureCardScopeName"
 val temperatureCardModule = module(temperatureCardScopeName) {
 
-    factory { (customView: TemperatureCard) -> TemperatureCardPresenter(customView.view, get()) }
+    factory { (customView: TemperatureCard) -> TemperatureCardPresenter(customView.presentedView, get()) }
     factory { (view: View) -> TemperatureCardView(view) }
 }

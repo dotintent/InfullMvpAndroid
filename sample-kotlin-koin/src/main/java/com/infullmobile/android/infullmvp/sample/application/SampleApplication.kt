@@ -1,4 +1,4 @@
-package com.infullmobile.android.infullmvp.sample
+package com.infullmobile.android.infullmvp.sample.application
 
 import android.app.Application
 import com.infullmobile.android.infullmvp.inject

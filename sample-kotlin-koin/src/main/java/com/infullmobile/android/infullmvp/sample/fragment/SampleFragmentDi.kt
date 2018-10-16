@@ -5,6 +5,6 @@ import org.koin.dsl.module.module
 
 const val sampleFragmentScopeName = "sampleFragmentScopeName"
 val sampleFragmentModule = module(sampleFragmentScopeName) {
-    factory { (fragment: SampleFragment) -> SampleFragmentPresenter(fragment.view, get()) }
+    factory { (fragment: SampleFragment) -> SampleFragmentPresenter(fragment.presentedView, get()) }
     factory { (fragment: Fragment) -> SampleFragmentView(fragment) }
 }

@@ -8,7 +8,7 @@ import org.koin.core.parameter.parametersOf
 class SampleFragment : InFullMvpFragment<SampleFragmentView, SampleFragmentPresenter>() {
 
     override val presenter: SampleFragmentPresenter by inject { parametersOf(this) }
-    override val view: SampleFragmentView by inject { parametersOf(this) }
+    override val presentedView: SampleFragmentView by inject { parametersOf(this) }
 
     companion object {
         fun newInstance(text: String) = SampleFragment().apply {

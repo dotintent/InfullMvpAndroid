@@ -11,14 +11,14 @@ abstract class InFullMvpActivity<out PresentedViewType : PresentedView<Presenter
     : AppCompatActivity() {
 
     abstract val presenter: PresenterType
-    abstract val view: PresentedViewType
+    abstract val presentedView: PresentedViewType
 
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(view.layoutId)
-        bindScope(getOrCreateScope(view.scopeName))
-        view.bindView(presenter)
+        setContentView(presentedView.layoutId)
+        bindScope(getOrCreateScope(presentedView.scopeName))
+        presentedView.bindView(presenter)
         presenter.bind(intent.extras, savedInstanceState)
     }
 

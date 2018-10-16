@@ -12,11 +12,11 @@ class TemperatureCard(context: Context, attrs: AttributeSet?) : FrameLayout(cont
         InFullMvpCustomView<TemperatureCardView, TemperatureCardPresenter> {
 
     override val presenter: TemperatureCardPresenter by inject { parametersOf(this) }
-    override val view: TemperatureCardView by inject { parametersOf(this) }
+    override val presentedView: TemperatureCardView by inject { parametersOf(this) }
 
     init {
         inflate(context, R.layout.custom_view_sample, this)
-        view.bindView(presenter)
+        presentedView.bindView(presenter)
         presenter.bind(null, null)
     }
 

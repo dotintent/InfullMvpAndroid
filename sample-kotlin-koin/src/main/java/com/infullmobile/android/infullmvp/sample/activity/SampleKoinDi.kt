@@ -6,6 +6,6 @@ import org.koin.dsl.module.module
 const val sampleKoinActivityScopeName = "sampleKoinActivityScopeName"
 val sampleKoinActivityModule = module(sampleKoinActivityScopeName) {
     factory { (activity: AppCompatActivity) -> SampleKoinView(activity) }
-    factory { (activity: SampleKoinActivity) -> SampleKoinPresenter(activity.view, get()) }
+    factory { (activity: SampleKoinActivity) -> SampleKoinPresenter(activity.presentedView, get()) }
     factory { (activity: SampleKoinActivity) -> TwoSimplePagesAdapter(activity.supportFragmentManager) }
 }

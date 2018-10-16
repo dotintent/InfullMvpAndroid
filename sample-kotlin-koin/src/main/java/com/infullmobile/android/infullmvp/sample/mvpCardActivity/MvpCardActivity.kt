@@ -6,5 +6,5 @@ import org.koin.core.parameter.parametersOf
 
 class MvpCardActivity : InFullMvpActivity<MvpCardView, MvpCardPresenter>() {
     override val presenter: MvpCardPresenter by inject { parametersOf(this) }
-    override val view: MvpCardView by inject { parametersOf(this) }
+    override val presentedView: MvpCardView by inject { parametersOf(this) }
 }

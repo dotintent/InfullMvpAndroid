@@ -14,23 +14,23 @@ abstract class InFullMvpFragment<out PresentedViewType : PresentedView<Presenter
     : Fragment() {
 
     abstract val presenter: PresenterType
-    abstract val view: PresentedViewType
+    abstract val presentedView: PresentedViewType
 
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bindScope(getOrCreateScope(view.scopeName))
+        bindScope(getOrCreateScope(presentedView.scopeName))
     }
 
     @CallSuper
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(view.layoutId, container, false)
+        return inflater.inflate(presentedView.layoutId, container, false)
     }
 
     @CallSuper
     override fun onViewCreated(v: View, savedInstanceState: Bundle?) {
         super.onViewCreated(v, savedInstanceState)
-        view.bindView(presenter)
+        presentedView.bindView(presenter)
         presenter.bind(arguments, savedInstanceState)
     }
 

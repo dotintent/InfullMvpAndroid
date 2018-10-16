@@ -11,8 +11,8 @@ abstract class PresentedFragmentView<PresenterType : InFullMvpPresenter<*>>(
 
     override val context: Context
         get() = fragment.context
-                ?: throw IllegalStateException("This view fragment is not connected to context")
+                ?: throw IllegalStateException("This presentedView fragment is not connected to context")
     override val containerView: View
         get() = fragment.view
-                ?: throw IllegalStateException("This view fragment is not connected to context")
+                ?: throw IllegalStateException("This presentedView fragment is not connected to context")
 }
