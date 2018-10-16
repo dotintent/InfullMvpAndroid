@@ -20,20 +20,20 @@ android {
 
 dependencies {
     kapt daggerCompiler
-    compile project(path: ':infullmvp-kotlin')
-    compile project(path: ':navigation')
-    compile androidAppcompat
-    compile androidDesign
-    compile androidCardView
-    compile dagger
-    compile kotlinLanguageDependency
-    compile kotlinLanguageJre7Dependency
+    implementation project(path: ':infullmvp-kotlin')
+    implementation project(path: ':navigation')
+    implementation androidAppcompat
+    implementation androidDesign
+    implementation androidCardView
+    implementation dagger
+    implementation kotlinLanguageDependency
+    implementation kotlinLanguageJre7Dependency
 
-    testCompile project(path: ':infullmvp-kotlin-basetest')
-    testCompile junit
-    testCompile mockitoCore
-    testCompile robolectric
-    testCompile(assertJ) {
+    testImplementation  project(path: ':infullmvp-kotlin-basetest')
+    testImplementation  junit
+    testImplementation  mockitoCore
+    testImplementation  robolectric
+    testImplementation (assertJ) {
         exclude module: 'support-annotations'
     }
 }

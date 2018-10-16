@@ -16,15 +16,15 @@ android {
 }
 
 dependencies {
-    compile junit
-    compile mockitoCore
-    compile robolectric
-    compile robolectricShadows
+    implementation junit
+    implementation mockitoCore
+    implementation robolectric
+    implementation robolectricShadows
 
-    provided project(path: ':infullmvp-kotlin')
-    provided androidAppcompat
-    provided androidDesign
-    provided kotlinLanguageDependency
+    compileOnly project(path: ':infullmvp-kotlin')
+    compileOnly androidAppcompat
+    compileOnly androidDesign
+    compileOnly kotlinLanguageDependency
 }
 
 ifmmaven {

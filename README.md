@@ -79,7 +79,7 @@ dependencies {
 ```
 dependencies {    
     compile 'com.infullmobile.android:infullmvp:1.1.14'
-    testCompile 'com.infullmobile.android:infullmvp-basetest:1.1.14'
+    testImplementation 'com.infullmobile.android:infullmvp-basetest:1.1.14'
 }
 ```
 

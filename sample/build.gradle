@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.infullmobile.toolkit'
-apply plugin: 'com.neenbedankt.android-apt'
 
 android {
     defaultConfig {
@@ -18,17 +17,17 @@ android {
 }
 
 dependencies {
-    compile project(path: ':infullmvp')
-    compile androidAppcompat
-    compile androidDesign
-    compile dagger
-    apt daggerCompiler
+    implementation project(path: ':infullmvp')
+    implementation androidAppcompat
+    implementation androidDesign
+    implementation dagger
+    annotationProcessor daggerCompiler
 
-    testCompile project(path: ':infullmvp-basetest')
-    testCompile junit
-    testCompile mockitoCore
-    testCompile robolectric
-    testCompile(assertJ) {
+    testImplementation project(path: ':infullmvp-basetest')
+    testImplementation junit
+    testImplementation mockitoCore
+    testImplementation robolectric
+    testImplementation(assertJ) {
         exclude module: 'support-annotations'
     }
 }
