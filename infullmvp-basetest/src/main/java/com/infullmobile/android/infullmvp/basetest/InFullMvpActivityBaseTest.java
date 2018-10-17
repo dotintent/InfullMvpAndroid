@@ -1,9 +1,11 @@
 package com.infullmobile.android.infullmvp.basetest;
 
 import android.content.Intent;
+
 import com.infullmobile.android.infullmvp.InFullMvpActivity;
 import com.infullmobile.android.infullmvp.PresentedActivityView;
 import com.infullmobile.android.infullmvp.Presenter;
+
 import org.junit.After;
 import org.junit.Before;
 import org.robolectric.Robolectric;
@@ -18,12 +20,10 @@ public abstract class InFullMvpActivityBaseTest<
     private ActivityController<T> controller;
     private T activity;
 
-    @edu.umd.cs.findbugs.annotations.SuppressWarnings("UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
     public PresenterType getPresenter() {
         return activity.getPresenter();
     }
 
-    @edu.umd.cs.findbugs.annotations.SuppressWarnings("UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR")
     public PresentedViewType getPresentedView() {
         return activity.getPresentedView();
     }
