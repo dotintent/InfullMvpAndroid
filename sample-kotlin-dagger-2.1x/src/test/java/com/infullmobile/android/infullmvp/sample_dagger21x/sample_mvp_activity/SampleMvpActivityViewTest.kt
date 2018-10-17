@@ -15,7 +15,7 @@ class SampleMvpActivityViewTest
     @Test
     fun shouldDisplayTextCorrectly() {
         // given
-        val textWeSet = "Excelsior!!!"
+        val textWeSet = "Yo! Excelsior!"
 
         // when
         testedView.displayedText = textWeSet
