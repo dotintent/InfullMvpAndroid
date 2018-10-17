@@ -2,7 +2,6 @@ package com.infullmobile.android.infullmvp;
 
 import android.app.Dialog;
 import android.os.Bundle;
-import android.support.annotation.CallSuper;
 import android.support.v4.app.DialogFragment;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,6 +49,7 @@ public abstract class InFullMvpDialogFragment<
                 // fall through...
             case STYLE_NO_FRAME:
             case STYLE_NO_TITLE:
+            default:
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         }
     }
