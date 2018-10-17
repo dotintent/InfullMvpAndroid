@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.infullmobile.android.infullmvp.PresentedActivityView;
 import com.infullmobile.android.infullmvp.sample.R;
 
-public class SampleActivityView extends PresentedActivityView <SampleActivityPresenter> {
+public class SampleActivityView extends PresentedActivityView<SampleActivityPresenter> {
 
     protected TextView textField;
     protected ViewPager pager;
