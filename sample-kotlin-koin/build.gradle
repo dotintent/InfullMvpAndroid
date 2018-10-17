@@ -16,6 +16,11 @@ android {
     lintOptions {
         lintConfig rootProject.file('gradle/lint.xml')
     }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 androidExtensions {
