@@ -16,6 +16,11 @@ android {
     lintOptions {
         lintConfig rootProject.file('gradle/lint.xml')
     }
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -29,11 +34,11 @@ dependencies {
     implementation kotlinLanguageDependency
     implementation kotlinLanguageJre7Dependency
 
-    testImplementation  project(path: ':infullmvp-kotlin-basetest')
-    testImplementation  junit
-    testImplementation  mockitoCore
-    testImplementation  robolectric
-    testImplementation (assertJ) {
+    testImplementation project(path: ':infullmvp-kotlin-basetest')
+    testImplementation junit
+    testImplementation mockitoCore
+    testImplementation robolectric
+    testImplementation(assertJ) {
         exclude module: 'support-annotations'
     }
 }

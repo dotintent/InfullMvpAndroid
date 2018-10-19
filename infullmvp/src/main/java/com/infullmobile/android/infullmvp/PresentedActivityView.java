@@ -46,6 +46,7 @@ public abstract class PresentedActivityView<PresenterType extends Presenter>
 
     @edu.umd.cs.findbugs.annotations.SuppressWarnings({"unchecked", "UWF_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR"})
     protected <ViewType extends View> ViewType findView(@IdRes int resourceId) {
+        //noinspection unchecked
         return (ViewType) presentedActivity.findViewById(resourceId);
     }
 
@@ -62,7 +63,7 @@ public abstract class PresentedActivityView<PresenterType extends Presenter>
     protected boolean onOptionsItemSelected(@NonNull MenuItem item) {
         return false;
     }
-    
+
     public void invalidateOptionMenu() {
         presentedActivity.invalidateOptionsMenu();
     }
