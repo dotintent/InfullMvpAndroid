@@ -3,4 +3,6 @@
     <string name="temperature">Temperature: %d °C</string>
     <string name="custom_view">custom view</string>
     <string name="show_custom_view">Show Custom View</string>
+    <string name="show_dialog">Show dialog</string>
+    <string name="im_custom_dialog">I\'m custom dialog</string>
 </resources>

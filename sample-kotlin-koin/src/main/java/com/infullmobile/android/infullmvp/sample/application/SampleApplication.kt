@@ -3,6 +3,7 @@ package com.infullmobile.android.infullmvp.sample.application
 import android.app.Application
 import com.infullmobile.android.infullmvp.inject
 import com.infullmobile.android.infullmvp.sample.activity.sampleKoinActivityModule
+import com.infullmobile.android.infullmvp.sample.dialogFragment.sampleDialogFragmentModule
 import com.infullmobile.android.infullmvp.sample.mvpCardActivity.sampleActivity2Module
 import com.infullmobile.android.infullmvp.sample.temperatureCard.temperatureCardModule
 import com.infullmobile.android.infullmvp.sample.fragment.sampleFragmentModule
@@ -17,7 +18,8 @@ val allModules = listOf(
         sampleKoinActivityModule,
         sampleActivity2Module,
         sampleFragmentModule,
-        temperatureCardModule
+        temperatureCardModule,
+        sampleDialogFragmentModule
 )
 
 class SampleApplication : Application() {

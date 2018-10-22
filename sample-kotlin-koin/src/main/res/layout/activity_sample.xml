@@ -16,6 +16,15 @@
         android:layout_weight="1"/>
 
     <Button
+        android:id="@+id/showDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="@string/show_dialog"
+        android:textColor="@color/white"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
         android:id="@+id/showCustomView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
