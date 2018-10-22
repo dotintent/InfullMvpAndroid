@@ -1,18 +1,18 @@
 package com.infullmobile.android.infullmvp
 
 import android.content.Context
-import android.support.v4.app.Fragment
+import android.support.v4.app.DialogFragment
 import android.view.View
 
 
-abstract class PresentedFragmentView<PresenterType : InFullMvpPresenter<*>>(
-        private val fragment: Fragment)
+abstract class PresentedDialogFragmentView<PresenterType : InFullMvpPresenter<*>>(
+        private val dialogFragment: DialogFragment)
     : PresentedView<PresenterType>() {
 
     override val context: Context
-        get() = fragment.context
+        get() = dialogFragment.dialog.context
                 ?: throw IllegalStateException("This presentedView fragment is not connected to context")
     override val containerView: View
-        get() = fragment.view
+        get() = dialogFragment.dialog.window!!.decorView
                 ?: throw IllegalStateException("This presentedView fragment is not connected to view")
 }
