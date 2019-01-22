@@ -4,7 +4,6 @@
     <global id="newFolder" value="${escapeXmlAttribute(srcOut)}/${classToResource(activityClass)}" />
 
     <global id="graphClass" value="${underscoreToCamelCase(classToResource(activityClass))}Graph" />
-    <global id="scopeClass" value="${underscoreToCamelCase(classToResource(activityClass))}Scope" />
     <global id="moduleClass" value="${underscoreToCamelCase(classToResource(activityClass))}Module" />
     <global id="componentClass" value="${underscoreToCamelCase(classToResource(activityClass))}Component" />
 

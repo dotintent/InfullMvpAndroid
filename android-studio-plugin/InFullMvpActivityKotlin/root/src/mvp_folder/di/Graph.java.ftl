@@ -34,7 +34,6 @@ public class ${graphClass} {
         builder.${moduleClass?uncap_first}(module);
     }
 
-    @${scopeClass}
     @Component(
         <#if useApplicationComponent>
         dependencies = ApplicationComponent.class,

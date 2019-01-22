@@ -19,25 +19,21 @@ public class ${moduleClass} {
         this.activity = activity;
     }
 
-    @${scopeClass}
     @Provides
     Context providesContext() {
         return activity;
     }
 
-    @${scopeClass}
     @Provides
     ${viewClass} provides${viewClass}() {
         return new ${viewClass}();
     }
 
-    @${scopeClass}
     @Provides
     public ${modelClass} provides${modelClass}() {
         return new ${modelClass}();
     }
 
-    @${scopeClass}
     @Provides
     public ${presenterClass} provides${presenterClass}(
             ${viewClass} view,

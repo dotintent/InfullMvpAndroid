@@ -4,7 +4,6 @@
     <global id="newFolder" value="${escapeXmlAttribute(srcOut)}/${classToResource(fragmentClass)}" />
 
     <global id="graphClass" value="${underscoreToCamelCase(classToResource(fragmentClass))}Graph" />
-    <global id="scopeClass" value="${underscoreToCamelCase(classToResource(fragmentClass))}Scope" />
     <global id="moduleClass" value="${underscoreToCamelCase(classToResource(fragmentClass))}Module" />
     <global id="componentClass" value="${underscoreToCamelCase(classToResource(fragmentClass))}Component" />
 

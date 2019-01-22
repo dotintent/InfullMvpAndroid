@@ -14,23 +14,19 @@ import dagger.Provides;
 @Module
 public abstract class ${moduleClass} {
 
-    @${scopeClass}
     @Binds
     abstract Context bindsContext(${activityClass} activity);
 
-    @${scopeClass}
     @Provides
     static ${viewClass} provides${viewClass}() {
         return new ${viewClass}();
     }
 
-    @${scopeClass}
     @Provides
     static ${modelClass} provides${modelClass}() {
         return new ${modelClass}();
     }
 
-    @${scopeClass}
     @Provides
     static ${presenterClass} provides${
             presenterClass}(${modelClass} model,

@@ -37,8 +37,7 @@
         help="Package where we can find di.ApplicationComponent and di.Components"
         id="appComponentPackage"
         suggest="${packageName}.application"
-        type="string"
-        visibility="useApplicationComponent"/>
+        type="string" />
 
     <thumbs>
         <thumb>ifmdagger.png</thumb>

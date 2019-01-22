@@ -17,19 +17,16 @@ public class ${moduleClass} {
         this.fragment = fragment;
     }
 
-    @${scopeClass}
     @Provides
     ${viewClass} provides${viewClass}() {
         return new ${viewClass}();
     }
 
-    @${scopeClass}
     @Provides
     public ${modelClass} provides${modelClass}() {
         return new ${modelClass}();
     }
 
-    @${scopeClass}
     @Provides
     ${presenterClass} provides${presenterClass}(${viewClass} view,
                                                 ${modelClass} model) {

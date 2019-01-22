@@ -14,29 +14,24 @@ public abstract class ${moduleClass} {
 
     private ${fragmentClass} fragment;
 
-    @${scopeClass}
     @Binds
     abstract ${moduleClass} bindsFragment(${fragmentClass} fragment);
 
-    @${scopeClass}
     @Provides
     static Context providesContext(${fragmentClass} fragment) {
         return fragment.getContext();
     }
 
-    @${scopeClass}
     @Provides
     static ${viewClass} provides${viewClass}() {
         return new ${viewClass}();
     }
 
-    @${scopeClass}
     @Provides
     public static ${modelClass} provides${modelClass}() {
         return new ${modelClass}();
     }
 
-    @${scopeClass}
     @Provides
     static ${presenterClass} provides${presenterClass}(
             ${viewClass} view,

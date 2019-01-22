@@ -24,9 +24,6 @@
     <instantiate from="root/src/mvp_folder/di/Graph.java.ftl"
                  to="${newFolder}/di/${graphClass}.java" />
 
-    <instantiate from="root/src/mvp_folder/di/Scope.java.ftl"
-                 to="${newFolder}/di/${scopeClass}.java" />
-
     <instantiate from="root/src/mvp_folder/di/Module.java.ftl"
                  to="${newFolder}/di/${moduleClass}.java" />
 
