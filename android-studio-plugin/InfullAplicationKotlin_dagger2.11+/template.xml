@@ -40,6 +40,20 @@
         type="string"
         visibility="useApplicationComponent"/>
 
+    <parameter
+        name="with HasSupportFragmentInjector"
+        default="true"
+        help="Adds HasSupportFragmentInjector and logic for injecting support Fragments"
+        id="addDispatchingSupportFragmentInjector"
+        type="boolean"/>
+
+    <parameter
+        name="With HasFragmentInjector"
+        default="false"
+        help="Adds HasFragmentInjector and logic for injecting Fragments"
+        id="addDispatchingFragmentInjector"
+        type="boolean"/>
+
     <thumbs>
         <thumb>ifmdagger.png</thumb>
     </thumbs>
